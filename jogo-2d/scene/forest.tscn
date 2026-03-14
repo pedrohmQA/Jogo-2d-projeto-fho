@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://mdi7k1lqpuic" path="res://entities/camera.tscn" id="9_jo4av"]
 [ext_resource type="TileSet" uid="uid://dr7a84wcmogq0" path="res://tiles/decoration.tres" id="11_gwku7"]
 [ext_resource type="PackedScene" uid="uid://bvvslhu3eydw4" path="res://entities/level_end.tscn" id="12_64es3"]
+[ext_resource type="PackedScene" uid="uid://dmvosfx5nu606" path="res://entities/coin.tscn" id="13_kmspj"]
+[ext_resource type="PackedScene" uid="uid://cahp7n0y4oc0x" path="res://entities/apple.tscn" id="14_ja8kk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gwku7"]
 texture = ExtResource("3_jxvlp")
@@ -115,6 +117,11 @@ motion_mirroring = Vector2(288, 0)
 texture = ExtResource("8_jxvlp")
 centered = false
 
+[node name="Coins" type="Node2D" parent="." unique_id=783011616]
+
+[node name="coin" parent="Coins" unique_id=1533447457 instance=ExtResource("13_kmspj")]
+position = Vector2(455, 162)
+
 [node name="Camera" parent="." unique_id=1397644041 instance=ExtResource("9_jo4av")]
 position = Vector2(81, 109)
 limit_top = 0
@@ -140,7 +147,10 @@ position = Vector2(442, 154)
 next_level = "tropic"
 
 [node name="CollisionShape2D" parent="LevelEnd" index="0" unique_id=1009072659]
-position = Vector2(13, 5.5)
+position = Vector2(128, 23)
 shape = SubResource("RectangleShape2D_kmspj")
+
+[node name="coin" parent="." unique_id=343812034 instance=ExtResource("14_ja8kk")]
+position = Vector2(294, 73)
 
 [editable path="LevelEnd"]
