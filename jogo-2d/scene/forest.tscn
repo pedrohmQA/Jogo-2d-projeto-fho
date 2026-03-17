@@ -1,0 +1,157 @@
+[gd_scene format=4 uid="uid://d0it8vhwunp44"]
+
+[ext_resource type="PackedScene" uid="uid://2jgfnjhiqgnf" path="res://entities/player.tscn" id="1_2xpkg"]
+[ext_resource type="TileSet" uid="uid://kncqebxfydxa" path="res://tiles/terrain.tres" id="2_gbfvw"]
+[ext_resource type="Texture2D" uid="uid://baceju57xctls" path="res://sprites/Seasonal Tilesets/2 - Autumn Forest/Background parts/6 - Distant_trees.png" id="3_gbfvw"]
+[ext_resource type="Texture2D" uid="uid://v4n1j2ad7kl0" path="res://sprites/Seasonal Tilesets/2 - Autumn Forest/Terrain (16 x 16).png" id="3_jxvlp"]
+[ext_resource type="Texture2D" uid="uid://dylbmecsi73xr" path="res://sprites/Seasonal Tilesets/2 - Autumn Forest/Background parts/5 - Tree_row_BG_2.png" id="4_wqnte"]
+[ext_resource type="Texture2D" uid="uid://dsrus4t20gkis" path="res://sprites/Seasonal Tilesets/2 - Autumn Forest/Background parts/4 - Tree_row_BG_1.png" id="5_v5bin"]
+[ext_resource type="Texture2D" uid="uid://c1mxfqwtj7hmo" path="res://sprites/Seasonal Tilesets/2 - Autumn Forest/Background parts/3 - Bottom_leaf_piles.png" id="6_qxlj4"]
+[ext_resource type="Texture2D" uid="uid://bqat7qjicm31y" path="res://sprites/Seasonal Tilesets/2 - Autumn Forest/Background parts/2 - Trees.png" id="7_jo4av"]
+[ext_resource type="Texture2D" uid="uid://brm2dj7v08qts" path="res://sprites/Seasonal Tilesets/2 - Autumn Forest/Background parts/1 - Leaf_top.png" id="8_jxvlp"]
+[ext_resource type="PackedScene" uid="uid://mdi7k1lqpuic" path="res://entities/camera.tscn" id="9_jo4av"]
+[ext_resource type="TileSet" uid="uid://dr7a84wcmogq0" path="res://tiles/decoration.tres" id="11_gwku7"]
+[ext_resource type="PackedScene" uid="uid://bvvslhu3eydw4" path="res://entities/level_end.tscn" id="12_64es3"]
+[ext_resource type="PackedScene" uid="uid://dmvosfx5nu606" path="res://entities/coin.tscn" id="13_kmspj"]
+[ext_resource type="PackedScene" uid="uid://cahp7n0y4oc0x" path="res://entities/apple.tscn" id="14_ja8kk"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gwku7"]
+texture = ExtResource("3_jxvlp")
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+11:1/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+11:2/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+9:3/0 = 0
+10:3/0 = 0
+11:3/0 = 0
+12:3/0 = 0
+13:3/0 = 0
+15:3/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+4:4/0 = 0
+5:4/0 = 0
+6:4/0 = 0
+7:4/0 = 0
+11:4/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+5:5/0 = 0
+11:5/0 = 0
+3:6/0 = 0
+4:6/0 = 0
+5:6/0 = 0
+4:8/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_64es3"]
+sources/2 = SubResource("TileSetAtlasSource_gwku7")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kmspj"]
+size = Vector2(46, 31)
+
+[node name="Forest" type="Node2D" unique_id=1930942529]
+metadata/_edit_vertical_guides_ = [576.0]
+
+[node name="Player" parent="." unique_id=382685611 instance=ExtResource("1_2xpkg")]
+position = Vector2(14, 176)
+max_speed = 120.0
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=712565194]
+
+[node name="6" type="ParallaxLayer" parent="ParallaxBackground" unique_id=561489095]
+motion_scale = Vector2(0.1, 0.1)
+motion_mirroring = Vector2(288, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/6" unique_id=1122584460]
+texture = ExtResource("3_gbfvw")
+centered = false
+
+[node name="5" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1108130329]
+motion_scale = Vector2(0.2, 0.2)
+motion_mirroring = Vector2(288, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/5" unique_id=1962174727]
+texture = ExtResource("4_wqnte")
+centered = false
+
+[node name="4" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1878387632]
+motion_scale = Vector2(0.3, 0.3)
+motion_mirroring = Vector2(288, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/4" unique_id=1245957616]
+texture = ExtResource("5_v5bin")
+centered = false
+
+[node name="3" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1356852338]
+motion_scale = Vector2(0.4, 0.4)
+motion_mirroring = Vector2(288, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/3" unique_id=879595884]
+texture = ExtResource("6_qxlj4")
+centered = false
+
+[node name="2" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1314007161]
+motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(288, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/2" unique_id=1637910426]
+texture = ExtResource("7_jo4av")
+centered = false
+
+[node name="1" type="ParallaxLayer" parent="ParallaxBackground" unique_id=94707005]
+motion_scale = Vector2(1.5, 1.5)
+motion_mirroring = Vector2(288, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/1" unique_id=1471212406]
+texture = ExtResource("8_jxvlp")
+centered = false
+
+[node name="Coins" type="Node2D" parent="." unique_id=783011616]
+
+[node name="coin" parent="Coins" unique_id=1533447457 instance=ExtResource("13_kmspj")]
+position = Vector2(455, 162)
+
+[node name="Camera" parent="." unique_id=1397644041 instance=ExtResource("9_jo4av")]
+position = Vector2(81, 109)
+limit_top = 0
+limit_right = 576
+
+[node name="TileMaps" type="Node" parent="." unique_id=294291500]
+
+[node name="Terrain" type="TileMapLayer" parent="TileMaps" unique_id=1666396980]
+tile_map_data = PackedByteArray("AAAAAAwAAgACAAMAAAABAAwAAgACAAMAAAACAAwAAgACAAMAAAADAAwAAgACAAMAAAAEAAwAAgACAAMAAAAFAAwAAgACAAMAAAAGAAwAAgACAAMAAAAHAAwAAgACAAMAAAAIAAwAAgACAAMAAAAJAAwAAgACAAMAAAAKAAwAAgACAAMAAAALAAwAAgACAAMAAAAMAAwAAgACAAMAAAANAAwAAgACAAMAAAAOAAwAAgACAAMAAAAPAAwAAgACAAMAAAAQAAwAAgACAAMAAAARAAwAAgACAAMAAAASAAwAAgACAAMAAAATAAwAAgACAAMAAAAUAAwAAgACAAMAAAAVAAwAAgACAAMAAAAWAAwAAgACAAMAAAAXAAwAAgACAAMAAAAYAAwAAgACAAMAAAAZAAwAAgACAAMAAAAaAAwAAgACAAMAAAAbAAwAAgACAAMAAAAcAAwAAgACAAMAAAAdAAwAAgACAAMAAAAeAAwAAgACAAMAAAAfAAwAAgACAAMAAAAgAAwAAgACAAMAAAAhAAwAAgACAAMAAAAiAAwAAgACAAMAAAAjAAwAAgACAAMAAAAkAAwAAgACAAMAAAAlAAwAAgACAAMAAAAmAAwAAgACAAMAAAAnAAwAAgACAAMAAAAoAAwAAgACAAMAAAApAAwAAgACAAMAAAAqAAwAAgACAAMAAAArAAwAAgACAAMAAAAsAAwAAgACAAMAAAAtAAwAAgACAAMAAAAuAAwAAgACAAMAAAAvAAwAAgACAAMAAAAwAAwAAgACAAMAAAAxAAwAAgACAAMAAAAyAAwAAgACAAMAAAAzAAwAAgACAAMAAAA0AAwAAgACAAMAAAA1AAwAAgACAAMAAAA2AAwAAgACAAMAAAA3AAwAAgACAAMAAAA4AAwAAgACAAMAAAA5AAwAAgACAAMAAAA6AAwAAgACAAMAAAA7AAwAAgACAAMAAAA8AAwAAgACAAMAAAA9AAwAAgACAAMAAAA+AAwAAgACAAMAAAA/AAwAAgACAAMAAABAAAwAAgACAAMAAABBAAwAAgACAAMAAABCAAwAAgACAAMAAABDAAwAAgACAAMAAABEAAwAAgACAAMAAABFAAwAAgACAAMAAABGAAwAAgACAAMAAABHAAwAAgACAAMAAABIAAwAAgACAAMAAABJAAwAAgACAAMAAABKAAwAAgACAAMAAABLAAwAAgACAAMAAABMAAwAAgACAAMAAABNAAwAAgACAAMAAABOAAwAAgACAAMAAABPAAwAAgACAAMAAABQAAwAAgACAAMAAABRAAwAAgACAAMAAABSAAwAAgACAAMAAAAKAAkAAgAJAAMAAAALAAkAAgAKAAMAAAAMAAkAAgANAAMAAAAQAAUAAgAJAAMAAAARAAUAAgAKAAMAAAASAAUAAgANAAMAAAATAAoAAgABAAMAAAAUAAoAAgACAAMAAAAVAAoAAgACAAMAAAAWAAgAAgABAAMAAAAXAAgAAgACAAMAAAAYAAgAAgACAAMAAAAaAAYAAgACAAMAAAAbAAYAAgACAAMAAAAcAAYAAgACAAMAAAAdAAYAAgACAAMAAAAeAAYAAgACAAMAAAAfAAYAAgAFAAEAAAAWAAkAAgADAAUAAAAWAAoAAgADAAUAAAAZAAcAAgADAAUAAAAZAAgAAgADAAUAAAAfAAcAAgAFAAUAAAAfAAgAAgAFAAUAAAAeAAgAAgAEAAQAAAAcAAgAAgAEAAQAAAAdAAgAAgAEAAQAAAAbAAgAAgAEAAQAAAAaAAgAAgAEAAQAAAAaAAcAAgAEAAQAAAAbAAcAAgAEAAQAAAAcAAcAAgAEAAQAAAAdAAcAAgAEAAQAAAAeAAcAAgAEAAQAAAATAAsAAgABAAQAAAAUAAsAAgAEAAQAAAAVAAsAAgAEAAQAAAAWAAsAAgAEAAQAAAAXAAsAAgAEAAQAAAAYAAsAAgAEAAQAAAAYAAoAAgAEAAQAAAAYAAkAAgAEAAQAAAAXAAkAAgAEAAQAAAAXAAoAAgAEAAQAAAAZAAkAAgAEAAQAAAAZAAoAAgAEAAQAAAAZAAsAAgAEAAQAAAAaAAsAAgAEAAQAAAAbAAsAAgAEAAQAAAAcAAsAAgAEAAQAAAAdAAsAAgAEAAQAAAAfAAsAAgAEAAQAAAAeAAsAAgAEAAQAAAAaAAkAAgAEAAQAAAAaAAoAAgAEAAQAAAAZAAYAAgABAAMAAAA=")
+tile_set = ExtResource("2_gbfvw")
+
+[node name="FakeTerrain" type="TileMapLayer" parent="TileMaps" unique_id=271372506]
+z_index = 2
+tile_map_data = PackedByteArray("AAAfAAkAAgAFAAUAAAAfAAoAAgAFAAUAAAAeAAkAAgADAAUAAAAeAAoAAgADAAUAAAANAAcAAgAJAAMAAAAOAAcAAgAKAAMAAAAPAAcAAgANAAMAAAA=")
+tile_set = SubResource("TileSet_64es3")
+
+[node name="Decoration" type="TileMapLayer" parent="TileMaps" unique_id=2004188542]
+tile_map_data = PackedByteArray("AAAiAAsAAAADAAUAAAA=")
+tile_set = ExtResource("11_gwku7")
+
+[node name="LevelEnd" parent="." unique_id=79969626 instance=ExtResource("12_64es3")]
+position = Vector2(442, 154)
+next_level = "tropic"
+
+[node name="CollisionShape2D" parent="LevelEnd" index="0" unique_id=1009072659]
+position = Vector2(128, 23)
+shape = SubResource("RectangleShape2D_kmspj")
+
+[node name="coin" parent="." unique_id=343812034 instance=ExtResource("14_ja8kk")]
+position = Vector2(294, 73)
+
+[editable path="LevelEnd"]
