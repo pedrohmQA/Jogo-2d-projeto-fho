@@ -1,23 +1,25 @@
 extends Node2D
 
-# Exported variable for the fish texture
 @export var fish_texture: Texture2D
+@export var speed: float = 40.0
+@export var direction: float = 1.0
+@export var min_x: float = 240.0
+@export var max_x: float = 416.0
 
-# Movement parameters
-var speed: float = 200.0
-var direction: int = 0 # -1 for left, 1 for right
-var min_x: float = -100.0
-var max_x: float = 100.0
+@onready var sprite: Sprite2D = $Sprite2D
 
 func _ready() -> void:
-    # Assign texture if set
-    if fish_texture:
-        $Sprite2D.texture = fish_texture
+	if fish_texture != null:
+		sprite.texture = fish_texture
 
 func _process(delta: float) -> void:
-    # Update position based on direction
-    position.x += speed * direction * delta
-    # Keep position within min_x and max_x
-    position.x = clamp(position.x, min_x, max_x)
-    # Flip sprite based on direction
-    $Sprite2D.flip_h = direction == -1
+	position.x += direction * speed * delta
+
+	if position.x >= max_x:
+		direction = -1.0
+	elif position.x <= min_x:
+		direction = 1.0
+
+	sprite.flip_h = direction < 0.0
+
+If fish_texture is null, keep the texture defined in the Fish.tscn scene.
