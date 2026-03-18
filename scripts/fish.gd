@@ -1,18 +1,16 @@
-extends Node2D
+extends Node
 
-@export var speed: float = 40.0
-@export var direction: float = 1.0
-@export var min_x: float = 240.0
-@export var max_x: float = 416.0
+@export var fish_texture : Texture2D  # Add this line to export the texture
 
-@onready var sprite: Sprite2D = $Sprite2D
+# Added horizontal bounds
+@onready var left_bound = -50 # example value
+@onready var right_bound = 50 # example value
 
-func _process(delta: float) -> void:
-	position.x += direction * speed * delta
-
-	if position.x >= max_x:
-		direction = -1.0
-	elif position.x <= min_x:
-		direction = 1.0
-
-	sprite.flip_h = direction < 0.0
+func _process(delta):
+    var position = self.position
+    # Add logic to enforce bounds
+    if position.x < left_bound:
+        position.x = left_bound
+    elif position.x > right_bound:
+        position.x = right_bound
+    self.position = position
