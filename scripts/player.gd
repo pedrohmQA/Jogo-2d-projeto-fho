@@ -6,6 +6,7 @@ enum PlayerState {
 	jump,
 	duck,
 	slide,
+	swim,
 }
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
@@ -15,10 +16,15 @@ enum PlayerState {
 @export var decelaration = 400
 @export var slide_decelaration = 100
 const JUMP_VELOCITY = -300.0
+const SWIM_SPEED = 80.0
+const SWIM_UP_VELOCITY = -120.0
+const SWIM_DRIFT = 30.0
+const SWIM_DRIFT_ACCELERATION = 3.0
 var jump_count = 0
 @export var max_jump_count = 2
 var direction = 0
 var status: PlayerState
+var in_water: bool = false
 
 
 
@@ -26,8 +32,9 @@ func _ready() -> void:
 	go_to_idle_state()
 
 func _physics_process(delta: float) -> void:
-	
-	if not is_on_floor():
+	if in_water:
+		swim_physics(delta)
+	elif not is_on_floor():
 		velocity += get_gravity() * delta
 	
 	match status:
@@ -41,6 +48,8 @@ func _physics_process(delta: float) -> void:
 			duck_state(delta)
 		PlayerState.slide:
 			slide_state(delta)
+		PlayerState.swim:
+			swim_state(delta)
 			
 	move_and_slide()
 			
@@ -74,6 +83,26 @@ func go_to_slide_state():
 	
 func exit_from_slide_state():
 	set_large_collider()
+
+func go_to_swim_state():
+	status = PlayerState.swim
+	anim.play("swim")
+	jump_count = 0
+	velocity.y = minf(velocity.y, 0.0)
+
+func enter_water() -> void:
+	in_water = true
+	if status == PlayerState.duck:
+		exit_from_duck_state()
+	elif status == PlayerState.slide:
+		exit_from_slide_state()
+	go_to_swim_state()
+
+func exit_water() -> void:
+	in_water = false
+	status = PlayerState.jump
+	anim.play("jump")
+	jump_count = 1
 	
 func idle_state(delta):
 	move(delta)
@@ -141,6 +170,18 @@ func temp(delta: float) -> void:
 
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
+
+func swim_physics(delta: float) -> void:
+	velocity.y = move_toward(velocity.y, SWIM_DRIFT, SWIM_DRIFT * delta * SWIM_DRIFT_ACCELERATION)
+
+func swim_state(delta: float) -> void:
+	update_direcition()
+	if direction:
+		velocity.x = move_toward(velocity.x, direction * SWIM_SPEED, acceleration * delta)
+	else:
+		velocity.x = move_toward(velocity.x, 0, decelaration * delta)
+	if Input.is_action_pressed("jump"):
+		velocity.y = SWIM_UP_VELOCITY
 
 func move(delta):
 	update_direcition()
