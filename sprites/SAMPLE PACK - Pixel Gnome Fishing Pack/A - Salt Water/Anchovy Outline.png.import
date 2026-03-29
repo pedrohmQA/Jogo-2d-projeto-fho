@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://hbrpoig8f1cbf"
-path="res://.godot/imported/Anchovy Outline.png-hbrpoig8f1cbf.ctex"
+uid="uid://dgdt3gjyutgjn"
+path="res://.godot/imported/Anchovy Outline.png-90d72b2110433aae67ed3e5173fa1af3.ctex"
 metadata={
 "vram_texture": false
 }
@@ -11,7 +11,7 @@ metadata={
 [deps]
 
 source_file="res://sprites/SAMPLE PACK - Pixel Gnome Fishing Pack/A - Salt Water/Anchovy Outline.png"
-dest_files=["res://.godot/imported/Anchovy Outline.png-hbrpoig8f1cbf.ctex"]
+dest_files=["res://.godot/imported/Anchovy Outline.png-90d72b2110433aae67ed3e5173fa1af3.ctex"]
 
 [params]
 
