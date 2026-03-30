@@ -1,0 +1,11 @@
+[gd_scene format=4 uid="uid://no6b9m80o2rak"]
+
+[ext_resource type="Script" uid="uid://1vrjnvgfygwwq" path="res://scripts/fish.gd" id="1_fish"]
+[ext_resource type="Texture2D" uid="uid://hbrpoig8f1cbf" path="res://sprites/SAMPLE PACK - Pixel Gnome Fishing Pack/A - Salt Water/Anchovy Outline.png" id="2_fish"]
+
+[node name="Fish" type="Node2D"]
+script = ExtResource("1_fish")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_fish")
