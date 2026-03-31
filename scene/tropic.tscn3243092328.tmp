@@ -44,10 +44,6 @@ metadata/_edit_horizontal_guides_ = [304.0]
 [node name="Player" parent="." unique_id=382685611 instance=ExtResource("1_bmxgx")]
 position = Vector2(11, 164)
 max_speed = 120.0
-acceleration = 400.0
-decelaration = 400.0
-slide_decelaration = 100.0
-max_jump_count = 2
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=947821853]
 
