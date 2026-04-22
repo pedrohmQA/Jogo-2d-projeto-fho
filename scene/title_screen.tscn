@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://byv0wixfpbtjh" path="res://sprites/background_image.png" id="1_wxbcn"]
 [ext_resource type="Texture2D" uid="uid://0dpaucpbtrnn" path="res://sprites/logo_screen.png" id="2_j6oad"]
 [ext_resource type="Theme" uid="uid://dpk7j20ihcdyn" path="res://sprites/default_btn.tres" id="3_wxbcn"]
-[ext_resource type="Texture2D" uid="uid://dwm031vatdg4u" path="res://sprites/1 - Penguin/Jump (16 x 16).png" id="4_gh7ws"]
+[ext_resource type="Texture2D" uid="uid://dvh3ib2b8tinf" path="res://sprites/menu_imagem.png" id="5_j6oad"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wxbcn"]
 
@@ -158,8 +158,8 @@ text = "Sair
 
 [node name="mochi" type="TextureRect" parent="MarginContainer/HBoxContainer" unique_id=1036718851]
 layout_mode = 2
-texture = ExtResource("4_gh7ws")
-expand_mode = 2
+texture = ExtResource("5_j6oad")
+expand_mode = 3
 flip_h = true
 
 [node name="anim" type="AnimationPlayer" parent="." unique_id=430181018]

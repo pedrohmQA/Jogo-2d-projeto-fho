@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://qyukqp0l8ujx" path="res://sprites/Seasonal Tilesets/3 - Tropics/Background parts/2 - Waters_version_2.png" id="8_34ia6"]
 [ext_resource type="PackedScene" uid="uid://mdi7k1lqpuic" path="res://entities/camera.tscn" id="9_34ia6"]
 [ext_resource type="PackedScene" uid="uid://bvvslhu3eydw4" path="res://entities/level_end.tscn" id="10_d18o5"]
-[ext_resource type="PackedScene" uid="uid://jlj68hrdvegr" path="res://entities/npc.tscn" id="11_t8vtq"]
 [ext_resource type="Script" uid="uid://c38hygasxmeco" path="res://scripts/water_zone.gd" id="12_wzsc"]
 [ext_resource type="PackedScene" uid="uid://b3xpihh80g40a" path="res://entities/fish.tscn" id="13_fish"]
 
@@ -45,9 +44,6 @@ metadata/_edit_horizontal_guides_ = [304.0]
 position = Vector2(11, 164)
 max_speed = 120.0
 acceleration = 400.0
-decelaration = 400.0
-slide_decelaration = 100.0
-max_jump_count = 2
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=947821853]
 
@@ -123,9 +119,6 @@ next_level = "forest"
 [node name="CollisionShape2D" parent="LevelEnd" index="0" unique_id=1009072659]
 position = Vector2(-103, -449)
 shape = SubResource("RectangleShape2D_t8vtq")
-
-[node name="npc" parent="." unique_id=583768963 instance=ExtResource("11_t8vtq")]
-position = Vector2(42, 160)
 
 [node name="limite" type="StaticBody2D" parent="." unique_id=898675514]
 collision_mask = 5

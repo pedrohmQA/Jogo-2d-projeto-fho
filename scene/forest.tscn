@@ -70,7 +70,6 @@ metadata/_edit_vertical_guides_ = [576.0]
 
 [node name="Player" parent="." unique_id=382685611 instance=ExtResource("1_2xpkg")]
 position = Vector2(14, 176)
-max_speed = 120.0
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=712565194]
 

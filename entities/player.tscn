@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://2jgfnjhiqgnf"]
 
 [ext_resource type="Script" uid="uid://bcst54kmm0esv" path="res://scripts/player.gd" id="1_merdl"]
+[ext_resource type="Texture2D" uid="uid://b0uqcu6ntjbw3" path="res://sprites/teste_duck.png" id="2_ef06p"]
 [ext_resource type="Texture2D" uid="uid://bm258wasaqnof" path="res://sprites/idle.png" id="3_i623q"]
 [ext_resource type="Texture2D" uid="uid://c5badky2u3ytb" path="res://sprites/jump.png" id="4_i623q"]
 [ext_resource type="Texture2D" uid="uid://d3gfvhd5gpm4j" path="res://sprites/swim_01.png" id="6_x08pd"]
@@ -11,6 +12,10 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u3f3p"]
 radius = 6.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dchgp"]
+atlas = ExtResource("2_ef06p")
+region = Rect2(0, 0, 18, 18)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cicqb"]
 atlas = ExtResource("3_i623q")
@@ -43,6 +48,14 @@ region = Rect2(0, 0, 17, 32)
 [sub_resource type="SpriteFrames" id="SpriteFrames_i623q"]
 resource_local_to_scene = true
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dchgp")
+}],
+"loop": true,
+"name": &"duck",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_cicqb")
@@ -97,5 +110,5 @@ shape = SubResource("CapsuleShape2D_u3f3p")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1337384779]
 z_index = 1
 sprite_frames = SubResource("SpriteFrames_i623q")
-animation = &"idle"
+animation = &"duck"
 autoplay = "idle"
