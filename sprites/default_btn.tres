@@ -3,7 +3,7 @@
 [ext_resource type="FontFile" uid="uid://clvjqgs03dpk3" path="res://poco/Poco.ttf" id="1_t8dw0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t18hh"]
-bg_color = Color(0.8943768, 0.61557835, 0.9621598, 1)
+bg_color = Color(0.9843137, 0.7529412, 0.1764706, 1)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
@@ -12,7 +12,7 @@ border_color = Color(0.26666668, 0.6039216, 1, 1)
 expand_margin_bottom = 7.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0ctqs"]
-bg_color = Color(0, 0.09781543, 0.22169763, 1)
+bg_color = Color(0.2627451, 0.627451, 0.2784314, 1)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
@@ -21,17 +21,17 @@ border_color = Color(0.8927342, 0.93985885, 1, 1)
 expand_margin_bottom = 7.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rbyiy"]
-bg_color = Color(0.26666668, 0.6039216, 1, 1)
+bg_color = Color(0.18039216, 0.49019608, 0.19607843, 1)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
-border_color = Color(0.56393784, 0.091328256, 0.66074806, 1)
+border_color = Color(0.105882354, 0.36862746, 0.1254902, 1)
 border_blend = true
 expand_margin_bottom = 7.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nohhj"]
-bg_color = Color(0.56393784, 0.091328256, 0.66074806, 1)
+bg_color = Color(0.105882354, 0.36862746, 0.1254902, 1)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
