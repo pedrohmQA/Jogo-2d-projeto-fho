@@ -13,7 +13,7 @@ enum PlayerState {
 
 @export var max_speed: float = 100.0
 @export var acceleration: float = 180
-@export var deceleration: float = 100.0
+@export var deceleration: float = 400.0
 @export var max_jump_count: int = 2
 
 const GRAVITY: float = 980.0

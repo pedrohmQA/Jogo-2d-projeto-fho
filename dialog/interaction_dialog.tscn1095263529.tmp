@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://1bsl740q1ofe"]
-
-[ext_resource type="Script" uid="uid://4jacawire8sx" path="res://dialog/interaction_dialog.gd" id="1_cdl03"]
-
-[node name="InteractionDialog" type="Node2D" unique_id=2142835090 node_paths=PackedStringArray("_hud")]
-script = ExtResource("1_cdl03")
-_hud = NodePath("HUD")
-
-[node name="HUD" type="CanvasLayer" parent="." unique_id=1056083012]

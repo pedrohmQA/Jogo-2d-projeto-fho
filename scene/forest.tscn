@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://dmvosfx5nu606" path="res://entities/coin.tscn" id="13_kmspj"]
 [ext_resource type="PackedScene" uid="uid://cahp7n0y4oc0x" path="res://entities/apple.tscn" id="14_ja8kk"]
 [ext_resource type="PackedScene" uid="uid://jlj68hrdvegr" path="res://entities/npc.tscn" id="15_boiax"]
+[ext_resource type="Script" uid="uid://cqt4mfqhaol7q" path="res://scene/interact_area.gd" id="16_0xhum"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gwku7"]
 texture = ExtResource("3_jxvlp")
@@ -62,14 +63,18 @@ sources/2 = SubResource("TileSetAtlasSource_gwku7")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kmspj"]
 size = Vector2(46, 31)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_boiax"]
+radius = 16.155495
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_boiax"]
 size = Vector2(11, 212)
 
 [node name="Forest" type="Node2D" unique_id=1930942529]
 metadata/_edit_vertical_guides_ = [576.0]
 
-[node name="Player" parent="." unique_id=382685611 instance=ExtResource("1_2xpkg")]
+[node name="Player" parent="." unique_id=382685611 groups=["player"] instance=ExtResource("1_2xpkg")]
 position = Vector2(14, 176)
+collision_layer = 1
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=712565194]
 
@@ -158,7 +163,15 @@ shape = SubResource("RectangleShape2D_kmspj")
 position = Vector2(294, 73)
 
 [node name="npc" parent="." unique_id=583768963 instance=ExtResource("15_boiax")]
-position = Vector2(53, 148)
+position = Vector2(50, 176)
+
+[node name="InteractArea" type="Area2D" parent="npc" unique_id=1095346990]
+position = Vector2(5, 12)
+script = ExtResource("16_0xhum")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="npc/InteractArea" unique_id=430031438]
+position = Vector2(-5, -11)
+shape = SubResource("CircleShape2D_boiax")
 
 [node name="limit" type="StaticBody2D" parent="." unique_id=1585483511]
 collision_mask = 4
@@ -166,5 +179,24 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="limit" unique_id=1485644798]
 position = Vector2(-4.5, 96)
 shape = SubResource("RectangleShape2D_boiax")
+
+[node name="DialogUI" type="CanvasLayer" parent="." unique_id=196467465]
+visible = false
+
+[node name="Panel" type="PanelContainer" parent="DialogUI" unique_id=363758845]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextLabel" type="Label" parent="DialogUI/Panel" unique_id=66104880]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+autowrap_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="DialogUI/Panel" unique_id=1434701475]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 200
+theme_override_constants/margin_bottom = 12
 
 [editable path="LevelEnd"]

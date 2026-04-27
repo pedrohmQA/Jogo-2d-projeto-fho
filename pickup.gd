@@ -1,5 +1,9 @@
 extends Area2D
 
+enum PickupType { APPLE, COIN }
+
+@export var pickup_type: PickupType = PickupType.APPLE
+
 var collected := false
 
 func _ready() -> void:
@@ -12,9 +16,15 @@ func _on_body_entered(body: Node2D) -> void:
 		return
 
 	collected = true
-	QuestState.has_coin = true
+
+	match pickup_type:
+		PickupType.APPLE:
+			QuestState.has_apple = true
+			print("PICKED APPLE")
+		PickupType.COIN:
+			QuestState.has_coin = true
+			print("PICKED COIN")
 
 	monitoring = false
 	set_deferred("monitorable", false)
-
 	queue_free()

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cahp7n0y4oc0x"]
 
-[ext_resource type="Script" uid="uid://b85wutxcw3hrw" path="res://scripts/coin.gd" id="1_gqdxy"]
+[ext_resource type="Script" uid="uid://04g0maj2kki0" path="res://pickup.gd" id="1_gqdxy"]
 [ext_resource type="Texture2D" uid="uid://dfkfl5bno24hl" path="res://sprites/apple.png" id="2_gqdxy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hix8m"]
@@ -20,9 +20,7 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jl2gm"]
 
-[node name="coin" type="Area2D" unique_id=1533447457]
-collision_layer = 8
-collision_mask = 2
+[node name="apple" type="Area2D" unique_id=1533447457]
 script = ExtResource("1_gqdxy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1296072769]

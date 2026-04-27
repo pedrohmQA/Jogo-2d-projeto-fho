@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dmvosfx5nu606"]
 
-[ext_resource type="Script" uid="uid://b85wutxcw3hrw" path="res://scripts/coin.gd" id="1_a182a"]
+[ext_resource type="Script" uid="uid://04g0maj2kki0" path="res://pickup.gd" id="1_a182a"]
 [ext_resource type="Texture2D" uid="uid://cpxv2etpa14rx" path="res://sprites/Coin_Gems/MonedaD.png" id="1_cg25x"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a182a"]
@@ -50,8 +50,8 @@ animations = [{
 
 [node name="coin" type="Area2D" unique_id=1533447457]
 collision_layer = 8
-collision_mask = 2
 script = ExtResource("1_a182a")
+pickup_type = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1296072769]
 sprite_frames = SubResource("SpriteFrames_5ettv")
