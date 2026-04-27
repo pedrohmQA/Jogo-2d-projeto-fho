@@ -1,12 +1,10 @@
 [gd_scene format=3 uid="uid://ce4u2e4ik7l7k"]
 
 [ext_resource type="Script" uid="uid://do8mkkmp22x1x" path="res://scripts/title_screen.gd" id="1_j6oad"]
-[ext_resource type="Texture2D" uid="uid://byv0wixfpbtjh" path="res://sprites/background_image.png" id="1_wxbcn"]
-[ext_resource type="Texture2D" uid="uid://0dpaucpbtrnn" path="res://sprites/logo_screen.png" id="2_j6oad"]
+[ext_resource type="Texture2D" uid="uid://s5t1yedkav0x" path="res://sprites/bg-menu.png" id="2_j6oad"]
+[ext_resource type="Texture2D" uid="uid://surcyfctcbf3" path="res://sprites/logo-menu.png" id="3_ulgj7"]
 [ext_resource type="Theme" uid="uid://dpk7j20ihcdyn" path="res://sprites/default_btn.tres" id="3_wxbcn"]
 [ext_resource type="Texture2D" uid="uid://dvh3ib2b8tinf" path="res://sprites/menu_imagem.png" id="5_j6oad"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wxbcn"]
 
 [sub_resource type="Animation" id="Animation_j6oad"]
 length = 0.001
@@ -37,7 +35,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("MarginContainer/HBoxContainer/mochi:modulate")
+tracks/2/path = NodePath("mochi:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -77,7 +75,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("MarginContainer/HBoxContainer/mochi:modulate")
+tracks/2/path = NodePath("mochi:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -93,6 +91,8 @@ _data = {
 &"reveal": SubResource("Animation_ulgj7")
 }
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wxbcn"]
+
 [node name="TitleScreen" type="Control" unique_id=1793287381]
 layout_mode = 3
 anchors_preset = 15
@@ -106,16 +106,20 @@ script = ExtResource("1_j6oad")
 layout_mode = 0
 offset_right = 288.0
 offset_bottom = 200.0
-texture = ExtResource("1_wxbcn")
+texture = ExtResource("2_j6oad")
 expand_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1011821606]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
 anchor_bottom = 1.0
+offset_left = -144.0
+offset_right = -86.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(0.6, 0.6)
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_bottom = 20
 
@@ -123,49 +127,65 @@ theme_override_constants/margin_bottom = 20
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=477839964]
-layout_mode = 2
-size_flags_horizontal = 6
+[node name="anim" type="AnimationPlayer" parent="." unique_id=430181018]
+libraries/ = SubResource("AnimationLibrary_gh7ws")
+autoplay = &"reveal"
 
-[node name="game_logo" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=635459754]
-layout_mode = 2
-texture = ExtResource("2_j6oad")
+[node name="mochi" type="TextureRect" parent="." unique_id=1036718851]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 59.0
+offset_right = 141.0243
+offset_bottom = 219.0
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("5_j6oad")
+expand_mode = 3
+
+[node name="game_logo" type="TextureRect" parent="." unique_id=635459754]
+layout_mode = 0
+offset_left = 97.0
+offset_top = 6.000001
+offset_right = 155.0
+offset_bottom = 44.66667
+scale = Vector2(1.6, 1.6)
+texture = ExtResource("3_ulgj7")
 expand_mode = 5
 
-[node name="start_btn" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1407412683]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=477839964]
+layout_mode = 0
+offset_left = 120.0
+offset_top = 75.0
+offset_right = 178.0
+offset_bottom = 165.0
+scale = Vector2(0.8, 0.8)
+size_flags_horizontal = 6
+size_flags_vertical = 0
+alignment = 2
+
+[node name="start_btn" type="Button" parent="VBoxContainer" unique_id=1407412683]
 layout_mode = 2
 theme = ExtResource("3_wxbcn")
 text = "Início"
 
-[node name="HSeparator" type="HSeparator" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=441597997]
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer" unique_id=441597997]
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_wxbcn")
 
-[node name="credits_btn" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1150529872]
+[node name="credits_btn" type="Button" parent="VBoxContainer" unique_id=1150529872]
 layout_mode = 2
 theme = ExtResource("3_wxbcn")
 text = "Créditos"
 
-[node name="HSeparator2" type="HSeparator" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=177676457]
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer" unique_id=177676457]
 layout_mode = 2
 theme_override_styles/separator = SubResource("StyleBoxEmpty_wxbcn")
 
-[node name="quit_btn" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=1961465298]
+[node name="quit_btn" type="Button" parent="VBoxContainer" unique_id=1961465298]
 layout_mode = 2
 theme = ExtResource("3_wxbcn")
 text = "Sair
 "
 
-[node name="mochi" type="TextureRect" parent="MarginContainer/HBoxContainer" unique_id=1036718851]
-layout_mode = 2
-texture = ExtResource("5_j6oad")
-expand_mode = 3
-flip_h = true
-
-[node name="anim" type="AnimationPlayer" parent="." unique_id=430181018]
-libraries/ = SubResource("AnimationLibrary_gh7ws")
-autoplay = &"reveal"
-
-[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/start_btn" to="." method="_on_start_btn_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/credits_btn" to="." method="_on_credits_btn_pressed"]
-[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/quit_btn" to="." method="_on_quit_btn_pressed"]
+[connection signal="pressed" from="VBoxContainer/start_btn" to="." method="_on_start_btn_pressed"]
+[connection signal="pressed" from="VBoxContainer/credits_btn" to="." method="_on_credits_btn_pressed"]
+[connection signal="pressed" from="VBoxContainer/quit_btn" to="." method="_on_quit_btn_pressed"]
