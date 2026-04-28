@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dt5kbrtsdjm6e"]
+
+[ext_resource type="Script" uid="uid://bv17obr0iyo5" path="res://scene/garbage_trash.gd" id="1_2773e"]
+[ext_resource type="Texture2D" uid="uid://xp2p4b2ix80o" path="res://sprites/trash assets/garbage bag 2.png" id="2_8ve7x"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h30gl"]
+radius = 12.0
+
+[node name="GarbageTrash" type="Area2D" unique_id=1046853021]
+script = ExtResource("1_2773e")
+pickup_type = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1768165310]
+texture = ExtResource("2_8ve7x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=955070933]
+shape = SubResource("CircleShape2D_h30gl")
