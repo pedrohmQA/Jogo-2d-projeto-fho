@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://jlj68hrdvegr" path="res://entities/npc.tscn" id="15_boiax"]
 [ext_resource type="Script" uid="uid://cqt4mfqhaol7q" path="res://scene/interact_area.gd" id="16_0xhum"]
 [ext_resource type="PackedScene" uid="uid://di10y7bo586cm" path="res://scene/hud.tscn" id="17_p7yhu"]
+[ext_resource type="PackedScene" uid="uid://v6u46a0n0mg4" path="res://scene/pause_menu.tscn" id="18_cwbpd"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gwku7"]
 texture = ExtResource("3_jxvlp")
@@ -222,5 +223,7 @@ theme_override_constants/margin_right = 200
 theme_override_constants/margin_bottom = 12
 
 [node name="Hud_tscn" parent="." unique_id=678297486 instance=ExtResource("17_p7yhu")]
+
+[node name="PauseMenu" parent="." unique_id=1753632291 instance=ExtResource("18_cwbpd")]
 
 [editable path="LevelEnd"]

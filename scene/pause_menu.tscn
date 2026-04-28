@@ -1,0 +1,38 @@
+[gd_scene format=3 uid="uid://v6u46a0n0mg4"]
+
+[ext_resource type="Script" uid="uid://drrllalr1wyuf" path="res://scene/pause_menu.gd" id="1_grdc7"]
+
+[node name="PauseMenu" type="CanvasLayer" unique_id=41600715]
+visible = false
+script = ExtResource("1_grdc7")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=922326453]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0, 0, 0, 0.5019608)
+
+[node name="Panel" type="Panel" parent="." unique_id=1751506180]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=1684797440]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Pause" type="Label" parent="Panel/VBoxContainer" unique_id=1143606038]
+layout_mode = 2
+
+[node name="ResumeButton" type="Button" parent="Panel/VBoxContainer" unique_id=1234385409]
+layout_mode = 2
+text = "Continuar"
+
+[node name="RestartButton" type="Button" parent="Panel/VBoxContainer" unique_id=1603238113]
+layout_mode = 2
+text = "Reiniciar
+"
+
+[node name="QuitButton" type="Button" parent="Panel/VBoxContainer" unique_id=2070358646]
+layout_mode = 2
+text = "Sair
+"

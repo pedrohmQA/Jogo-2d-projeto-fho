@@ -16,8 +16,12 @@ enum PlayerState {
 @export var deceleration: float = 400.0
 @export var max_jump_count: int = 2
 
+# 🔹 NOVO: posição de respawn e limite de queda
+@export var respawn_position: Vector2
+@export var fall_limit: float = 1000.0
+
 const GRAVITY: float = 980.0
-const JUMP_VELOCITY: float = -300.0
+const JUMP_VELOCITY: float = -330.0
 
 const SWIM_SPEED: float = 80.0
 const SWIM_UP_VELOCITY: float = -80.0
@@ -31,17 +35,26 @@ var in_water: bool = false
 
 
 func _ready() -> void:
+	# Se não definir no inspector, usa posição inicial
+	if respawn_position == Vector2.ZERO:
+		respawn_position = global_position
+	
 	go_to_idle_state()
 
 
 func _physics_process(delta: float) -> void:
+	# 🔹 NOVO: verifica queda fora da tela
+	if global_position.y > fall_limit:
+		respawn()
+		return
+
 	# Gravidade
 	if in_water:
 		swim_physics(delta)
 	elif not is_on_floor():
 		velocity.y += GRAVITY * delta
 
-	# AGACHAR (prioridade)
+	# AGACHAR
 	if is_on_floor() and Input.is_action_pressed("down"):
 		if status != PlayerState.duck:
 			go_to_duck_state()
@@ -53,7 +66,6 @@ func _physics_process(delta: float) -> void:
 			else:
 				go_to_idle_state()
 
-	# Máquina de estados
 	match status:
 		PlayerState.idle:
 			idle_state(delta)
@@ -67,6 +79,32 @@ func _physics_process(delta: float) -> void:
 			duck_state(delta)
 
 	move_and_slide()
+
+
+# =====================
+# 🔹 RESPAWN
+# =====================
+
+func respawn() -> void:
+	# 🔹 trava física imediatamente
+	set_physics_process(false)
+
+	global_position = respawn_position
+	
+	# 🔹 zera tudo antes de voltar
+	velocity = Vector2.ZERO
+	jump_count = 0
+	in_water = false
+	
+	anim.scale = Vector2(1, 1)
+	go_to_idle_state()
+
+	# 🔹 força atualização imediata do corpo
+	move_and_slide()
+
+	# 🔹 reativa física no próximo frame
+	await get_tree().process_frame
+	set_physics_process(true)
 
 
 # =====================
@@ -96,7 +134,6 @@ func go_to_jump_state() -> void:
 	jump_count += 1
 
 
-# ✅ NOVO: queda sem impulso
 func go_to_fall_state() -> void:
 	status = PlayerState.jump
 	anim.play("jump")
@@ -136,7 +173,6 @@ func duck_state(delta: float) -> void:
 
 	if Input.is_action_just_pressed("jump"):
 		go_to_jump_state()
-		return
 
 
 func idle_state(delta: float) -> void:
@@ -152,7 +188,6 @@ func idle_state(delta: float) -> void:
 
 	if Input.is_action_just_pressed("jump"):
 		go_to_jump_state()
-		return
 
 
 func walk_state(delta: float) -> void:
@@ -168,7 +203,6 @@ func walk_state(delta: float) -> void:
 
 	if Input.is_action_just_pressed("jump"):
 		go_to_jump_state()
-		return
 
 
 func jump_state(delta: float) -> void:

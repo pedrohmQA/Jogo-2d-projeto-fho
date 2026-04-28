@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://di10y7bo586cm"]
+
+[ext_resource type="Script" uid="uid://cr24svsdq4uag" path="res://scene/hud.gd" id="1_pvgpj"]
+[ext_resource type="Texture2D" uid="uid://dfkfl5bno24hl" path="res://sprites/apple.png" id="2_nhyt6"]
+[ext_resource type="Texture2D" uid="uid://d35jq6hiqx2ma" path="res://sprites/teste_moeda.png" id="3_ry2h7"]
+
+[node name="Hud_tscn" type="CanvasLayer" unique_id=678297486]
+script = ExtResource("1_pvgpj")
+
+[node name="TopRight" type="Control" parent="." unique_id=2050209381]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MarginContainer" type="MarginContainer" parent="TopRight" unique_id=231091417]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+
+[node name="Counters" type="HBoxContainer" parent="TopRight/MarginContainer" unique_id=1956592971]
+layout_mode = 2
+
+[node name="AppleIcon" type="TextureRect" parent="TopRight/MarginContainer/Counters" unique_id=899096668]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+texture = ExtResource("2_nhyt6")
+stretch_mode = 5
+
+[node name="AppleLabel" type="Label" parent="TopRight/MarginContainer/Counters" unique_id=610369927]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.7529412)
+theme_override_font_sizes/font_size = 10
+
+[node name="AppleLabel2" type="Label" parent="TopRight/MarginContainer/Counters" unique_id=897453099]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.7529412)
+theme_override_font_sizes/font_size = 10
+
+[node name="Spacer" type="Control" parent="TopRight/MarginContainer/Counters" unique_id=24570874]
+layout_mode = 2
+
+[node name="CoinIcon" type="TextureRect" parent="TopRight/MarginContainer/Counters" unique_id=885331547]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+localize_numeral_system = false
+texture = ExtResource("3_ry2h7")
+stretch_mode = 5
+
+[node name="CoinLabel" type="Label" parent="TopRight/MarginContainer/Counters" unique_id=1361034316]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.7529412)
+theme_override_font_sizes/font_size = 10
