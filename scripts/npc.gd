@@ -61,6 +61,7 @@ func _close_dialog() -> void:
 
 func _interact() -> void:
 	_open_dialog()
+	print("DEBUG QUEST:", QuestState.apples, QuestState.coins, QuestState.garbage, QuestState.phase)
 
 	# 1) Quest completa
 	if QuestState.phase == QuestState.QuestPhase.COMPLETED or QuestState.quest_completed:

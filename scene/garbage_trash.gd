@@ -9,6 +9,7 @@ func _ready() -> void:
 	body_entered.connect(_on_body_entered)
 
 func _on_body_entered(body: Node2D) -> void:
+	print("GARBAGE ENTERED by:", body.name)
 	if collected:
 		return
 	if not body.is_in_group("player"):
