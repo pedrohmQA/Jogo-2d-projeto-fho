@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dt5kbrtsdjm6e"]
 
-[ext_resource type="Script" uid="uid://bv17obr0iyo5" path="res://scene/garbage_trash.gd" id="1_2773e"]
+[ext_resource type="Script" uid="uid://04g0maj2kki0" path="res://pickup.gd" id="1_2773e"]
 [ext_resource type="Texture2D" uid="uid://xp2p4b2ix80o" path="res://sprites/trash assets/garbage bag 2.png" id="2_8ve7x"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_h30gl"]

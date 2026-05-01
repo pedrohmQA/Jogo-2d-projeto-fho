@@ -1,8 +1,6 @@
 extends CanvasLayer
 
-@onready var apple_label: Label = $TopRight/MarginContainer/Counters/AppleLabel
-@onready var coin_label: Label = $TopRight/MarginContainer/Counters/CoinLabel
+@onready var garbage_label: Label = $TopRight/MarginContainer/Counters/GarbageCounter/GarbageLabel
 
 func _process(_delta: float) -> void:
-	apple_label.text = "x" + str(QuestState.apples)
-	coin_label.text  = "x" + str(QuestState.coins)
+	garbage_label.text = "x" + str(QuestState.garbage_left)

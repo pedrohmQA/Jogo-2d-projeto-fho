@@ -20,12 +20,14 @@ func _on_body_entered(body: Node2D) -> void:
 		PickupType.APPLE:
 			QuestState.apples += 1
 			print("PICKED APPLE: ", QuestState.apples)
+
 		PickupType.COIN:
 			QuestState.coins += 1
 			print("PICKED COIN: ", QuestState.coins)
+
 		PickupType.GARBAGE:
-			QuestState.garbage += 1
-			print("PICKED GARBAGE: ", QuestState.garbage)
+			QuestState.collect_one_garbage()
+			print("PICKED GARBAGE. LEFT: ", QuestState.garbage_left)
 
 	monitoring = false
 	set_deferred("monitorable", false)

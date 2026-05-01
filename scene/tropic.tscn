@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://eywwu5pdrrxc"]
 
 [ext_resource type="PackedScene" uid="uid://2jgfnjhiqgnf" path="res://entities/player.tscn" id="1_bmxgx"]
+[ext_resource type="Script" uid="uid://pwb613o1lywh" path="res://scene/tropic.gd" id="1_xnncp"]
 [ext_resource type="TileSet" uid="uid://kncqebxfydxa" path="res://tiles/terrain.tres" id="2_ry6l7"]
 [ext_resource type="TileSet" uid="uid://dr7a84wcmogq0" path="res://tiles/decoration.tres" id="3_ry6l7"]
 [ext_resource type="Texture2D" uid="uid://jvjdqwvwwnsw" path="res://sprites/Seasonal Tilesets/3 - Tropics/Background parts/5 - Sky_color.png" id="4_4big0"]
@@ -13,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://tnw3qunp1acr" path="res://sprites/Anchovy Outline.png" id="12_ei81g"]
 [ext_resource type="Script" uid="uid://c38hygasxmeco" path="res://scripts/water_zone.gd" id="12_wzsc"]
 [ext_resource type="PackedScene" uid="uid://b3xpihh80g40a" path="res://entities/fish.tscn" id="13_fish"]
+[ext_resource type="PackedScene" uid="uid://bdafmi7di4n87" path="res://scene/hud_garbage.tscn" id="14_xflqb"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_d18o5"]
 animations = [{
@@ -35,6 +37,7 @@ size = Vector2(11, 192)
 size = Vector2(449, 110)
 
 [node name="Tropic" type="Node2D" unique_id=1363379299]
+script = ExtResource("1_xnncp")
 metadata/_edit_vertical_guides_ = [799.0]
 metadata/_edit_horizontal_guides_ = [304.0]
 
@@ -204,3 +207,5 @@ scale = Vector2(0.7, 0.7)
 [node name="GarbageTrash5" parent="." unique_id=1000243880 instance=ExtResource("11_ytc0w")]
 position = Vector2(369, 281)
 scale = Vector2(0.7, 0.7)
+
+[node name="Hud_tscn" parent="." unique_id=678297486 instance=ExtResource("14_xflqb")]
