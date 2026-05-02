@@ -225,15 +225,6 @@ scale = Vector2(0.7, 0.7)
 
 [node name="Hud_tscn" parent="." unique_id=678297486 instance=ExtResource("14_xflqb")]
 
-[node name="TimerLabel" type="Label" parent="Hud_tscn" unique_id=1286968189]
-offset_left = 47.0
-offset_top = 20.0
-offset_right = 87.0
-offset_bottom = 43.0
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.7529412)
-theme_override_font_sizes/font_size = 12
-text = "5:00"
-
 [node name="SignTrigger" type="Area2D" parent="." unique_id=1554600166]
 collision_mask = 2
 script = ExtResource("16_mjtd1")
@@ -265,4 +256,5 @@ theme_override_constants/margin_bottom = 12
 [node name="TextLabel" type="Label" parent="DialogUI/Panel/MarginContainer" unique_id=656285421]
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
+text = "O rio e a floresta estão poluídos, prejudicando os animais. Você tem 5 minutos para limpar tudo."
 autowrap_mode = 2
