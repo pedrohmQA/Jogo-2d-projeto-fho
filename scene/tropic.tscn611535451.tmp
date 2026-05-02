@@ -40,9 +40,6 @@ size = Vector2(449, 110)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kjkl5"]
 size = Vector2(17, 16.5)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mjtd1"]
-bg_color = Color(0, 0, 0, 0.7529412)
-
 [node name="Tropic" type="Node2D" unique_id=1363379299]
 script = ExtResource("1_xnncp")
 metadata/_edit_vertical_guides_ = [799.0]
@@ -233,28 +230,18 @@ script = ExtResource("16_mjtd1")
 position = Vector2(40, 167.75)
 shape = SubResource("RectangleShape2D_kjkl5")
 
-[node name="DialogUI" type="CanvasLayer" parent="." unique_id=421164437]
+[node name="SignHintUI" type="CanvasLayer" parent="." unique_id=505376684]
 visible = false
 
-[node name="Panel" type="Panel" parent="DialogUI" unique_id=1510168829]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+[node name="Label" type="ColorRect" parent="SignHintUI" unique_id=551680408]
+anchors_preset = 10
+anchor_right = 1.0
 grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_mjtd1")
+color = Color(0, 0, 0, 0.6666667)
 
-[node name="TextLabel" type="Label" parent="DialogUI/Panel" unique_id=656285421]
+[node name="Label" type="Label" parent="SignHintUI/Label" unique_id=475846168]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
-text = "O rio e a floresta estão poluídos, prejudicando os animais. Você tem 5 minutos para limpar tudo."
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 3
+text = "O rio e a floresta estão poluídos. Seja rápido, você tem 5 minutos para limpar tudo!"
+autowrap_mode = 2
