@@ -8,7 +8,6 @@ extends Area2D
 @export var hud_path_primary: NodePath = ^"HUD"
 @export var hud_path_fallback: NodePath = ^"Hud_tscn"
 
-# Label do contador dentro do HUD (crie esse node!)
 @export var hud_timer_label_path_primary: NodePath = ^"HUD/TimerLabel"
 @export var hud_timer_label_path_fallback: NodePath = ^"Hud_tscn/TimerLabel"
 
@@ -32,7 +31,6 @@ var _seconds_left: int = 0
 
 @onready var _tick_timer: Timer = Timer.new()
 
-
 func _ready() -> void:
 	_dialog_ui = _get_current_scene_node(dialog_ui_path) as CanvasLayer
 	_dialog_label = _get_current_scene_node(dialog_label_path) as Label
@@ -54,21 +52,24 @@ func _ready() -> void:
 
 	_dialog_ui.visible = false
 
-	# Timer que dá “tick” 1 vez por segundo
 	_tick_timer.one_shot = false
 	_tick_timer.wait_time = 1.0
 	add_child(_tick_timer)
 	_tick_timer.timeout.connect(_on_tick)
 
-	# Inicializa label do HUD (se existir)
 	_seconds_left = countdown_minutes * 60
 	_update_timer_label()
 
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
 
-
 func _process(_delta: float) -> void:
+	# Se acabou o lixo, para o cronômetro e não reinicia mais.
+	if _countdown_started and QuestState.is_tropic_garbage_done():
+		_stop_countdown()
+		# não precisa dar return obrigatório, mas evita processar coisas desnecessárias
+		# return
+
 	if _player_in_range and Input.is_action_just_pressed("interact"):
 		if toggle_with_interact:
 			_toggle_dialog()
@@ -78,11 +79,9 @@ func _process(_delta: float) -> void:
 	if _dialog_open and Input.is_action_just_pressed("ui_cancel"):
 		_close_dialog()
 
-
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		_player_in_range = true
-
 
 func _on_body_exited(body: Node2D) -> void:
 	if body.is_in_group("player"):
@@ -90,13 +89,11 @@ func _on_body_exited(body: Node2D) -> void:
 		if close_on_exit:
 			_close_dialog()
 
-
 func _toggle_dialog() -> void:
 	if _dialog_open:
 		_close_dialog()
 	else:
 		_open_dialog()
-
 
 func _open_dialog() -> void:
 	if _dialog_open:
@@ -112,7 +109,6 @@ func _open_dialog() -> void:
 	if start_countdown_on_first_open and not _countdown_started:
 		_start_countdown()
 
-
 func _close_dialog() -> void:
 	if not _dialog_open:
 		return
@@ -124,8 +120,12 @@ func _close_dialog() -> void:
 	if is_instance_valid(_hud):
 		_hud.visible = true
 
-
 func _start_countdown() -> void:
+	# Se já terminou o lixo, nem inicia.
+	if QuestState.is_tropic_garbage_done():
+		_stop_countdown()
+		return
+
 	_countdown_started = true
 	_seconds_left = countdown_minutes * 60
 	_update_timer_label()
@@ -133,10 +133,22 @@ func _start_countdown() -> void:
 	_tick_timer.stop()
 	_tick_timer.start()
 
+func _stop_countdown(show_complete_text: bool = true) -> void:
+	_countdown_started = false
+	if is_instance_valid(_tick_timer):
+		_tick_timer.stop()
+
+	if show_complete_text and is_instance_valid(_timer_label):
+		_timer_label.text = "OK" # ou "00:00"
 
 func _on_tick() -> void:
 	if not _countdown_started:
 		_tick_timer.stop()
+		return
+
+	# Se acabou o lixo, para e não reinicia.
+	if QuestState.is_tropic_garbage_done():
+		_stop_countdown()
 		return
 
 	_seconds_left -= 1
@@ -147,9 +159,9 @@ func _on_tick() -> void:
 
 	if _seconds_left <= 0:
 		_tick_timer.stop()
-		if restart_scene_on_timeout:
+		# Só reinicia se AINDA faltar lixo
+		if restart_scene_on_timeout and not QuestState.is_tropic_garbage_done():
 			get_tree().reload_current_scene()
-
 
 func _update_timer_label() -> void:
 	if not is_instance_valid(_timer_label):
@@ -158,7 +170,6 @@ func _update_timer_label() -> void:
 	var m := _seconds_left / 60
 	var s := _seconds_left % 60
 	_timer_label.text = "%02d:%02d" % [m, s]
-
 
 func _get_current_scene_node(path: NodePath) -> Node:
 	if path.is_empty():

@@ -242,6 +242,17 @@ script = ExtResource("16_mjtd1")
 position = Vector2(40, 167.75)
 shape = SubResource("RectangleShape2D_kjkl5")
 
+[node name="Label" type="Label" parent="SignTrigger" unique_id=529901882]
+offset_left = 23.0
+offset_top = 156.0
+offset_right = 99.0
+offset_bottom = 167.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.7529412)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_font_sizes/font_size = 3
+text = "Clique E para interagir"
+
 [node name="DialogUI" type="CanvasLayer" parent="." unique_id=421164437]
 visible = false
 
