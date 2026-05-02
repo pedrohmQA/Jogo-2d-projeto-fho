@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var total_garbage: int = 5
+@export var total_garbage: int = 12
 
 func _ready() -> void:
 	# Inicializa o contador regressivo ao entrar na fase

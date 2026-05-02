@@ -16,6 +16,10 @@
 [ext_resource type="PackedScene" uid="uid://b3xpihh80g40a" path="res://entities/fish.tscn" id="13_fish"]
 [ext_resource type="PackedScene" uid="uid://bdafmi7di4n87" path="res://scene/hud_garbage.tscn" id="14_xflqb"]
 [ext_resource type="Script" uid="uid://bbfa27vx4r8sw" path="res://scene/sign_trigger.gd" id="16_mjtd1"]
+[ext_resource type="PackedScene" uid="uid://d4knixc7v7i7q" path="res://scene/bird.tscn" id="17_kjkl5"]
+[ext_resource type="PackedScene" uid="uid://cv87iay66uhjy" path="res://scene/javali.tscn" id="18_3eg8f"]
+[ext_resource type="PackedScene" uid="uid://k4ldpsbtrlh" path="res://scene/veado.tscn" id="19_cjwtm"]
+[ext_resource type="PackedScene" uid="uid://va2g45yosfqp" path="res://scene/tucano.tscn" id="20_b78wb"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_d18o5"]
 animations = [{
@@ -49,6 +53,7 @@ metadata/_edit_vertical_guides_ = [799.0]
 metadata/_edit_horizontal_guides_ = [304.0]
 
 [node name="Player" parent="." unique_id=382685611 groups=["player"] instance=ExtResource("1_bmxgx")]
+z_index = 10
 position = Vector2(11, 164)
 max_speed = 120.0
 acceleration = 400.0
@@ -208,7 +213,7 @@ position = Vector2(286, 237)
 scale = Vector2(0.7, 0.7)
 
 [node name="GarbageTrash2" parent="." unique_id=718736919 instance=ExtResource("11_ytc0w")]
-position = Vector2(672, 280)
+position = Vector2(677.00006, 281.00003)
 scale = Vector2(0.7, 0.7)
 
 [node name="GarbageTrash3" parent="." unique_id=1291145722 instance=ExtResource("11_ytc0w")]
@@ -221,6 +226,38 @@ scale = Vector2(0.7, 0.7)
 
 [node name="GarbageTrash5" parent="." unique_id=1000243880 instance=ExtResource("11_ytc0w")]
 position = Vector2(369, 281)
+scale = Vector2(0.7, 0.7)
+
+[node name="GarbageTrash6" parent="." unique_id=359957966 instance=ExtResource("11_ytc0w")]
+position = Vector2(926, 171)
+scale = Vector2(0.7, 0.7)
+
+[node name="GarbageTrash8" parent="." unique_id=1239865209 instance=ExtResource("11_ytc0w")]
+position = Vector2(1016, 154)
+scale = Vector2(0.7, 0.7)
+
+[node name="GarbageTrash11" parent="." unique_id=960240436 instance=ExtResource("11_ytc0w")]
+position = Vector2(1201, 172)
+scale = Vector2(0.7, 0.7)
+
+[node name="GarbageTrash7" parent="." unique_id=2145902190 instance=ExtResource("11_ytc0w")]
+z_index = 10
+position = Vector2(982, 171)
+scale = Vector2(0.7, 0.7)
+
+[node name="GarbageTrash9" parent="." unique_id=1824752817 instance=ExtResource("11_ytc0w")]
+z_index = 10
+position = Vector2(1064, 172)
+scale = Vector2(0.7, 0.7)
+
+[node name="GarbageTrash10" parent="." unique_id=818638700 instance=ExtResource("11_ytc0w")]
+z_index = 10
+position = Vector2(1176, 172)
+scale = Vector2(0.7, 0.7)
+
+[node name="GarbageTrash12" parent="." unique_id=1946834518 instance=ExtResource("11_ytc0w")]
+z_index = 10
+position = Vector2(1324, 170)
 scale = Vector2(0.7, 0.7)
 
 [node name="Hud_tscn" parent="." unique_id=678297486 instance=ExtResource("14_xflqb")]
@@ -277,3 +314,58 @@ theme_override_constants/margin_bottom = 12
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
 autowrap_mode = 2
+
+[node name="Bird" parent="." unique_id=458359658 instance=ExtResource("17_kjkl5")]
+z_index = 10
+position = Vector2(882, 173)
+scale = Vector2(0.2, 0.2)
+
+[node name="Bird2" parent="." unique_id=1229591337 instance=ExtResource("17_kjkl5")]
+z_index = 10
+position = Vector2(1035, 173)
+scale = Vector2(0.2, 0.2)
+
+[node name="Bird3" parent="." unique_id=2041088118 instance=ExtResource("17_kjkl5")]
+z_index = 10
+position = Vector2(951, 173)
+scale = Vector2(0.2, 0.2)
+
+[node name="Bird4" parent="." unique_id=84858816 instance=ExtResource("17_kjkl5")]
+z_index = 10
+position = Vector2(995, 173)
+scale = Vector2(0.2, 0.2)
+
+[node name="Bird5" parent="." unique_id=396288904 instance=ExtResource("17_kjkl5")]
+z_index = 10
+position = Vector2(908, 173)
+scale = Vector2(0.2, 0.2)
+
+[node name="Javali" parent="." unique_id=650083509 instance=ExtResource("18_3eg8f")]
+position = Vector2(849, 171)
+
+[node name="Javali2" parent="." unique_id=222954695 instance=ExtResource("18_3eg8f")]
+position = Vector2(1446, 171)
+
+[node name="Javali3" parent="." unique_id=560168376 instance=ExtResource("18_3eg8f")]
+position = Vector2(1353, 172)
+
+[node name="Javali4" parent="." unique_id=2102914376 instance=ExtResource("18_3eg8f")]
+position = Vector2(1205, 171)
+
+[node name="Javali5" parent="." unique_id=1506203279 instance=ExtResource("18_3eg8f")]
+position = Vector2(1084, 171)
+
+[node name="Veado" parent="." unique_id=370082286 instance=ExtResource("19_cjwtm")]
+position = Vector2(1129, 170)
+
+[node name="Veado2" parent="." unique_id=1495512174 instance=ExtResource("19_cjwtm")]
+position = Vector2(1406, 170)
+
+[node name="Veado3" parent="." unique_id=984154375 instance=ExtResource("19_cjwtm")]
+position = Vector2(1252, 170)
+
+[node name="Tucano" parent="." unique_id=551860832 instance=ExtResource("20_b78wb")]
+position = Vector2(1299, 173)
+
+[node name="Tucano2" parent="." unique_id=342313806 instance=ExtResource("20_b78wb")]
+position = Vector2(1480, 173)
