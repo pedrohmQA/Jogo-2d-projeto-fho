@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://d4knixc7v7i7q"]
+
+[ext_resource type="Texture2D" uid="uid://b5ir8kdxc8n4p" path="res://sprites/WhatsApp Image 2026-04-27 at 20.16.23 (1).png" id="1_m08wm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_61k8b"]
+atlas = ExtResource("1_m08wm")
+region = Rect2(736, 0, 184, 119)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bq55c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_61k8b")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Bird" type="CharacterBody2D" unique_id=1229591337]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=714904018]
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_bq55c")
