@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://jlj68hrdvegr"]
+
+[ext_resource type="Script" uid="uid://440r0ytow1nu" path="res://scripts/npc.gd" id="1_34xg4"]
+[ext_resource type="Texture2D" uid="uid://wlvnf030ciw5" path="res://sprites/4 - Tommy/Holding_Object_Standing (32 x 32).png" id="1_kdwfn"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xxcha"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_kdwfn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kh24r"]
+radius = 8.0
+height = 26.0
+
+[node name="npc" type="CharacterBody2D" unique_id=583768963]
+collision_layer = 4
+script = ExtResource("1_34xg4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1505831154]
+sprite_frames = SubResource("SpriteFrames_xxcha")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1723430315]
+position = Vector2(0, 3)
+shape = SubResource("CapsuleShape2D_kh24r")
