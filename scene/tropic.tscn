@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://cv87iay66uhjy" path="res://scene/javali.tscn" id="18_3eg8f"]
 [ext_resource type="PackedScene" uid="uid://k4ldpsbtrlh" path="res://scene/veado.tscn" id="19_cjwtm"]
 [ext_resource type="PackedScene" uid="uid://va2g45yosfqp" path="res://scene/tucano.tscn" id="20_b78wb"]
+[ext_resource type="PackedScene" uid="uid://bvvslhu3eydw4" path="res://entities/level_end.tscn" id="21_kajwn"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_d18o5"]
 animations = [{
@@ -208,54 +209,54 @@ position = Vector2(467, 193)
 scale = Vector2(0.5, 0.5)
 speed = 60.0
 
-[node name="GarbageTrash" parent="." unique_id=1046853021 instance=ExtResource("11_ytc0w")]
+[node name="GarbageTrash" parent="." unique_id=1046853021 groups=["garbage_trash"] instance=ExtResource("11_ytc0w")]
 position = Vector2(286, 237)
 scale = Vector2(0.7, 0.7)
 
-[node name="GarbageTrash2" parent="." unique_id=718736919 instance=ExtResource("11_ytc0w")]
+[node name="GarbageTrash2" parent="." unique_id=718736919 groups=["garbage_trash"] instance=ExtResource("11_ytc0w")]
 position = Vector2(677.00006, 281.00003)
 scale = Vector2(0.7, 0.7)
 
-[node name="GarbageTrash3" parent="." unique_id=1291145722 instance=ExtResource("11_ytc0w")]
+[node name="GarbageTrash3" parent="." unique_id=1291145722 groups=["garbage_trash"] instance=ExtResource("11_ytc0w")]
 position = Vector2(542, 236)
 scale = Vector2(0.7, 0.7)
 
-[node name="GarbageTrash4" parent="." unique_id=1189779249 instance=ExtResource("11_ytc0w")]
+[node name="GarbageTrash4" parent="." unique_id=1189779249 groups=["garbage_trash"] instance=ExtResource("11_ytc0w")]
 position = Vector2(412, 205)
 scale = Vector2(0.7, 0.7)
 
-[node name="GarbageTrash5" parent="." unique_id=1000243880 instance=ExtResource("11_ytc0w")]
+[node name="GarbageTrash5" parent="." unique_id=1000243880 groups=["garbage_trash"] instance=ExtResource("11_ytc0w")]
 position = Vector2(369, 281)
 scale = Vector2(0.7, 0.7)
 
-[node name="GarbageTrash6" parent="." unique_id=359957966 instance=ExtResource("11_ytc0w")]
+[node name="GarbageTrash6" parent="." unique_id=359957966 groups=["garbage_trash"] instance=ExtResource("11_ytc0w")]
 position = Vector2(926, 171)
 scale = Vector2(0.7, 0.7)
 
-[node name="GarbageTrash8" parent="." unique_id=1239865209 instance=ExtResource("11_ytc0w")]
+[node name="GarbageTrash8" parent="." unique_id=1239865209 groups=["garbage_trash"] instance=ExtResource("11_ytc0w")]
 position = Vector2(1016, 154)
 scale = Vector2(0.7, 0.7)
 
-[node name="GarbageTrash11" parent="." unique_id=960240436 instance=ExtResource("11_ytc0w")]
+[node name="GarbageTrash11" parent="." unique_id=960240436 groups=["garbage_trash"] instance=ExtResource("11_ytc0w")]
 position = Vector2(1201, 172)
 scale = Vector2(0.7, 0.7)
 
-[node name="GarbageTrash7" parent="." unique_id=2145902190 instance=ExtResource("11_ytc0w")]
+[node name="GarbageTrash7" parent="." unique_id=2145902190 groups=["garbage_trash"] instance=ExtResource("11_ytc0w")]
 z_index = 10
 position = Vector2(982, 171)
 scale = Vector2(0.7, 0.7)
 
-[node name="GarbageTrash9" parent="." unique_id=1824752817 instance=ExtResource("11_ytc0w")]
+[node name="GarbageTrash9" parent="." unique_id=1824752817 groups=["garbage_trash"] instance=ExtResource("11_ytc0w")]
 z_index = 10
 position = Vector2(1064, 172)
 scale = Vector2(0.7, 0.7)
 
-[node name="GarbageTrash10" parent="." unique_id=818638700 instance=ExtResource("11_ytc0w")]
+[node name="GarbageTrash10" parent="." unique_id=818638700 groups=["garbage_trash"] instance=ExtResource("11_ytc0w")]
 z_index = 10
 position = Vector2(1176, 172)
 scale = Vector2(0.7, 0.7)
 
-[node name="GarbageTrash12" parent="." unique_id=1946834518 instance=ExtResource("11_ytc0w")]
+[node name="GarbageTrash12" parent="." unique_id=1946834518 groups=["garbage_trash"] instance=ExtResource("11_ytc0w")]
 z_index = 10
 position = Vector2(1324, 170)
 scale = Vector2(0.7, 0.7)
@@ -369,3 +370,12 @@ position = Vector2(1299, 173)
 
 [node name="Tucano2" parent="." unique_id=342313806 instance=ExtResource("20_b78wb")]
 position = Vector2(1480, 173)
+
+[node name="LevelEnd" parent="." unique_id=79969626 instance=ExtResource("21_kajwn")]
+position = Vector2(1555, 163)
+scale = Vector2(0.5, 0.5)
+collision_mask = 1
+end_type = 1
+next_scene_path = "res://scene/grassland.tscn"
+
+[editable path="LevelEnd"]

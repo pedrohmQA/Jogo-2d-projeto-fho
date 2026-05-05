@@ -64,7 +64,7 @@ texture = ExtResource("3_jxvlp")
 sources/2 = SubResource("TileSetAtlasSource_gwku7")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kmspj"]
-size = Vector2(46, 31)
+size = Vector2(108, 120.49994)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_boiax"]
 radius = 16.155495
@@ -151,16 +151,21 @@ tile_map_data = PackedByteArray("AAAfAAkAAgAFAAUAAAAfAAoAAgAFAAUAAAAeAAkAAgADAAU
 tile_set = SubResource("TileSet_64es3")
 
 [node name="Decoration" type="TileMapLayer" parent="TileMaps" unique_id=2004188542]
-tile_map_data = PackedByteArray("AAAiAAsAAAADAAUAAAA=")
 tile_set = ExtResource("11_gwku7")
 
 [node name="LevelEnd" parent="." unique_id=79969626 instance=ExtResource("12_64es3")]
 position = Vector2(442, 154)
+scale = Vector2(0.2, 0.2)
 collision_mask = 1
 
 [node name="CollisionShape2D" parent="LevelEnd" index="0" unique_id=1009072659]
-position = Vector2(128, 23)
+position = Vector2(601, 129.74988)
+scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("RectangleShape2D_kmspj")
+
+[node name="AnimatedSprite2D" parent="LevelEnd" index="1" unique_id=921225856]
+position = Vector2(575, 135)
+scale = Vector2(2.531245, 2.1406248)
 
 [node name="coin" parent="." unique_id=343812034 instance=ExtResource("14_ja8kk")]
 position = Vector2(294, 73)

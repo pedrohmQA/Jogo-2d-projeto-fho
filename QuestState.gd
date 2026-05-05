@@ -2,6 +2,7 @@ extends Node
 # Singleton (Autoload) para estado do jogo/quests.
 # Forest: maçã + moeda (entrega no NPC)
 # Tropic: lixo com contador regressivo (começa no total e vai até 0)
+signal all_garbage_collected
 
 enum QuestPhase { NOT_MET, INTRO_NPC, IN_PROGRESS, COMPLETED }
 var phase: QuestPhase = QuestPhase.NOT_MET
@@ -42,8 +43,11 @@ var garbage_left: int = 0
 func start_tropic_garbage(total: int) -> void:
 	garbage_left = max(0, total)
 
-func collect_one_garbage() -> void:
-	garbage_left = max(0, garbage_left - 1)
+func collect_one_garbage():
+	garbage_left -= 1
+	if garbage_left <= 0:
+		garbage_left = 0
+		emit_signal("all_garbage_collected")
 
 func is_tropic_garbage_done() -> bool:
 	return garbage_left <= 0
