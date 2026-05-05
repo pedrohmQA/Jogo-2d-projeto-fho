@@ -1,0 +1,81 @@
+[gd_scene format=4 uid="uid://c6u8r7yowbxrj"]
+
+[ext_resource type="Texture2D" uid="uid://dsoy0r07kcjw3" path="res://sprites/Seasonal Tilesets/1 - Grassland/Background parts/5 - Sky_color.png" id="1_1hxvx"]
+[ext_resource type="Texture2D" uid="uid://bwovrtp2vex6i" path="res://sprites/Seasonal Tilesets/1 - Grassland/Background parts/4 - Cloud_cover_2.png" id="2_wwmdn"]
+[ext_resource type="Texture2D" uid="uid://detulqqmsp50u" path="res://sprites/Seasonal Tilesets/1 - Grassland/Background parts/3 - Cloud_cover_1.png" id="3_811xq"]
+[ext_resource type="Texture2D" uid="uid://cnngokhuunjv0" path="res://sprites/Seasonal Tilesets/1 - Grassland/Background parts/2 - Hills.png" id="4_go77i"]
+[ext_resource type="Texture2D" uid="uid://c7ska2uwy6cmr" path="res://sprites/Seasonal Tilesets/1 - Grassland/Background parts/1 - Foreground_scenery.png" id="5_xky86"]
+[ext_resource type="PackedScene" uid="uid://2jgfnjhiqgnf" path="res://entities/player.tscn" id="6_811xq"]
+[ext_resource type="PackedScene" uid="uid://mdi7k1lqpuic" path="res://entities/camera.tscn" id="7_go77i"]
+[ext_resource type="TileSet" uid="uid://kncqebxfydxa" path="res://tiles/terrain.tres" id="8_xky86"]
+[ext_resource type="TileSet" uid="uid://dr7a84wcmogq0" path="res://tiles/decoration.tres" id="9_3kscr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xky86"]
+size = Vector2(11, 212)
+
+[node name="grassland" type="Node2D" unique_id=1141008563]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=429213166]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground" unique_id=801688144]
+motion_mirroring = Vector2(288, 0)
+
+[node name="5" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" unique_id=2140011477]
+texture = ExtResource("1_1hxvx")
+centered = false
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1146119104]
+motion_scale = Vector2(0.2, 0.2)
+motion_mirroring = Vector2(288, 0)
+
+[node name="4" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2" unique_id=1257997247]
+texture = ExtResource("2_wwmdn")
+centered = false
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1056063995]
+motion_scale = Vector2(0.3, 0.3)
+motion_mirroring = Vector2(288, 0)
+
+[node name="3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3" unique_id=1960860751]
+texture = ExtResource("3_811xq")
+centered = false
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground" unique_id=2057042057]
+motion_scale = Vector2(0.4, 0.4)
+motion_mirroring = Vector2(288, 0)
+
+[node name="2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4" unique_id=421691492]
+texture = ExtResource("4_go77i")
+centered = false
+
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="ParallaxBackground" unique_id=413623315]
+motion_scale = Vector2(0.6, 0.6)
+motion_mirroring = Vector2(288, 0)
+
+[node name="1" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer5" unique_id=994078783]
+texture = ExtResource("5_xky86")
+centered = false
+
+[node name="Player" parent="." unique_id=382685611 instance=ExtResource("6_811xq")]
+position = Vector2(31, 136)
+
+[node name="Camera" parent="." unique_id=1397644041 instance=ExtResource("7_go77i")]
+position = Vector2(38, 141)
+
+[node name="TileMaps" type="Node" parent="." unique_id=1057045776]
+
+[node name="terrain" type="TileMapLayer" parent="TileMaps" unique_id=765243100]
+position = Vector2(4, -4)
+tile_map_data = PackedByteArray("AAD//wsAAAAJAAMAAAAAAAsAAAAKAAMAAAABAAsAAAAKAAMAAAACAAsAAAAKAAMAAAADAAsAAAAKAAMAAAAEAAsAAAANAAMAAAAGAAkAAAAJAAMAAAAHAAkAAAAKAAMAAAAIAAkAAAAKAAMAAAAJAAkAAAAKAAMAAAAKAAkAAAAMAAMAAAALAAkAAAANAAMAAAAOAAgAAAAPAAMAAAAQAAsAAAAPAAMAAAAUAAkAAAAPAAMAAAAWAAcAAAAJAAMAAAAXAAcAAAAKAAMAAAAYAAcAAAAKAAMAAAAZAAcAAAAKAAMAAAAaAAcAAAAKAAMAAAAbAAcAAAANAAMAAAAbAAQAAAAJAAMAAAAcAAQAAAAKAAMAAAAdAAQAAAAKAAMAAAAeAAQAAAAKAAMAAAAfAAQAAAAKAAMAAAAgAAQAAAAKAAMAAAAhAAQAAAANAAMAAAA=")
+tile_set = ExtResource("8_xky86")
+
+[node name="decoration" type="TileMapLayer" parent="TileMaps" unique_id=710157706]
+tile_map_data = PackedByteArray("AAAgAAIAAAAJAAEAAAAJAAgAAQACAAAAAAAaAAYAAQADAAAAAAABAAoAAQABAAAAAAA=")
+tile_set = ExtResource("9_3kscr")
+
+[node name="limit" type="StaticBody2D" parent="." unique_id=923019547]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="limit" unique_id=346174789]
+position = Vector2(-4.5, 96)
+shape = SubResource("RectangleShape2D_xky86")
