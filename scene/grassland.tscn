@@ -16,8 +16,14 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xky86"]
 size = Vector2(11, 212)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wgvfe"]
+bg_color = Color(0, 0, 0, 0.7529412)
+
 [node name="grassland" type="Node2D" unique_id=1141008563]
 script = ExtResource("1_wgvfe")
+
+[node name="Player" parent="." unique_id=382685611 groups=["player"] instance=ExtResource("6_811xq")]
+position = Vector2(26, 150)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=429213166]
 
@@ -60,9 +66,6 @@ motion_mirroring = Vector2(288, 0)
 texture = ExtResource("5_xky86")
 centered = false
 
-[node name="Player" parent="." unique_id=382685611 groups=["player"] instance=ExtResource("6_811xq")]
-position = Vector2(26, 150)
-
 [node name="Camera" parent="." unique_id=1397644041 instance=ExtResource("7_go77i")]
 position = Vector2(38, 141)
 
@@ -98,19 +101,25 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.5647059)
 theme_override_font_sizes/font_size = 8
 text = "Aperte \"E\" para interagir"
 
-[node name="HUD" type="CanvasLayer" parent="." unique_id=1049597315]
+[node name="DialogUI" type="CanvasLayer" parent="." unique_id=1049597315]
 script = ExtResource("11_dm3bm")
 
-[node name="DialoguePanel" type="Panel" parent="HUD" unique_id=837035868]
+[node name="Panel" type="PanelContainer" parent="DialogUI" unique_id=754348065]
 visible = false
 offset_right = 216.0
 offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_wgvfe")
 metadata/_edit_use_anchors_ = true
 
-[node name="DialogueLabel" type="Label" parent="HUD/DialoguePanel" unique_id=97455326]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-theme_override_font_sizes/font_size = 7
+[node name="TextLabel" type="Label" parent="DialogUI/Panel" unique_id=1949945215]
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+autowrap_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="DialogUI/Panel" unique_id=1359683196]
+layout_mode = 2
+
+[connection signal="body_entered" from="NpcGrassland" to="NpcGrassland" method="_on_body_entered"]
+[connection signal="body_exited" from="NpcGrassland" to="NpcGrassland" method="_on_body_exited"]
 
 [editable path="NpcGrassland"]
