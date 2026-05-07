@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 QuestState="*uid://cbue6aktycp4g"
 PauseMenu="*uid://v6u46a0n0mg4"
+SoundManager="*uid://bbtbedlxqfv06"
 
 [display]
 

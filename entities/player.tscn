@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://vk1nc0o58run" path="res://sprites/swim_02.png" id="7_dchgp"]
 [ext_resource type="Texture2D" uid="uid://k5u58xcydfw0" path="res://sprites/walk_02.png" id="8_ef06p"]
 [ext_resource type="Texture2D" uid="uid://cikmqmbj4wn0w" path="res://sprites/walk_03.png" id="9_tjdhl"]
+[ext_resource type="AudioStream" uid="uid://dxtnbpbi1g6iw" path="res://audios/458641__lilmati__retro-jump-02.wav" id="10_tjdhl"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u3f3p"]
 radius = 6.0
@@ -113,3 +114,6 @@ position = Vector2(0, 3)
 sprite_frames = SubResource("SpriteFrames_i623q")
 animation = &"duck"
 autoplay = "idle"
+
+[node name="SomPulo" type="AudioStreamPlayer2D" parent="." unique_id=476795605]
+stream = ExtResource("10_tjdhl")

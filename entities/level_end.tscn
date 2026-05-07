@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bfrfgegrkmmp6" path="res://sprites/WavingFlagGreen-ezgif.com-gif-to-sprite-converter.png" id="2_uj3xx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4bc8j"]
-size = Vector2(42, 60)
+size = Vector2(60, 60)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3kxtn"]
 atlas = ExtResource("2_uj3xx")

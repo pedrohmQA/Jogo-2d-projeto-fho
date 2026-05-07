@@ -64,11 +64,8 @@ func _ready() -> void:
 	body_exited.connect(_on_body_exited)
 
 func _process(_delta: float) -> void:
-	# Se acabou o lixo, para o cronômetro e não reinicia mais.
 	if _countdown_started and QuestState.is_tropic_garbage_done():
 		_stop_countdown()
-		# não precisa dar return obrigatório, mas evita processar coisas desnecessárias
-		# return
 
 	if _player_in_range and Input.is_action_just_pressed("interact"):
 		if toggle_with_interact:
@@ -99,6 +96,9 @@ func _open_dialog() -> void:
 	if _dialog_open:
 		return
 
+	# TOCA O SOM DE INTERAÇÃO AO ABRIR O DIÁLOGO
+	SoundManager.play_interaction_sound()
+
 	_dialog_open = true
 	_dialog_ui.visible = true
 	_dialog_label.text = message
@@ -121,7 +121,6 @@ func _close_dialog() -> void:
 		_hud.visible = true
 
 func _start_countdown() -> void:
-	# Se já terminou o lixo, nem inicia.
 	if QuestState.is_tropic_garbage_done():
 		_stop_countdown()
 		return
@@ -139,14 +138,13 @@ func _stop_countdown(show_complete_text: bool = true) -> void:
 		_tick_timer.stop()
 
 	if show_complete_text and is_instance_valid(_timer_label):
-		_timer_label.text = "OK" # ou "00:00"
+		_timer_label.text = "OK"
 
 func _on_tick() -> void:
 	if not _countdown_started:
 		_tick_timer.stop()
 		return
 
-	# Se acabou o lixo, para e não reinicia.
 	if QuestState.is_tropic_garbage_done():
 		_stop_countdown()
 		return
@@ -159,7 +157,6 @@ func _on_tick() -> void:
 
 	if _seconds_left <= 0:
 		_tick_timer.stop()
-		# Só reinicia se AINDA faltar lixo
 		if restart_scene_on_timeout and not QuestState.is_tropic_garbage_done():
 			get_tree().reload_current_scene()
 

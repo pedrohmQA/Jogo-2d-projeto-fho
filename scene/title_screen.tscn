@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://surcyfctcbf3" path="res://sprites/logo-menu.png" id="3_ulgj7"]
 [ext_resource type="Theme" uid="uid://dpk7j20ihcdyn" path="res://sprites/default_btn.tres" id="3_wxbcn"]
 [ext_resource type="Texture2D" uid="uid://dvh3ib2b8tinf" path="res://sprites/menu_imagem.png" id="5_j6oad"]
+[ext_resource type="AudioStream" uid="uid://7bkh2iflrnm7" path="res://audios/732429__thelastoneonearth__8-bit-adventure-theme-intro.wav" id="6_ulgj7"]
 
 [sub_resource type="Animation" id="Animation_j6oad"]
 length = 0.001
@@ -185,6 +186,10 @@ layout_mode = 2
 theme = ExtResource("3_wxbcn")
 text = "Sair
 "
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1492650623]
+stream = ExtResource("6_ulgj7")
+autoplay = true
 
 [connection signal="pressed" from="VBoxContainer/start_btn" to="." method="_on_start_btn_pressed"]
 [connection signal="pressed" from="VBoxContainer/credits_btn" to="." method="_on_credits_btn_pressed"]

@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://k4ldpsbtrlh" path="res://scene/veado.tscn" id="19_cjwtm"]
 [ext_resource type="PackedScene" uid="uid://va2g45yosfqp" path="res://scene/tucano.tscn" id="20_b78wb"]
 [ext_resource type="PackedScene" uid="uid://bvvslhu3eydw4" path="res://entities/level_end.tscn" id="21_kajwn"]
+[ext_resource type="Texture2D" uid="uid://bfrfgegrkmmp6" path="res://sprites/WavingFlagGreen-ezgif.com-gif-to-sprite-converter.png" id="22_uehjn"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_d18o5"]
 animations = [{
@@ -47,6 +48,56 @@ size = Vector2(17, 16.5)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mjtd1"]
 bg_color = Color(0, 0, 0, 0.7529412)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3kxtn"]
+atlas = ExtResource("22_uehjn")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ua3mi"]
+atlas = ExtResource("22_uehjn")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1fga3"]
+atlas = ExtResource("22_uehjn")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ve6e7"]
+atlas = ExtResource("22_uehjn")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vcwql"]
+atlas = ExtResource("22_uehjn")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nc561"]
+atlas = ExtResource("22_uehjn")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hohr6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3kxtn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ua3mi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1fga3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ve6e7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vcwql")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nc561")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
 
 [node name="Tropic" type="Node2D" unique_id=1363379299]
 script = ExtResource("1_xnncp")
@@ -230,7 +281,7 @@ position = Vector2(369, 281)
 scale = Vector2(0.7, 0.7)
 
 [node name="GarbageTrash6" parent="." unique_id=359957966 groups=["garbage_trash"] instance=ExtResource("11_ytc0w")]
-position = Vector2(926, 171)
+position = Vector2(926, 173)
 scale = Vector2(0.7, 0.7)
 
 [node name="GarbageTrash8" parent="." unique_id=1239865209 groups=["garbage_trash"] instance=ExtResource("11_ytc0w")]
@@ -372,10 +423,24 @@ position = Vector2(1299, 173)
 position = Vector2(1480, 173)
 
 [node name="LevelEnd" parent="." unique_id=79969626 instance=ExtResource("21_kajwn")]
-position = Vector2(1555, 163)
+position = Vector2(1545, 163)
 scale = Vector2(0.5, 0.5)
-collision_mask = 1
+collision_layer = 1
 end_type = 1
-next_scene_path = "res://scene/grassland.tscn"
+
+[node name="CollisionShape2D" parent="LevelEnd" index="0" unique_id=1009072659]
+position = Vector2(2, 1)
+
+[node name="AnimatedSprite2D" parent="LevelEnd" index="1" unique_id=921225856]
+visible = false
+z_index = 10
+position = Vector2(0, 0)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=943729794]
+position = Vector2(1549, 164)
+scale = Vector2(0.7656238, 0.4609374)
+sprite_frames = SubResource("SpriteFrames_hohr6")
+animation = &"idle"
+autoplay = "idle"
 
 [editable path="LevelEnd"]

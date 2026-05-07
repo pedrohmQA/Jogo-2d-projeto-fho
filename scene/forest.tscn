@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://di10y7bo586cm" path="res://scene/hud.tscn" id="17_p7yhu"]
 [ext_resource type="Script" uid="uid://fa61hr48jwmn" path="res://scripts/hud_tropic.gd" id="18_cwbpd"]
 [ext_resource type="PackedScene" uid="uid://v6u46a0n0mg4" path="res://scene/pause_menu.tscn" id="19_ysu3w"]
+[ext_resource type="AudioStream" uid="uid://ixxjjvvy5haf" path="res://audios/670772__ustym_petrovych__8-bit-tune-short-sketch-adventure.wav" id="20_dki5c"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gwku7"]
 texture = ExtResource("3_jxvlp")
@@ -157,6 +158,7 @@ tile_set = ExtResource("11_gwku7")
 position = Vector2(442, 154)
 scale = Vector2(0.2, 0.2)
 collision_mask = 1
+next_scene_path = "res://scene/tropic.tscn"
 
 [node name="CollisionShape2D" parent="LevelEnd" index="0" unique_id=1009072659]
 position = Vector2(601, 129.74988)
@@ -233,4 +235,10 @@ script = ExtResource("18_cwbpd")
 
 [node name="PauseMenu" parent="." unique_id=41600715 instance=ExtResource("19_ysu3w")]
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1483937618]
+stream = ExtResource("20_dki5c")
+autoplay = true
+
+[editable path="Coins/coin"]
 [editable path="LevelEnd"]
+[editable path="coin"]
