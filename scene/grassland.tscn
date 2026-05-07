@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://c6u8r7yowbxrj"]
 
 [ext_resource type="Texture2D" uid="uid://dsoy0r07kcjw3" path="res://sprites/Seasonal Tilesets/1 - Grassland/Background parts/5 - Sky_color.png" id="1_1hxvx"]
+[ext_resource type="Script" uid="uid://bds2bqt3t1j4t" path="res://scene/grassland.gd" id="1_wgvfe"]
 [ext_resource type="Texture2D" uid="uid://bwovrtp2vex6i" path="res://sprites/Seasonal Tilesets/1 - Grassland/Background parts/4 - Cloud_cover_2.png" id="2_wwmdn"]
 [ext_resource type="Texture2D" uid="uid://detulqqmsp50u" path="res://sprites/Seasonal Tilesets/1 - Grassland/Background parts/3 - Cloud_cover_1.png" id="3_811xq"]
 [ext_resource type="Texture2D" uid="uid://cnngokhuunjv0" path="res://sprites/Seasonal Tilesets/1 - Grassland/Background parts/2 - Hills.png" id="4_go77i"]
@@ -9,12 +10,14 @@
 [ext_resource type="PackedScene" uid="uid://mdi7k1lqpuic" path="res://entities/camera.tscn" id="7_go77i"]
 [ext_resource type="TileSet" uid="uid://kncqebxfydxa" path="res://tiles/terrain.tres" id="8_xky86"]
 [ext_resource type="TileSet" uid="uid://dr7a84wcmogq0" path="res://tiles/decoration.tres" id="9_3kscr"]
-[ext_resource type="PackedScene" uid="uid://hgrasia233xt" path="res://entities/npc_grassland.tscn" id="10_3kscr"]
+[ext_resource type="PackedScene" uid="uid://uj5q6622xcjp" path="res://scene/npc_grassland.tscn" id="10_3kscr"]
+[ext_resource type="Script" uid="uid://dqafc7o4rowxt" path="res://scene/hud_npc_grassland.gd" id="11_dm3bm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xky86"]
 size = Vector2(11, 212)
 
 [node name="grassland" type="Node2D" unique_id=1141008563]
+script = ExtResource("1_wgvfe")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=429213166]
 
@@ -57,7 +60,7 @@ motion_mirroring = Vector2(288, 0)
 texture = ExtResource("5_xky86")
 centered = false
 
-[node name="Player" parent="." unique_id=382685611 instance=ExtResource("6_811xq")]
+[node name="Player" parent="." unique_id=382685611 groups=["player"] instance=ExtResource("6_811xq")]
 position = Vector2(26, 150)
 
 [node name="Camera" parent="." unique_id=1397644041 instance=ExtResource("7_go77i")]
@@ -82,11 +85,32 @@ collision_mask = 4
 position = Vector2(-4.5, 96)
 shape = SubResource("RectangleShape2D_xky86")
 
-[node name="npc_grassland" parent="." unique_id=583768963 instance=ExtResource("10_3kscr")]
-position = Vector2(75, 159)
-scale = Vector2(0.4, 0.4)
+[node name="NpcGrassland" parent="." unique_id=1097661361 instance=ExtResource("10_3kscr")]
+position = Vector2(71, 156)
+collision_mask = 2
 
-[node name="CollisionShape2D" parent="npc_grassland" index="1" unique_id=1723430315]
-position = Vector2(-2.4999998, -2.4999924)
+[node name="Label" type="Label" parent="NpcGrassland" unique_id=174629236]
+offset_left = -31.111113
+offset_top = -60.000004
+offset_right = 63.888885
+offset_bottom = -37.000004
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.5647059)
+theme_override_font_sizes/font_size = 8
+text = "Aperte \"E\" para interagir"
 
-[editable path="npc_grassland"]
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1049597315]
+script = ExtResource("11_dm3bm")
+
+[node name="DialoguePanel" type="Panel" parent="HUD" unique_id=837035868]
+visible = false
+offset_right = 216.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="DialogueLabel" type="Label" parent="HUD/DialoguePanel" unique_id=97455326]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 7
+
+[editable path="NpcGrassland"]
