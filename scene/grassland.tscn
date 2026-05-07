@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://mdi7k1lqpuic" path="res://entities/camera.tscn" id="7_go77i"]
 [ext_resource type="TileSet" uid="uid://kncqebxfydxa" path="res://tiles/terrain.tres" id="8_xky86"]
 [ext_resource type="TileSet" uid="uid://dr7a84wcmogq0" path="res://tiles/decoration.tres" id="9_3kscr"]
+[ext_resource type="PackedScene" uid="uid://hgrasia233xt" path="res://entities/npc_grassland.tscn" id="10_3kscr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xky86"]
 size = Vector2(11, 212)
@@ -80,3 +81,12 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="limit" unique_id=346174789]
 position = Vector2(-4.5, 96)
 shape = SubResource("RectangleShape2D_xky86")
+
+[node name="npc_grassland" parent="." unique_id=583768963 instance=ExtResource("10_3kscr")]
+position = Vector2(75, 159)
+scale = Vector2(0.4, 0.4)
+
+[node name="CollisionShape2D" parent="npc_grassland" index="1" unique_id=1723430315]
+position = Vector2(-2.4999998, -2.4999924)
+
+[editable path="npc_grassland"]

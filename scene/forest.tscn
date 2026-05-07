@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://bvvslhu3eydw4" path="res://entities/level_end.tscn" id="12_64es3"]
 [ext_resource type="PackedScene" uid="uid://dmvosfx5nu606" path="res://entities/coin.tscn" id="13_kmspj"]
 [ext_resource type="PackedScene" uid="uid://cahp7n0y4oc0x" path="res://entities/apple.tscn" id="14_ja8kk"]
-[ext_resource type="PackedScene" uid="uid://jlj68hrdvegr" path="res://entities/npc.tscn" id="15_boiax"]
+[ext_resource type="PackedScene" uid="uid://jlj68hrdvegr" path="res://entities/npc_forest.tscn" id="15_boiax"]
 [ext_resource type="Script" uid="uid://cqt4mfqhaol7q" path="res://scene/interact_area.gd" id="16_0xhum"]
 [ext_resource type="PackedScene" uid="uid://di10y7bo586cm" path="res://scene/hud.tscn" id="17_p7yhu"]
 [ext_resource type="Script" uid="uid://fa61hr48jwmn" path="res://scripts/hud_tropic.gd" id="18_cwbpd"]
