@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://d0it8vhwunp44"]
 
 [ext_resource type="PackedScene" uid="uid://2jgfnjhiqgnf" path="res://entities/player.tscn" id="1_2xpkg"]
+[ext_resource type="Script" uid="uid://cfm8ey33sitkk" path="res://scene/forest.gd" id="1_kuygm"]
 [ext_resource type="TileSet" uid="uid://kncqebxfydxa" path="res://tiles/terrain.tres" id="2_gbfvw"]
 [ext_resource type="Texture2D" uid="uid://baceju57xctls" path="res://sprites/Seasonal Tilesets/2 - Autumn Forest/Background parts/6 - Distant_trees.png" id="3_gbfvw"]
 [ext_resource type="Texture2D" uid="uid://v4n1j2ad7kl0" path="res://sprites/Seasonal Tilesets/2 - Autumn Forest/Terrain (16 x 16).png" id="3_jxvlp"]
@@ -78,6 +79,7 @@ size = Vector2(11, 212)
 size = Vector2(47, 15)
 
 [node name="Forest" type="Node2D" unique_id=1930942529]
+script = ExtResource("1_kuygm")
 metadata/_edit_vertical_guides_ = [576.0]
 
 [node name="Player" parent="." unique_id=382685611 groups=["player"] instance=ExtResource("1_2xpkg")]

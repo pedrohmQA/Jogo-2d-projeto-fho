@@ -2,7 +2,7 @@ extends Area2D
 
 enum EndType { QUEST, GARBAGE }
 @export var end_type: EndType = EndType.QUEST
-@export var next_scene_path: String = "res://scene/grassland.tscn"
+@export var next_scene_path: String = "res://scene/end_scene.tscn"
 @export var required_garbage_type: String = "tropic" # só faz sentido se end_type for GARBAGE
 
 func _ready() -> void:

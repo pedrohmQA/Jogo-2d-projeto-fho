@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://cpsqgfbspykqx"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_d68je"]
+
+[node name="EndScene" type="Node2D" unique_id=961040356]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1537166047]
+offset_right = 287.0
+offset_bottom = 200.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="ColorRect" unique_id=1454436270]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 46.0
+offset_right = 272.0
+offset_bottom = 147.0
+text = "Fim da versão beta. Obrigado por jogar! De seu feedback sobre o jogo no formulário disponível."
+label_settings = SubResource("LabelSettings_d68je")
+vertical_alignment = 1
+autowrap_mode = 2
