@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://uj5q6622xcjp"]
+
+[ext_resource type="Script" uid="uid://i3guweqyb2bp" path="res://scene/npc_grassland.gd" id="1_fshwi"]
+[ext_resource type="Texture2D" uid="uid://dqdx3x83teqlj" path="res://sprites/engenheira.png" id="2_kmhpu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_if2hq"]
+atlas = ExtResource("2_kmhpu")
+region = Rect2(0, 0, 1536, 1024)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_p53di"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_if2hq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ita5q"]
+radius = 26.0
+height = 90.0
+
+[node name="NpcGrassland" type="Area2D" unique_id=1097661361]
+scale = Vector2(0.45, 0.45)
+script = ExtResource("1_fshwi")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=347141169]
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_p53di")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1637811100]
+position = Vector2(-10, -1)
+shape = SubResource("CapsuleShape2D_ita5q")

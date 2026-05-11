@@ -1,8 +1,60 @@
 [gd_scene format=3 uid="uid://bvvslhu3eydw4"]
 
 [ext_resource type="Script" uid="uid://cjli35gx1calj" path="res://scripts/level_end.gd" id="1_y82ty"]
+[ext_resource type="Texture2D" uid="uid://bfrfgegrkmmp6" path="res://sprites/WavingFlagGreen-ezgif.com-gif-to-sprite-converter.png" id="2_uj3xx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4bc8j"]
+size = Vector2(60, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3kxtn"]
+atlas = ExtResource("2_uj3xx")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ua3mi"]
+atlas = ExtResource("2_uj3xx")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1fga3"]
+atlas = ExtResource("2_uj3xx")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ve6e7"]
+atlas = ExtResource("2_uj3xx")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vcwql"]
+atlas = ExtResource("2_uj3xx")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nc561"]
+atlas = ExtResource("2_uj3xx")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mxqq8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3kxtn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ua3mi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1fga3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ve6e7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vcwql")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nc561")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
 
 [node name="LevelEnd" type="Area2D" unique_id=79969626]
 collision_layer = 8
@@ -10,7 +62,13 @@ collision_mask = 2
 script = ExtResource("1_y82ty")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1009072659]
+position = Vector2(11, 1)
 shape = SubResource("RectangleShape2D_4bc8j")
 debug_color = Color(0, 0.63131934, 0.46674365, 0.41960785)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=921225856]
+position = Vector2(1, -1)
+sprite_frames = SubResource("SpriteFrames_mxqq8")
+animation = &"idle"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

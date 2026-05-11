@@ -1,15 +1,20 @@
 extends Area2D
 
+var collected := false
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
+	body_entered.connect(_on_body_entered)
 
 func _on_body_entered(body: Node2D) -> void:
+	if collected:
+		return
+	if not body.is_in_group("player"):
+		return
+
+	collected = true
+	QuestState.has_coin = true
+
+	monitoring = false
+	set_deferred("monitorable", false)
+
 	queue_free()

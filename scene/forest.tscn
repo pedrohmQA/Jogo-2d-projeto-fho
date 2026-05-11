@@ -14,7 +14,13 @@
 [ext_resource type="PackedScene" uid="uid://bvvslhu3eydw4" path="res://entities/level_end.tscn" id="12_64es3"]
 [ext_resource type="PackedScene" uid="uid://dmvosfx5nu606" path="res://entities/coin.tscn" id="13_kmspj"]
 [ext_resource type="PackedScene" uid="uid://cahp7n0y4oc0x" path="res://entities/apple.tscn" id="14_ja8kk"]
-[ext_resource type="PackedScene" uid="uid://jlj68hrdvegr" path="res://entities/npc.tscn" id="15_boiax"]
+[ext_resource type="PackedScene" uid="uid://jlj68hrdvegr" path="res://entities/npc_forest.tscn" id="15_boiax"]
+[ext_resource type="Script" uid="uid://cqt4mfqhaol7q" path="res://scene/interact_area.gd" id="16_0xhum"]
+[ext_resource type="PackedScene" uid="uid://di10y7bo586cm" path="res://scene/hud.tscn" id="17_p7yhu"]
+[ext_resource type="Script" uid="uid://fa61hr48jwmn" path="res://scripts/hud_tropic.gd" id="18_cwbpd"]
+[ext_resource type="PackedScene" uid="uid://v6u46a0n0mg4" path="res://scene/pause_menu.tscn" id="19_ysu3w"]
+[ext_resource type="AudioStream" uid="uid://ixxjjvvy5haf" path="res://audios/670772__ustym_petrovych__8-bit-tune-short-sketch-adventure.wav" id="20_dki5c"]
+[ext_resource type="Script" uid="uid://ct31sqt37enkn" path="res://scripts/lava.gd" id="21_cvgm6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gwku7"]
 texture = ExtResource("3_jxvlp")
@@ -27,7 +33,6 @@ texture = ExtResource("3_jxvlp")
 5:2/0 = 0
 11:2/0 = 0
 1:3/0 = 0
-2:3/0 = 0
 3:3/0 = 0
 4:3/0 = 0
 5:3/0 = 0
@@ -55,22 +60,29 @@ texture = ExtResource("3_jxvlp")
 4:6/0 = 0
 5:6/0 = 0
 4:8/0 = 0
+2:3/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_64es3"]
 sources/2 = SubResource("TileSetAtlasSource_gwku7")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kmspj"]
-size = Vector2(46, 31)
+size = Vector2(108, 120.49994)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_boiax"]
+radius = 16.155495
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_boiax"]
 size = Vector2(11, 212)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dki5c"]
+size = Vector2(47, 15)
+
 [node name="Forest" type="Node2D" unique_id=1930942529]
 metadata/_edit_vertical_guides_ = [576.0]
 
-[node name="Player" parent="." unique_id=382685611 instance=ExtResource("1_2xpkg")]
+[node name="Player" parent="." unique_id=382685611 groups=["player"] instance=ExtResource("1_2xpkg")]
 position = Vector2(14, 176)
-max_speed = 120.0
+collision_layer = 1
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=712565194]
 
@@ -135,31 +147,60 @@ limit_right = 576
 [node name="TileMaps" type="Node" parent="." unique_id=294291500]
 
 [node name="Terrain" type="TileMapLayer" parent="TileMaps" unique_id=1666396980]
-tile_map_data = PackedByteArray("AAAAAAwAAgACAAMAAAABAAwAAgACAAMAAAACAAwAAgACAAMAAAADAAwAAgACAAMAAAAEAAwAAgACAAMAAAAFAAwAAgACAAMAAAAGAAwAAgACAAMAAAAHAAwAAgACAAMAAAAIAAwAAgACAAMAAAAJAAwAAgACAAMAAAAKAAwAAgACAAMAAAALAAwAAgACAAMAAAAMAAwAAgACAAMAAAANAAwAAgACAAMAAAAOAAwAAgACAAMAAAAPAAwAAgACAAMAAAAQAAwAAgACAAMAAAARAAwAAgACAAMAAAASAAwAAgACAAMAAAATAAwAAgACAAMAAAAUAAwAAgACAAMAAAAVAAwAAgACAAMAAAAWAAwAAgACAAMAAAAXAAwAAgACAAMAAAAYAAwAAgACAAMAAAAZAAwAAgACAAMAAAAaAAwAAgACAAMAAAAbAAwAAgACAAMAAAAcAAwAAgACAAMAAAAdAAwAAgACAAMAAAAeAAwAAgACAAMAAAAfAAwAAgACAAMAAAAgAAwAAgACAAMAAAAhAAwAAgACAAMAAAAiAAwAAgACAAMAAAAjAAwAAgACAAMAAAAkAAwAAgACAAMAAAAlAAwAAgACAAMAAAAmAAwAAgACAAMAAAAnAAwAAgACAAMAAAAoAAwAAgACAAMAAAApAAwAAgACAAMAAAAqAAwAAgACAAMAAAArAAwAAgACAAMAAAAsAAwAAgACAAMAAAAtAAwAAgACAAMAAAAuAAwAAgACAAMAAAAvAAwAAgACAAMAAAAwAAwAAgACAAMAAAAxAAwAAgACAAMAAAAyAAwAAgACAAMAAAAzAAwAAgACAAMAAAA0AAwAAgACAAMAAAA1AAwAAgACAAMAAAA2AAwAAgACAAMAAAA3AAwAAgACAAMAAAA4AAwAAgACAAMAAAA5AAwAAgACAAMAAAA6AAwAAgACAAMAAAA7AAwAAgACAAMAAAA8AAwAAgACAAMAAAA9AAwAAgACAAMAAAA+AAwAAgACAAMAAAA/AAwAAgACAAMAAABAAAwAAgACAAMAAABBAAwAAgACAAMAAABCAAwAAgACAAMAAABDAAwAAgACAAMAAABEAAwAAgACAAMAAABFAAwAAgACAAMAAABGAAwAAgACAAMAAABHAAwAAgACAAMAAABIAAwAAgACAAMAAABJAAwAAgACAAMAAABKAAwAAgACAAMAAABLAAwAAgACAAMAAABMAAwAAgACAAMAAABNAAwAAgACAAMAAABOAAwAAgACAAMAAABPAAwAAgACAAMAAABQAAwAAgACAAMAAABRAAwAAgACAAMAAABSAAwAAgACAAMAAAAKAAkAAgAJAAMAAAALAAkAAgAKAAMAAAAMAAkAAgANAAMAAAAQAAUAAgAJAAMAAAARAAUAAgAKAAMAAAASAAUAAgANAAMAAAATAAoAAgABAAMAAAAUAAoAAgACAAMAAAAVAAoAAgACAAMAAAAWAAgAAgABAAMAAAAXAAgAAgACAAMAAAAYAAgAAgACAAMAAAAaAAYAAgACAAMAAAAbAAYAAgACAAMAAAAcAAYAAgACAAMAAAAdAAYAAgACAAMAAAAeAAYAAgACAAMAAAAfAAYAAgAFAAEAAAAWAAkAAgADAAUAAAAWAAoAAgADAAUAAAAZAAcAAgADAAUAAAAZAAgAAgADAAUAAAAfAAcAAgAFAAUAAAAfAAgAAgAFAAUAAAAeAAgAAgAEAAQAAAAcAAgAAgAEAAQAAAAdAAgAAgAEAAQAAAAbAAgAAgAEAAQAAAAaAAgAAgAEAAQAAAAaAAcAAgAEAAQAAAAbAAcAAgAEAAQAAAAcAAcAAgAEAAQAAAAdAAcAAgAEAAQAAAAeAAcAAgAEAAQAAAATAAsAAgABAAQAAAAUAAsAAgAEAAQAAAAVAAsAAgAEAAQAAAAWAAsAAgAEAAQAAAAXAAsAAgAEAAQAAAAYAAsAAgAEAAQAAAAYAAoAAgAEAAQAAAAYAAkAAgAEAAQAAAAXAAkAAgAEAAQAAAAXAAoAAgAEAAQAAAAZAAkAAgAEAAQAAAAZAAoAAgAEAAQAAAAZAAsAAgAEAAQAAAAaAAsAAgAEAAQAAAAbAAsAAgAEAAQAAAAcAAsAAgAEAAQAAAAdAAsAAgAEAAQAAAAfAAsAAgAEAAQAAAAeAAsAAgAEAAQAAAAaAAkAAgAEAAQAAAAaAAoAAgAEAAQAAAAZAAYAAgABAAMAAAA=")
+tile_map_data = PackedByteArray("AAAAAAwAAgACAAMAAAABAAwAAgACAAMAAAACAAwAAgACAAMAAAADAAwAAgACAAMAAAAEAAwAAgACAAMAAAAFAAwAAgACAAMAAAAGAAwAAgACAAMAAAAHAAwAAgACAAMAAAAIAAwAAgACAAMAAAAJAAwAAgACAAMAAAAKAAwAAgACAAMAAAALAAwAAgACAAMAAAAMAAwAAgACAAMAAAARAAwAAgACAAMAAAASAAwAAgACAAMAAAATAAwAAgACAAMAAAAUAAwAAgACAAMAAAAVAAwAAgACAAMAAAAWAAwAAgACAAMAAAAXAAwAAgACAAMAAAAYAAwAAgACAAMAAAAZAAwAAgACAAMAAAAaAAwAAgACAAMAAAAcAAwAAgACAAMAAAAdAAwAAgACAAMAAAAeAAwAAgACAAMAAAAfAAwAAgACAAMAAAAgAAwAAgACAAMAAAAhAAwAAgACAAMAAAAiAAwAAgACAAMAAAAjAAwAAgACAAMAAAAkAAwAAgACAAMAAAAlAAwAAgACAAMAAAAmAAwAAgACAAMAAAAnAAwAAgACAAMAAAAoAAwAAgACAAMAAAApAAwAAgACAAMAAAAqAAwAAgACAAMAAAArAAwAAgACAAMAAAAsAAwAAgACAAMAAAAtAAwAAgACAAMAAAAuAAwAAgACAAMAAAAvAAwAAgACAAMAAAAwAAwAAgACAAMAAAAxAAwAAgACAAMAAAAyAAwAAgACAAMAAAAzAAwAAgACAAMAAAA0AAwAAgACAAMAAAA1AAwAAgACAAMAAAA2AAwAAgACAAMAAAA3AAwAAgACAAMAAAA4AAwAAgACAAMAAAA5AAwAAgACAAMAAAA6AAwAAgACAAMAAAA7AAwAAgACAAMAAAA8AAwAAgACAAMAAAA9AAwAAgACAAMAAAA+AAwAAgACAAMAAAA/AAwAAgACAAMAAABAAAwAAgACAAMAAABBAAwAAgACAAMAAABCAAwAAgACAAMAAABDAAwAAgACAAMAAABEAAwAAgACAAMAAABFAAwAAgACAAMAAABGAAwAAgACAAMAAABHAAwAAgACAAMAAABIAAwAAgACAAMAAABJAAwAAgACAAMAAABKAAwAAgACAAMAAABLAAwAAgACAAMAAABMAAwAAgACAAMAAABNAAwAAgACAAMAAABOAAwAAgACAAMAAABPAAwAAgACAAMAAABQAAwAAgACAAMAAABRAAwAAgACAAMAAABSAAwAAgACAAMAAAAKAAkAAgAJAAMAAAALAAkAAgAKAAMAAAAMAAkAAgANAAMAAAAQAAUAAgAJAAMAAAARAAUAAgAKAAMAAAASAAUAAgANAAMAAAATAAoAAgABAAMAAAAUAAoAAgACAAMAAAAVAAoAAgACAAMAAAAWAAgAAgABAAMAAAAXAAgAAgACAAMAAAAYAAgAAgACAAMAAAAdAAYAAgACAAMAAAAeAAYAAgACAAMAAAAfAAYAAgAFAAEAAAAWAAkAAgADAAUAAAAWAAoAAgADAAUAAAAZAAcAAgADAAUAAAAZAAgAAgADAAUAAAAcAAgAAgAEAAQAAAAbAAgAAgAEAAQAAAAaAAgAAgAEAAQAAAATAAsAAgABAAQAAAAUAAsAAgAEAAQAAAAVAAsAAgAEAAQAAAAWAAsAAgAEAAQAAAAXAAsAAgAEAAQAAAAYAAsAAgAEAAQAAAAYAAoAAgAEAAQAAAAYAAkAAgAEAAQAAAAXAAkAAgAEAAQAAAAXAAoAAgAEAAQAAAAZAAkAAgAEAAQAAAAZAAoAAgAEAAQAAAAZAAsAAgAEAAQAAAAaAAsAAgAEAAQAAAAcAAsAAgAEAAQAAAAdAAsAAgAEAAQAAAAfAAsAAgAEAAQAAAAeAAsAAgAEAAQAAAAaAAkAAgAEAAQAAAAaAAoAAgAEAAQAAAAZAAYAAgABAAMAAAAbAAsAAgAEAAIAAAA=")
 tile_set = ExtResource("2_gbfvw")
 
 [node name="FakeTerrain" type="TileMapLayer" parent="TileMaps" unique_id=271372506]
 z_index = 2
-tile_map_data = PackedByteArray("AAAfAAkAAgAFAAUAAAAfAAoAAgAFAAUAAAAeAAkAAgADAAUAAAAeAAoAAgADAAUAAAANAAcAAgAJAAMAAAAOAAcAAgAKAAMAAAAPAAcAAgANAAMAAAA=")
+tile_map_data = PackedByteArray("AAAfAAkAAgAFAAUAAAAfAAoAAgAFAAUAAAAeAAkAAgADAAUAAAAeAAoAAgADAAUAAAANAAcAAgAJAAMAAAAOAAcAAgAKAAMAAAAPAAcAAgANAAMAAAAeAAgAAgAEAAIAAAAfAAgAAgAFAAIAAAAfAAcAAgAEAAIAAAAeAAcAAgAEAAIAAAAdAAcAAgAEAAIAAAAdAAgAAgAEAAIAAAANAAwAAgAEAAEAAAAOAAwAAgAEAAEAAAAPAAwAAgAEAAEAAAAQAAwAAgAEAAEAAAAbAAwAAgAEAAEAAAAbAAUAAgAPAAMAAAA=")
 tile_set = SubResource("TileSet_64es3")
 
 [node name="Decoration" type="TileMapLayer" parent="TileMaps" unique_id=2004188542]
-tile_map_data = PackedByteArray("AAAiAAsAAAADAAUAAAA=")
+tile_map_data = PackedByteArray("AAAaAAcABQABAAEAAAAbAAcABQABAAEAAAAcAAcABQABAAEAAAAaAAYABQABAAAAAAAbAAYABQABAAAAAAAcAAYABQABAAAAAAA=")
 tile_set = ExtResource("11_gwku7")
 
 [node name="LevelEnd" parent="." unique_id=79969626 instance=ExtResource("12_64es3")]
 position = Vector2(442, 154)
-next_level = "tropic"
+scale = Vector2(0.2, 0.2)
+collision_mask = 1
+next_scene_path = "res://scene/tropic.tscn"
 
 [node name="CollisionShape2D" parent="LevelEnd" index="0" unique_id=1009072659]
-position = Vector2(128, 23)
+position = Vector2(601, 129.74988)
+scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("RectangleShape2D_kmspj")
+
+[node name="AnimatedSprite2D" parent="LevelEnd" index="1" unique_id=921225856]
+position = Vector2(575, 135)
+scale = Vector2(2.531245, 2.1406248)
 
 [node name="coin" parent="." unique_id=343812034 instance=ExtResource("14_ja8kk")]
 position = Vector2(294, 73)
 
 [node name="npc" parent="." unique_id=583768963 instance=ExtResource("15_boiax")]
-position = Vector2(53, 148)
+position = Vector2(50, 176)
+
+[node name="InteractArea" type="Area2D" parent="npc" unique_id=1095346990]
+position = Vector2(5, 12)
+script = ExtResource("16_0xhum")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="npc/InteractArea" unique_id=430031438]
+position = Vector2(-5, -11)
+shape = SubResource("CircleShape2D_boiax")
+
+[node name="PromptLabel" type="Label" parent="npc" unique_id=924820899]
+offset_left = -92.0
+offset_top = -28.0
+offset_right = 98.0
+offset_bottom = -5.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.7529412)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_font_sizes/font_size = 4
+text = "Aperte \"E\" para interagir"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="limit" type="StaticBody2D" parent="." unique_id=1585483511]
 collision_mask = 4
@@ -168,4 +209,50 @@ collision_mask = 4
 position = Vector2(-4.5, 96)
 shape = SubResource("RectangleShape2D_boiax")
 
+[node name="limit2" type="StaticBody2D" parent="." unique_id=1437188375]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="limit2" unique_id=1537922166]
+position = Vector2(582, 87)
+shape = SubResource("RectangleShape2D_boiax")
+
+[node name="DialogUI" type="CanvasLayer" parent="." unique_id=196467465]
+visible = false
+
+[node name="Panel" type="PanelContainer" parent="DialogUI" unique_id=363758845]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextLabel" type="Label" parent="DialogUI/Panel" unique_id=66104880]
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+autowrap_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="DialogUI/Panel" unique_id=1434701475]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 200
+theme_override_constants/margin_bottom = 12
+
+[node name="Hud_tscn" parent="." unique_id=678297486 instance=ExtResource("17_p7yhu")]
+script = ExtResource("18_cwbpd")
+
+[node name="PauseMenu" parent="." unique_id=41600715 instance=ExtResource("19_ysu3w")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1483937618]
+stream = ExtResource("20_dki5c")
+autoplay = true
+
+[node name="Lava" type="Area2D" parent="." unique_id=1411819713]
+script = ExtResource("21_cvgm6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Lava" unique_id=377930095]
+position = Vector2(440, 119)
+shape = SubResource("RectangleShape2D_dki5c")
+
+[connection signal="body_entered" from="Lava" to="Lava" method="_on_body_entered"]
+
+[editable path="Coins/coin"]
 [editable path="LevelEnd"]
+[editable path="coin"]
