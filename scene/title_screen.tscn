@@ -6,6 +6,7 @@
 [ext_resource type="Theme" uid="uid://dpk7j20ihcdyn" path="res://sprites/default_btn.tres" id="3_wxbcn"]
 [ext_resource type="Texture2D" uid="uid://dvh3ib2b8tinf" path="res://sprites/menu_imagem.png" id="5_j6oad"]
 [ext_resource type="AudioStream" uid="uid://7bkh2iflrnm7" path="res://audios/732429__thelastoneonearth__8-bit-adventure-theme-intro.wav" id="6_ulgj7"]
+[ext_resource type="Texture2D" uid="uid://vk1nc0o58run" path="res://sprites/swim_02.png" id="7_gh7ws"]
 
 [sub_resource type="Animation" id="Animation_j6oad"]
 length = 0.001
@@ -93,6 +94,11 @@ _data = {
 }
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wxbcn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gh7ws"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ulgj7"]
 
 [node name="TitleScreen" type="Control" unique_id=1793287381]
 layout_mode = 3
@@ -191,6 +197,48 @@ text = "Sair
 stream = ExtResource("6_ulgj7")
 autoplay = true
 
+[node name="TutorialPanel" type="Panel" parent="." unique_id=414840241]
+self_modulate = Color(0, 0, 0, 0.78431374)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_gh7ws")
+
+[node name="ColorRect" type="ColorRect" parent="TutorialPanel" unique_id=996569136]
+layout_mode = 0
+offset_right = 288.0
+offset_bottom = 200.0
+color = Color(0, 0, 0, 0.6039216)
+
+[node name="Label" type="Label" parent="TutorialPanel" unique_id=933809273]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 291.0
+offset_bottom = 181.0
+text = "Interaja com NPC´s e/ para progredir 
+no jogo e complete as missões para
+um mundo melhor.
+Comandos: 
+A/D ou ←→ = mover
+W/S ou ↓↑= pular/agachar
+"
+label_settings = SubResource("LabelSettings_ulgj7")
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="TutorialPanel" unique_id=1278617220]
+layout_mode = 1
+offset_left = 74.0
+offset_top = 156.0
+offset_right = 221.0
+offset_bottom = 196.0
+text = "COMEÇAR!"
+icon = ExtResource("7_gh7ws")
+
 [connection signal="pressed" from="VBoxContainer/start_btn" to="." method="_on_start_btn_pressed"]
 [connection signal="pressed" from="VBoxContainer/credits_btn" to="." method="_on_credits_btn_pressed"]
 [connection signal="pressed" from="VBoxContainer/quit_btn" to="." method="_on_quit_btn_pressed"]
+[connection signal="pressed" from="TutorialPanel/Button" to="." method="_on_button_pressed"]

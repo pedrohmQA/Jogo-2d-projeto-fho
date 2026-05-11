@@ -1,23 +1,28 @@
+
 extends Control
 
+@onready var tutorial_panel = $TutorialPanel
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready() -> void:
-	pass # Replace with function body.
+	tutorial_panel.visible = false
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
 
 
 func _on_start_btn_pressed() -> void:
-	get_tree().change_scene_to_file("res://scene/forest.tscn")
+	tutorial_panel.visible = true
 
 
 func _on_credits_btn_pressed() -> void:
-	pass # Replace with function body.
+	get_tree().change_scene_to_file("res://creditos.tscn")
 
 
 func _on_quit_btn_pressed() -> void:
 	get_tree().quit()
+
+
+func _on_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://scene/forest.tscn")
