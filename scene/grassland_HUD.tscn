@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://73o1slvcupqy"]
+
+[ext_resource type="Script" uid="uid://c4q4fusscm4xx" path="res://scene/grassland_hud.gd" id="1_2r80k"]
+[ext_resource type="Texture2D" uid="uid://bmh75achusqg2" path="res://sprites/painel_desmontado.png" id="2_cjpgf"]
+[ext_resource type="Texture2D" uid="uid://vajs6ahwh2be" path="res://sprites/bateria.png" id="3_t5l4d"]
+[ext_resource type="Texture2D" uid="uid://d3dohhvq7cd27" path="res://sprites/cabos.png" id="4_y2k5q"]
+
+[node name="GrasslandHud" type="CanvasLayer" unique_id=181662966]
+script = ExtResource("1_2r80k")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1806522125]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" type="HBoxContainer" parent="HBoxContainer" unique_id=1330312212]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Panel" unique_id=1455580238]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+texture = ExtResource("2_cjpgf")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="HBoxContainer/Panel" unique_id=825495242]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.7529412)
+theme_override_font_sizes/font_size = 12
+
+[node name="Battery" type="HBoxContainer" parent="HBoxContainer" unique_id=342748644]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Battery" unique_id=888044329]
+custom_minimum_size = Vector2(9, 9)
+layout_mode = 2
+texture = ExtResource("3_t5l4d")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="HBoxContainer/Battery" unique_id=972478402]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.7529412)
+theme_override_font_sizes/font_size = 12
+
+[node name="Cable" type="HBoxContainer" parent="HBoxContainer" unique_id=1205283642]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/Cable" unique_id=1406092907]
+custom_minimum_size = Vector2(9, 9)
+layout_mode = 2
+texture = ExtResource("4_y2k5q")
+expand_mode = 3
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="HBoxContainer/Cable" unique_id=1079434420]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.7529412)
+theme_override_font_sizes/font_size = 12

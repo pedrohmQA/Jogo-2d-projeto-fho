@@ -1,8 +1,21 @@
 extends CanvasLayer
 
+signal dialogue_closed
+
 func show_dialog(text):
-	$DialogUI/Panel.visible = true
-	$DialogUI/Panel/TextLabel.text = text
+	$Panel.visible = true
+	$Panel/TextLabel.text = text
+	var hud = get_parent().get_node("grassland_HUD")
+	if hud:
+		hud.visible = false
 
 func hide_dialog():
-	$DialogUI/Panel.visible = false
+	$Panel.visible = false
+	var hud = get_parent().get_node("grassland_HUD")
+	if hud:
+		hud.visible = true
+	emit_signal("dialogue_closed")
+
+func _input(event):
+	if $Panel.visible and event.is_action_pressed("interact"):
+		hide_dialog()
