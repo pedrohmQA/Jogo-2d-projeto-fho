@@ -107,3 +107,11 @@ func reset_grassland_solar() -> void:
 	panels = 0
 	batteries = 0
 	cables = 0
+	
+func can_finish_grassland() -> bool:
+	return panels >= 1 and batteries >= 1 and cables >= 1
+
+func deliver_grassland_items() -> void:
+	panels = 0
+	batteries = 0
+	cables = 0
