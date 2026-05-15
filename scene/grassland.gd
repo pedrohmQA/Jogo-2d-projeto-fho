@@ -17,6 +17,7 @@ func _process(_delta):
 			placa_area.try_interact()
 
 func _on_dialogue_requested(text):
+	print("DEBUG: _on_dialogue_requested foi chamado com texto:", text)
 	dialog_ui.show_dialog(text)
 
 func _on_placa_dialogue_requested(text):

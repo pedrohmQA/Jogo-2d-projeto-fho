@@ -117,7 +117,7 @@ collision_mask = 4
 position = Vector2(-4.5, 96)
 shape = SubResource("RectangleShape2D_xky86")
 
-[node name="NpcGrassland" parent="." unique_id=1097661361 instance=ExtResource("10_3kscr")]
+[node name="NpcGrassland" parent="." unique_id=1097661361 groups=["player"] instance=ExtResource("10_3kscr")]
 position = Vector2(71, 156)
 collision_mask = 2
 
@@ -129,24 +129,6 @@ offset_bottom = -37.000004
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.5647059)
 theme_override_font_sizes/font_size = 8
 text = "Aperte \"E\" para interagir"
-
-[node name="DialogUI" type="CanvasLayer" parent="." unique_id=1049597315]
-script = ExtResource("11_dm3bm")
-
-[node name="Panel" type="PanelContainer" parent="DialogUI" unique_id=754348065]
-visible = false
-offset_right = 216.0
-offset_bottom = 40.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_wgvfe")
-metadata/_edit_use_anchors_ = true
-
-[node name="TextLabel" type="Label" parent="DialogUI/Panel" unique_id=1949945215]
-layout_mode = 2
-theme_override_font_sizes/font_size = 6
-autowrap_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="DialogUI/Panel" unique_id=1359683196]
-layout_mode = 2
 
 [node name="Batery" parent="." unique_id=276410132 instance=ExtResource("13_tcqb0")]
 position = Vector2(1426, 39)
@@ -167,6 +149,24 @@ collision_mask = 2
 [node name="GrasslandHud" parent="." unique_id=181662966 instance=ExtResource("16_ut6yh")]
 layer = 0
 
+[node name="DialogUI" type="CanvasLayer" parent="." unique_id=1049597315]
+layer = 100
+script = ExtResource("11_dm3bm")
+
+[node name="Panel" type="PanelContainer" parent="DialogUI" unique_id=754348065]
+offset_right = 216.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_wgvfe")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextLabel" type="Label" parent="DialogUI/Panel" unique_id=1949945215]
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+autowrap_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="DialogUI/Panel" unique_id=1359683196]
+layout_mode = 2
+
 [node name="SolarPanelBuilt" type="Sprite2D" parent="." unique_id=1429659891]
 visible = false
 position = Vector2(162, 148)
@@ -185,7 +185,7 @@ sprite_frames = SubResource("SpriteFrames_kk0em")
 animation = &"leak"
 frame_progress = 0.15536343
 
-[node name="PlacaCasaVazamentoArea" type="Area2D" parent="." unique_id=1567765830]
+[node name="PlacaCasaVazamentoArea" type="Area2D" parent="." unique_id=1567765830 groups=["player"]]
 position = Vector2(1926, 152)
 collision_mask = 2
 script = ExtResource("20_xxt1f")
