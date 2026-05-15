@@ -196,6 +196,5 @@ shape = SubResource("CapsuleShape2D_wip23")
 
 [connection signal="body_entered" from="NpcGrassland" to="NpcGrassland" method="_on_body_entered"]
 [connection signal="body_exited" from="NpcGrassland" to="NpcGrassland" method="_on_body_exited"]
-[connection signal="body_shape_entered" from="PlacaCasaVazamentoArea" to="." method="_on_placa_casa_vazamento_area_body_shape_entered"]
 
 [editable path="NpcGrassland"]

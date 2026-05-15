@@ -3,13 +3,23 @@ extends Node2D
 @onready var npc        = $NpcGrassland
 @onready var dialog_ui  = $DialogUI
 @onready var placa_area = $PlacaCasaVazamentoArea
+@onready var grassland_hud = $GrasslandHud
+@onready var player = $Player
+
+var dialogue_open := false
 
 func _ready():
 	npc.connect("dialogue_requested", Callable(self, "_on_dialogue_requested"))
-	placa_area.connect("dialogue_requested", Callable(self, "_on_placa_dialogue_requested"))
+	placa_area.connect("dialogue_requested", Callable(self, "_on_dialogue_requested"))
+	dialog_ui.connect("dialogue_closed", Callable(self, "_on_dialogue_closed"))
+	_set_dialogue_active(false)
 
 func _process(_delta):
 	if Input.is_action_just_pressed("interact"):
+		if dialogue_open:
+			dialog_ui.hide_dialog()
+			return
+
 		# Prioridade: NPC > Placa
 		if npc.player_in_range:
 			npc.try_interact()
@@ -17,8 +27,16 @@ func _process(_delta):
 			placa_area.try_interact()
 
 func _on_dialogue_requested(text):
-	print("DEBUG: _on_dialogue_requested foi chamado com texto:", text)
+	if dialogue_open:
+		return
+
+	_set_dialogue_active(true)
 	dialog_ui.show_dialog(text)
 
-func _on_placa_dialogue_requested(text):
-	dialog_ui.show_dialog(text)
+func _on_dialogue_closed():
+	_set_dialogue_active(false)
+
+func _set_dialogue_active(active: bool):
+	dialogue_open = active
+	grassland_hud.visible = not active
+	player.set_physics_process(not active)
