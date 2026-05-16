@@ -13,6 +13,8 @@ func _ready():
 	npc.connect("dialogue_requested", Callable(self, "_on_dialogue_requested"))
 	placa_area.connect("dialogue_requested", Callable(self, "_on_dialogue_requested"))
 	placa_area.connect("pipe_repaired", Callable(self, "_on_pipe_repaired"))
+	if has_node("LevelEnd"):
+		$LevelEnd.connect("blocked", Callable(self, "_on_dialogue_requested"))
 	dialog_ui.connect("dialogue_closed", Callable(self, "_on_dialogue_closed"))
 	_set_dialogue_active(false)
 

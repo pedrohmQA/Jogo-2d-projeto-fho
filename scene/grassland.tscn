@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://0k5bugcw7im5" path="res://sprites/waterfall-removebg-preview.png" id="19_xxt1f"]
 [ext_resource type="Script" uid="uid://1dmjl55pkjn7" path="res://scene/placa_casa_vazamento_area.gd" id="20_xxt1f"]
 [ext_resource type="PackedScene" uid="uid://bx4c3nv8qwmf1" path="res://entities/fita.tscn" id="21_fita1"]
+[ext_resource type="PackedScene" uid="uid://bvvslhu3eydw4" path="res://entities/level_end.tscn" id="22_q1x9n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xky86"]
 size = Vector2(11, 212)
@@ -201,6 +202,13 @@ position = Vector2(2919, -427)
 scale = Vector2(0.5, 0.5)
 collision_mask = 2
 
+[node name="LevelEnd" parent="." unique_id=79969626 instance=ExtResource("22_q1x9n")]
+position = Vector2(3011, -432)
+scale = Vector2(0.35, 0.35)
+collision_mask = 1
+end_type = 2
+next_scene_path = "res://scene/end_scene.tscn"
+
 [node name="Label" type="Label" parent="." unique_id=77341194]
 offset_left = 2075.0
 offset_top = 145.0
@@ -217,3 +225,4 @@ text = "Aperte \"E\" para consertar"
 [connection signal="body_exited" from="NpcGrassland" to="NpcGrassland" method="_on_body_exited"]
 
 [editable path="NpcGrassland"]
+[editable path="LevelEnd"]

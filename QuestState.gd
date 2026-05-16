@@ -59,6 +59,7 @@ func is_tropic_garbage_done() -> bool:
 var panels: int = 0
 var batteries: int = 0
 var cables: int = 0
+var grassland_solar_completed: bool = false
 
 func collect_one_panel():
 	panels += 1
@@ -92,6 +93,7 @@ func reset_all() -> void:
 	panels = 0
 	batteries = 0
 	cables = 0
+	grassland_solar_completed = false
 	has_tape = false
 	pipe_fixed = false
 
@@ -109,6 +111,7 @@ func reset_grassland_solar() -> void:
 	panels = 0
 	batteries = 0
 	cables = 0
+	grassland_solar_completed = false
 	
 func can_finish_grassland() -> bool:
 	return panels >= 1 and batteries >= 1 and cables >= 1
@@ -117,6 +120,10 @@ func deliver_grassland_items() -> void:
 	panels = 0
 	batteries = 0
 	cables = 0
+	grassland_solar_completed = true
+
+func is_grassland_missions_done() -> bool:
+	return grassland_solar_completed and pipe_fixed
 
 # =====================
 # GRASSLAND (Cano/Fita)

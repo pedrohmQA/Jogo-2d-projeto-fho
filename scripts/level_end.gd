@@ -1,45 +1,41 @@
 extends Area2D
 
-enum EndType { QUEST, GARBAGE }
+signal blocked(message: String)
+
+enum EndType { QUEST, GARBAGE, GRASSLAND }
 @export var end_type: EndType = EndType.QUEST
 @export var next_scene_path: String = "res://scene/grassland.tscn"
 @export var required_garbage_type: String = "tropic" # só faz sentido se end_type for GARBAGE
+@export var blocked_message_quest := "Bloqueado: entregue a maçã e a moeda ao NPC para passar."
+@export var blocked_message_garbage := "Colete todo o lixo desta fase para passar!"
+@export var blocked_message_grassland := "Complete as duas missões da grassland para passar."
 
 func _ready() -> void:
-	print("LevelEnd pronto!", self)
 	$AnimatedSprite2D.visible = true
 	self.visible = true
 	$AnimatedSprite2D.play("idle")
-	body_entered.connect(_on_body_entered)
-	$AnimatedSprite2D.play("idle")
-	$AnimatedSprite2D.visible = true
-	self.visible = true
-	print("LevelEnd pronto!", self)
-	body_entered.connect(_on_body_entered)
-	print("LevelEnd posição:", global_position, "AnimSprite visível?", $AnimatedSprite2D.visible, "Z:", $AnimatedSprite2D.z_index)
+	if not body_entered.is_connected(_on_body_entered):
+		body_entered.connect(_on_body_entered)
 
 func _on_body_entered(body: Node2D) -> void:
-	print("Bandeira: colisão detectada com", body)
-	print("DEBUG bandeira: entrou!", body, "grupos:", body.get_groups())
 	if not body.is_in_group("player"):
-		print("Não é player, ignorando")
 		return
 
-	print("[DEBUG] end_type:", end_type)
 	if end_type == EndType.QUEST:
-		print("[DEBUG] phase atual:", QuestState.phase, "esperado COMPLETED:", QuestState.QuestPhase.COMPLETED)
 		if QuestState.phase != QuestState.QuestPhase.COMPLETED:
-			print("Bloqueado: entregue a maçã e a moeda ao NPC para passar.")
+			_emit_blocked(blocked_message_quest)
 			return
 
-	if end_type == EndType.GARBAGE:
-		var result = _is_garbage_done()
-		print("[DEBUG] GARBAGE done?", result, "(required_garbage_type:", required_garbage_type, ")")
-		if not result:
-			print("Colete todo o lixo desta fase para passar!")
+	elif end_type == EndType.GARBAGE:
+		if not _is_garbage_done():
+			_emit_blocked(blocked_message_garbage)
 			return
 
-	print("[DEBUG] Trocando de cena para:", next_scene_path)
+	elif end_type == EndType.GRASSLAND:
+		if not QuestState.is_grassland_missions_done():
+			_emit_blocked(blocked_message_grassland)
+			return
+
 	get_tree().change_scene_to_file(next_scene_path)
 
 func _is_garbage_done() -> bool:
@@ -48,3 +44,7 @@ func _is_garbage_done() -> bool:
 	elif required_garbage_type == "forest":
 		return QuestState.is_forest_garbage_done()
 	return false
+
+func _emit_blocked(message: String) -> void:
+	print(message)
+	emit_signal("blocked", message)
