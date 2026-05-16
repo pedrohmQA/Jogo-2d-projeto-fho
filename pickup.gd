@@ -1,6 +1,6 @@
 extends Area2D
 
-enum PickupType { APPLE, COIN, GARBAGE, BATERY, CABLE, PANEL }
+enum PickupType { APPLE, COIN, GARBAGE, BATERY, CABLE, PANEL, TAPE }
 @export var pickup_type: PickupType = PickupType.APPLE
 
 func _ready():
@@ -23,6 +23,8 @@ func _on_body_entered(body):
 			QuestState.collect_one_cable()
 		PickupType.PANEL:
 			QuestState.collect_one_panel()
+		PickupType.TAPE:
+			QuestState.collect_tape()
 
 	SoundManager.play_pickup_sound()
 	queue_free()

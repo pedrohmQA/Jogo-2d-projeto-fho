@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://r2k1cojdng8b" path="res://sprites/pipes_tileset (1).png" id="18_d4ph7"]
 [ext_resource type="Texture2D" uid="uid://0k5bugcw7im5" path="res://sprites/waterfall-removebg-preview.png" id="19_xxt1f"]
 [ext_resource type="Script" uid="uid://1dmjl55pkjn7" path="res://scene/placa_casa_vazamento_area.gd" id="20_xxt1f"]
+[ext_resource type="PackedScene" uid="uid://bx4c3nv8qwmf1" path="res://entities/fita.tscn" id="21_fita1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xky86"]
 size = Vector2(11, 212)
@@ -186,13 +187,17 @@ animation = &"leak"
 frame_progress = 0.15536343
 
 [node name="PlacaCasaVazamentoArea" type="Area2D" parent="." unique_id=1567765830 groups=["player"]]
-position = Vector2(1926, 152)
+position = Vector2(2055, 152)
 collision_mask = 2
 script = ExtResource("20_xxt1f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlacaCasaVazamentoArea" unique_id=1291359941]
 position = Vector2(17, 12)
 shape = SubResource("CapsuleShape2D_wip23")
+
+[node name="Fita" parent="." unique_id=1111222333 instance=ExtResource("21_fita1")]
+position = Vector2(2400, 145)
+collision_mask = 2
 
 [connection signal="body_entered" from="NpcGrassland" to="NpcGrassland" method="_on_body_entered"]
 [connection signal="body_exited" from="NpcGrassland" to="NpcGrassland" method="_on_body_exited"]
