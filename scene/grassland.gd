@@ -5,12 +5,14 @@ extends Node2D
 @onready var placa_area = $PlacaCasaVazamentoArea
 @onready var grassland_hud = $GrasslandHud
 @onready var player = $Player
+@onready var water_animated = $AnimatedSprite2D
 
 var dialogue_open := false
 
 func _ready():
 	npc.connect("dialogue_requested", Callable(self, "_on_dialogue_requested"))
 	placa_area.connect("dialogue_requested", Callable(self, "_on_dialogue_requested"))
+	placa_area.connect("pipe_repaired", Callable(self, "_on_pipe_repaired"))
 	dialog_ui.connect("dialogue_closed", Callable(self, "_on_dialogue_closed"))
 	_set_dialogue_active(false)
 
@@ -35,6 +37,10 @@ func _on_dialogue_requested(text):
 
 func _on_dialogue_closed():
 	_set_dialogue_active(false)
+
+func _on_pipe_repaired():
+	if is_instance_valid(water_animated):
+		water_animated.visible = false
 
 func _set_dialogue_active(active: bool):
 	dialogue_open = active

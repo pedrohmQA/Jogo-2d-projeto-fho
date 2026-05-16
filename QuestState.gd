@@ -92,6 +92,8 @@ func reset_all() -> void:
 	panels = 0
 	batteries = 0
 	cables = 0
+	has_tape = false
+	pipe_fixed = false
 
 func reset_forest_quest() -> void:
 	phase = QuestPhase.NOT_MET
@@ -115,3 +117,19 @@ func deliver_grassland_items() -> void:
 	panels = 0
 	batteries = 0
 	cables = 0
+
+# =====================
+# GRASSLAND (Cano/Fita)
+# =====================
+var has_tape: bool = false
+var pipe_fixed: bool = false
+
+func collect_tape() -> void:
+	has_tape = true
+
+func fix_pipe() -> void:
+	pipe_fixed = true
+
+func reset_grassland_tape() -> void:
+	has_tape = false
+	pipe_fixed = false
