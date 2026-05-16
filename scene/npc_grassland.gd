@@ -10,6 +10,9 @@ var player_in_range := false
 var quest_completed := false
 var mission_started := false
 
+func _ready() -> void:
+	quest_completed = QuestState.grassland_solar_delivered
+
 func _on_body_entered(body):
 	if body is CharacterBody2D:
 		player_in_range = true
