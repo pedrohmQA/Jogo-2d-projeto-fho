@@ -175,6 +175,8 @@ shape = SubResource("RectangleShape2D_kmspj")
 [node name="AnimatedSprite2D" parent="LevelEnd" index="1" unique_id=921225856]
 position = Vector2(575, 135)
 scale = Vector2(2.531245, 2.1406248)
+autoplay = "idle"
+frame_progress = 0.3156865
 
 [node name="coin" parent="." unique_id=343812034 instance=ExtResource("14_ja8kk")]
 position = Vector2(294, 73)
