@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://bvvslhu3eydw4" path="res://entities/level_end.tscn" id="21_kajwn"]
 [ext_resource type="Texture2D" uid="uid://bfrfgegrkmmp6" path="res://sprites/WavingFlagGreen-ezgif.com-gif-to-sprite-converter.png" id="22_uehjn"]
 [ext_resource type="AudioStream" uid="uid://ixxjjvvy5haf" path="res://audios/670772__ustym_petrovych__8-bit-tune-short-sketch-adventure.wav" id="23_hohr6"]
+[ext_resource type="PackedScene" uid="uid://u22sw657jlv2" path="res://scene/EspinhoSurpresa.tscn" id="24_7jepg"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_d18o5"]
 animations = [{
@@ -454,5 +455,11 @@ autoplay = "idle"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1547901996]
 stream = ExtResource("23_hohr6")
+
+[node name="EspinhoSurpresa" parent="." unique_id=547628748 instance=ExtResource("24_7jepg")]
+position = Vector2(728, 165)
+
+[node name="EspinhoSurpresa" parent="EspinhoSurpresa" unique_id=649635518 instance=ExtResource("24_7jepg")]
+position = Vector2(74, -207)
 
 [editable path="LevelEnd"]

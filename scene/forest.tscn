@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://v6u46a0n0mg4" path="res://scene/pause_menu.tscn" id="19_ysu3w"]
 [ext_resource type="AudioStream" uid="uid://ixxjjvvy5haf" path="res://audios/670772__ustym_petrovych__8-bit-tune-short-sketch-adventure.wav" id="20_dki5c"]
 [ext_resource type="Script" uid="uid://ct31sqt37enkn" path="res://scripts/lava.gd" id="21_cvgm6"]
+[ext_resource type="PackedScene" uid="uid://u22sw657jlv2" path="res://scene/EspinhoSurpresa.tscn" id="23_xw4on"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gwku7"]
 texture = ExtResource("3_jxvlp")
@@ -254,6 +255,12 @@ script = ExtResource("21_cvgm6")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Lava" unique_id=377930095]
 position = Vector2(440, 119)
 shape = SubResource("RectangleShape2D_dki5c")
+
+[node name="EspinhoSurpresa" parent="." unique_id=547628748 instance=ExtResource("23_xw4on")]
+position = Vector2(146, 182)
+
+[node name="EspinhoSurpresa2" parent="." unique_id=31644440 instance=ExtResource("23_xw4on")]
+position = Vector2(342, 150)
 
 [connection signal="body_entered" from="Lava" to="Lava" method="_on_body_entered"]
 

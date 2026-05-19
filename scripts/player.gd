@@ -10,14 +10,13 @@ enum PlayerState {
 
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
-@onready var som_pulo: AudioStreamPlayer2D = $SomPulo   # <-- NOVO
+@onready var som_pulo: AudioStreamPlayer2D = $SomPulo
 
 @export var max_speed: float = 100.0
 @export var acceleration: float = 180
 @export var deceleration: float = 400.0
 @export var max_jump_count: int = 2
 
-# 🔹 NOVO: posição de respawn e limite de queda
 @export var respawn_position: Vector2
 @export var fall_limit: float = 1000.0
 
@@ -37,7 +36,6 @@ var in_water: bool = false
 func _ready() -> void:
 	if respawn_position == Vector2.ZERO:
 		respawn_position = global_position
-
 	go_to_idle_state()
 
 func _physics_process(delta: float) -> void:
@@ -75,27 +73,16 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
-
-# =====================
-# 🔹 RESPAWN
-# =====================
-
 func respawn() -> void:
-	set_physics_process(false)
 	global_position = respawn_position
 	velocity = Vector2.ZERO
 	jump_count = 0
 	in_water = false
 	anim.scale = Vector2(1, 1)
 	go_to_idle_state()
-	move_and_slide()
-	await get_tree().process_frame
-	set_physics_process(true)
 
-
-# =====================
-# TRANSITIONS
-# =====================
+func voltar_ao_inicio():
+	respawn()
 
 func go_to_duck_state() -> void:
 	status = PlayerState.duck
@@ -115,7 +102,7 @@ func go_to_jump_state() -> void:
 	anim.play("jump")
 	velocity.y = JUMP_VELOCITY
 	jump_count += 1
-	som_pulo.play() # <-- TOCA O SOM DO PULO
+	som_pulo.play()
 
 func go_to_fall_state() -> void:
 	status = PlayerState.jump
@@ -139,57 +126,42 @@ func exit_water() -> void:
 	anim.play("jump")
 	jump_count = 1
 
-# =====================
-# STATE LOGIC
-# =====================
-
 func duck_state(delta: float) -> void:
 	velocity.x = 0
-
 	if not is_on_floor():
 		go_to_fall_state()
 		return
-
 	if Input.is_action_just_pressed("jump"):
 		go_to_jump_state()
 
 func idle_state(delta: float) -> void:
 	move(delta)
-
 	if not is_on_floor():
 		go_to_fall_state()
 		return
-
 	if velocity.x != 0:
 		go_to_walk_state()
 		return
-
 	if Input.is_action_just_pressed("jump"):
 		go_to_jump_state()
 
 func walk_state(delta: float) -> void:
 	move(delta)
-
 	if not is_on_floor():
 		go_to_fall_state()
 		return
-
 	if velocity.x == 0:
 		go_to_idle_state()
 		return
-
 	if Input.is_action_just_pressed("jump"):
 		go_to_jump_state()
 
 func jump_state(delta: float) -> void:
 	move(delta)
-
 	if Input.is_action_just_pressed("jump") and jump_count < max_jump_count:
 		go_to_jump_state()
-
 	if is_on_floor():
 		jump_count = 0
-
 		if Input.is_action_pressed("down"):
 			go_to_duck_state()
 		elif velocity.x == 0:
@@ -206,22 +178,15 @@ func swim_physics(delta: float) -> void:
 
 func swim_state(delta: float) -> void:
 	update_direction()
-
 	if direction:
 		velocity.x = move_toward(velocity.x, direction * SWIM_SPEED, acceleration * delta)
 	else:
 		velocity.x = move_toward(velocity.x, 0, deceleration * delta)
-
 	if Input.is_action_pressed("jump"):
 		velocity.y = SWIM_UP_VELOCITY
 
-# =====================
-# MOVEMENT
-# =====================
-
 func move(delta: float) -> void:
 	update_direction()
-
 	if direction:
 		velocity.x = move_toward(velocity.x, direction * max_speed, acceleration * delta)
 	else:
@@ -229,7 +194,6 @@ func move(delta: float) -> void:
 
 func update_direction() -> void:
 	direction = Input.get_axis("left", "right")
-
 	if direction < 0:
 		anim.flip_h = true
 	elif direction > 0:

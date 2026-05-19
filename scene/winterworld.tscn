@@ -1,17 +1,20 @@
 [gd_scene format=4 uid="uid://43su4vibfm2s"]
 
 [ext_resource type="Texture2D" uid="uid://b3vn3eoy6gcqp" path="res://sprites/Seasonal Tilesets/4 - Winter World/Background parts/3 - Big_mountain_BG.png" id="1_lv6dh"]
+[ext_resource type="Script" uid="uid://b2jbusm2sucux" path="res://scene/winterworld.gd" id="1_qmkqk"]
 [ext_resource type="Texture2D" uid="uid://bbbvundtjbsbr" path="res://sprites/Seasonal Tilesets/4 - Winter World/Background parts/2 - Smaller_mountains.png" id="2_v23ga"]
 [ext_resource type="Texture2D" uid="uid://c72lmc4id5uly" path="res://sprites/Seasonal Tilesets/4 - Winter World/Background parts/1 - Snowy_foreground_area.png" id="3_0iaem"]
 [ext_resource type="TileSet" uid="uid://kncqebxfydxa" path="res://tiles/terrain.tres" id="4_f3pc8"]
 [ext_resource type="TileSet" uid="uid://dr7a84wcmogq0" path="res://tiles/decoration.tres" id="5_qmkqk"]
 [ext_resource type="PackedScene" uid="uid://2jgfnjhiqgnf" path="res://entities/player.tscn" id="6_0iaem"]
 [ext_resource type="PackedScene" uid="uid://mdi7k1lqpuic" path="res://entities/camera.tscn" id="7_f3pc8"]
+[ext_resource type="PackedScene" uid="uid://u22sw657jlv2" path="res://scene/EspinhoSurpresa.tscn" id="8_f3pc8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0iaem"]
 size = Vector2(11, 212)
 
 [node name="winterworld" type="Node2D" unique_id=672110621]
+script = ExtResource("1_qmkqk")
 metadata/_edit_horizontal_guides_ = [208.0]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=2077016359]
@@ -65,3 +68,12 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="limit" unique_id=2025238992]
 position = Vector2(-4.5, 96)
 shape = SubResource("RectangleShape2D_0iaem")
+
+[node name="EspinhoSurpresa" parent="." unique_id=547628748 instance=ExtResource("8_f3pc8")]
+position = Vector2(120, 147)
+
+[node name="EspinhoSurpresa2" parent="." unique_id=210490256 instance=ExtResource("8_f3pc8")]
+position = Vector2(521, 178)
+
+[node name="EspinhoSurpresa3" parent="." unique_id=568135821 instance=ExtResource("8_f3pc8")]
+position = Vector2(1186, -47)

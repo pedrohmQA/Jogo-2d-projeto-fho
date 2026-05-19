@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://0k5bugcw7im5" path="res://sprites/waterfall-removebg-preview.png" id="19_xxt1f"]
 [ext_resource type="Script" uid="uid://1dmjl55pkjn7" path="res://scene/placa_casa_vazamento_area.gd" id="20_xxt1f"]
 [ext_resource type="PackedScene" uid="uid://bx4c3nv8qwmf1" path="res://entities/fita.tscn" id="21_fita1"]
+[ext_resource type="PackedScene" uid="uid://u22sw657jlv2" path="res://scene/EspinhoSurpresa.tscn" id="22_70owf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xky86"]
 size = Vector2(11, 212)
@@ -212,6 +213,15 @@ theme_override_constants/shadow_offset_x = 0
 theme_override_constants/shadow_offset_y = 0
 theme_override_font_sizes/font_size = 4
 text = "Aperte \"E\" para consertar"
+
+[node name="EspinhoSurpresa" parent="." unique_id=547628748 instance=ExtResource("22_70owf")]
+position = Vector2(187, 162)
+
+[node name="EspinhoSurpresa" parent="EspinhoSurpresa" unique_id=2011816214 instance=ExtResource("22_70owf")]
+position = Vector2(1159, 1)
+
+[node name="EspinhoSurpresa" parent="EspinhoSurpresa/EspinhoSurpresa" unique_id=1937262556 instance=ExtResource("22_70owf")]
+position = Vector2(86, -285)
 
 [connection signal="body_entered" from="NpcGrassland" to="NpcGrassland" method="_on_body_entered"]
 [connection signal="body_exited" from="NpcGrassland" to="NpcGrassland" method="_on_body_exited"]
