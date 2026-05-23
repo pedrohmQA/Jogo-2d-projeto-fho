@@ -1,17 +1,26 @@
 [gd_scene format=4 uid="uid://43su4vibfm2s"]
 
 [ext_resource type="Texture2D" uid="uid://b3vn3eoy6gcqp" path="res://sprites/Seasonal Tilesets/4 - Winter World/Background parts/3 - Big_mountain_BG.png" id="1_0iaem"]
+[ext_resource type="Script" uid="uid://cv2kjl42jy5uq" path="res://scene/winterworld.gd" id="1_winter_script"]
 [ext_resource type="Texture2D" uid="uid://bbbvundtjbsbr" path="res://sprites/Seasonal Tilesets/4 - Winter World/Background parts/2 - Smaller_mountains.png" id="2_f3pc8"]
 [ext_resource type="Texture2D" uid="uid://c72lmc4id5uly" path="res://sprites/Seasonal Tilesets/4 - Winter World/Background parts/1 - Snowy_foreground_area.png" id="3_qmkqk"]
 [ext_resource type="TileSet" uid="uid://kncqebxfydxa" path="res://tiles/terrain.tres" id="4_jrt5w"]
 [ext_resource type="TileSet" uid="uid://dr7a84wcmogq0" path="res://tiles/decoration.tres" id="5_b2bxl"]
 [ext_resource type="PackedScene" uid="uid://mdi7k1lqpuic" path="res://entities/camera.tscn" id="6_2y6hj"]
 [ext_resource type="PackedScene" uid="uid://2jgfnjhiqgnf" path="res://entities/player.tscn" id="7_ofdqk"]
+[ext_resource type="PackedScene" uid="uid://dm5n7k3q8w9r2" path="res://scene/npc_professor.tscn" id="8_professor"]
+[ext_resource type="Texture2D" uid="uid://fstj4l2fwprq" path="res://sprites/escola.png" id="9_school"]
+[ext_resource type="PackedScene" uid="uid://c4k8m9n2p7q3" path="res://entities/paper.tscn" id="10_paper"]
+[ext_resource type="Script" uid="uid://dqafc7o4rowxt" path="res://scene/hud_npc_grassland.gd" id="11_dialog"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0iaem"]
 size = Vector2(11, 212)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dialog"]
+bg_color = Color(0, 0, 0, 0.7529412)
+
 [node name="winterworld" type="Node2D" unique_id=1544964825]
+script = ExtResource("1_winter_script")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=1317084612]
 
@@ -54,7 +63,48 @@ tile_set = ExtResource("5_b2bxl")
 position = Vector2(95, 120)
 
 [node name="Player" parent="Tiles" unique_id=382685611 instance=ExtResource("7_ofdqk")]
+groups = ["player"]
 position = Vector2(11, 158)
+
+[node name="NpcProfessor" parent="." unique_id=411447182 instance=ExtResource("8_professor")]
+position = Vector2(38, 156)
+
+[node name="Label" type="Label" parent="NpcProfessor" unique_id=2037610038]
+offset_left = -31.111113
+offset_top = -60.000004
+offset_right = 63.888885
+offset_bottom = -37.000004
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.5647059)
+theme_override_font_sizes/font_size = 8
+text = "Aperte \"E\" para interagir"
+
+[node name="Escola" type="Sprite2D" parent="." unique_id=975474212]
+position = Vector2(116, 110)
+scale = Vector2(0.23, 0.23)
+texture = ExtResource("9_school")
+
+[node name="Paper" parent="." unique_id=1502398589 instance=ExtResource("10_paper")]
+position = Vector2(448, 154)
+scale = Vector2(0.4, 0.4)
+collision_mask = 2
+
+[node name="DialogUI" type="CanvasLayer" parent="." unique_id=734422194]
+layer = 100
+script = ExtResource("11_dialog")
+
+[node name="Panel" type="PanelContainer" parent="DialogUI" unique_id=1071519143]
+offset_right = 216.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_dialog")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextLabel" type="Label" parent="DialogUI/Panel" unique_id=1548225161]
+layout_mode = 2
+theme_override_font_sizes/font_size = 6
+autowrap_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="DialogUI/Panel" unique_id=872751721]
+layout_mode = 2
 
 [node name="limit" type="StaticBody2D" parent="." unique_id=1813808562]
 collision_mask = 4
