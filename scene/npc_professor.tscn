@@ -1,0 +1,38 @@
+[gd_scene format=4 uid="uid://dm5n7k3q8w9r2"]
+
+[ext_resource type="Script" uid="uid://i3guweqyb2bp" path="res://scene/npc_professor.gd" id="1_prof"]
+[ext_resource type="Texture2D" uid="uid://dqdx3x83teqlj" path="res://sprites/professor.png" id="2_prof"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_prof"]
+atlas = ExtResource("2_prof")
+region = Rect2(0, 0, 1536, 1024)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_prof"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_prof")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_prof"]
+radius = 26.0
+height = 90.0
+
+[node name="NpcProfessor" type="Area2D"]
+scale = Vector2(0.45, 0.45)
+script = ExtResource("1_prof")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_prof")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-10, -1)
+shape = SubResource("CapsuleShape2D_prof")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

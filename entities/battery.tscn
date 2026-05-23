@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dfam1u83ponwy"]
+
+[ext_resource type="Script" uid="uid://04g0maj2kki0" path="res://pickup.gd" id="1_c4uta"]
+[ext_resource type="Texture2D" uid="uid://vajs6ahwh2be" path="res://sprites/bateria.png" id="1_vcytm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c4uta"]
+size = Vector2(709, 578)
+
+[node name="Battery" type="Area2D" unique_id=276410132]
+script = ExtResource("1_c4uta")
+pickup_type = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1651667090]
+texture = ExtResource("1_vcytm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1173938906]
+position = Vector2(-7, 13)
+shape = SubResource("RectangleShape2D_c4uta")

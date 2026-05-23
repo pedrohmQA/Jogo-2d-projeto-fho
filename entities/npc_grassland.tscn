@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://hgrasia233xt"]
+
+[ext_resource type="Script" uid="uid://440r0ytow1nu" path="res://scripts/npc.gd" id="1_n4p5p"]
+[ext_resource type="Texture2D" uid="uid://3evordrphjkl" path="res://sprites/professor.png" id="2_n4p5p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n4p5p"]
+atlas = ExtResource("2_n4p5p")
+region = Rect2(0, 0, 205, 326)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xxcha"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n4p5p")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kh24r"]
+radius = 20.0
+height = 85.0
+
+[node name="npc_winterworld" type="Area2D" unique_id=976463522]
+collision_layer = 4
+script = ExtResource("1_n4p5p")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1505831154]
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_xxcha")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1723430315]
+position = Vector2(0, 3)
+shape = SubResource("CapsuleShape2D_kh24r")

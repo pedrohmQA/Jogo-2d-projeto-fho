@@ -1,0 +1,64 @@
+[gd_scene format=4 uid="uid://43su4vibfm2s"]
+
+[ext_resource type="Texture2D" uid="uid://b3vn3eoy6gcqp" path="res://sprites/Seasonal Tilesets/4 - Winter World/Background parts/3 - Big_mountain_BG.png" id="1_0iaem"]
+[ext_resource type="Texture2D" uid="uid://bbbvundtjbsbr" path="res://sprites/Seasonal Tilesets/4 - Winter World/Background parts/2 - Smaller_mountains.png" id="2_f3pc8"]
+[ext_resource type="Texture2D" uid="uid://c72lmc4id5uly" path="res://sprites/Seasonal Tilesets/4 - Winter World/Background parts/1 - Snowy_foreground_area.png" id="3_qmkqk"]
+[ext_resource type="TileSet" uid="uid://kncqebxfydxa" path="res://tiles/terrain.tres" id="4_jrt5w"]
+[ext_resource type="TileSet" uid="uid://dr7a84wcmogq0" path="res://tiles/decoration.tres" id="5_b2bxl"]
+[ext_resource type="PackedScene" uid="uid://mdi7k1lqpuic" path="res://entities/camera.tscn" id="6_2y6hj"]
+[ext_resource type="PackedScene" uid="uid://2jgfnjhiqgnf" path="res://entities/player.tscn" id="7_ofdqk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0iaem"]
+size = Vector2(11, 212)
+
+[node name="winterworld" type="Node2D" unique_id=1544964825]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=1317084612]
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1852141120]
+motion_scale = Vector2(0.3, 0.3)
+motion_mirroring = Vector2(288, 0)
+
+[node name="3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2" unique_id=1440874648]
+texture = ExtResource("1_0iaem")
+centered = false
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1394224371]
+motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(288, 0)
+
+[node name="2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3" unique_id=439097757]
+texture = ExtResource("2_f3pc8")
+centered = false
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1270524323]
+motion_scale = Vector2(0.7, 0.7)
+motion_mirroring = Vector2(288, 0)
+
+[node name="1" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4" unique_id=684704620]
+texture = ExtResource("3_qmkqk")
+centered = false
+
+[node name="Tiles" type="Node" parent="." unique_id=747719741]
+
+[node name="Terrain" type="TileMapLayer" parent="Tiles" unique_id=722695168]
+tile_map_data = PackedByteArray("AAD//wsAAwAJAAMAAAAAAAsAAwAKAAMAAAABAAsAAwAKAAMAAAACAAsAAwAKAAMAAAADAAsAAwAKAAMAAAAEAAsAAwANAAMAAAAGAAoAAwAJAAMAAAAHAAoAAwAKAAMAAAAIAAoAAwAKAAMAAAAJAAoAAwAKAAMAAAAKAAoAAwANAAMAAAAMAAgAAwAPAAMAAAAOAAYAAwAPAAMAAAARAAgAAwAPAAMAAAAUAAgAAwAPAAMAAAAXAAcAAwAJAAMAAAAYAAcAAwAKAAMAAAAbAAcAAwAKAAMAAAAcAAcAAwANAAMAAAAXAAwAAwAJAAMAAAAYAAwAAwAKAAMAAAAZAAwAAwAKAAMAAAAaAAwAAwAKAAMAAAAbAAwAAwAKAAMAAAAcAAwAAwAKAAMAAAAdAAwAAwAKAAMAAAAeAAwAAwAKAAMAAAAfAAwAAwAKAAMAAAAgAAwAAwAKAAMAAAAhAAwAAwAKAAMAAAAiAAwAAwAKAAMAAAAjAAwAAwAKAAMAAAAkAAwAAwAKAAMAAAAlAAwAAwAKAAMAAAAmAAwAAwAKAAMAAAAnAAwAAwANAAMAAAAqAAsAAwAPAAMAAAAuAAoAAwAPAAMAAAAyAAkAAwAPAAMAAAA1AAgAAwAJAAMAAAA2AAgAAwAKAAMAAAA3AAgAAwAKAAMAAAA4AAgAAwAKAAMAAAA5AAgAAwANAAMAAAA8AAkAAwAPAAMAAAA/AAsAAwAPAAMAAABDAAkAAwAPAAMAAABHAAYAAwAPAAMAAABDAAMAAwAPAAMAAABGAP7/AwAJAAMAAABHAP7/AwAKAAMAAABIAP7/AwAKAAMAAABJAP7/AwAKAAMAAABKAP7/AwAKAAMAAABLAP7/AwAKAAMAAABMAP7/AwAKAAMAAABNAP7/AwAKAAMAAABOAP7/AwAMAAMAAABPAP7/AwAMAAMAAABQAP7/AwAMAAMAAABRAP7/AwAMAAMAAABSAP7/AwAMAAMAAABTAP7/AwAMAAMAAABUAP7/AwAMAAMAAABVAP7/AwANAAMAAABAAAAAAwAPAAMAAAA=")
+tile_set = ExtResource("4_jrt5w")
+
+[node name="Decoration" type="TileMapLayer" parent="Tiles" unique_id=1356960090]
+position = Vector2(0, 4)
+tile_map_data = PackedByteArray("AAA3AAYABAAFAAEAAAAlAAoABAABAAEAAAAYAAoABAAFAAEAAAAJAAgABAABAAEAAAAYAAsABAADAAUAAAAJAAkABAADAAUAAAAmAAsABAADAAUAAAA2AAcABAADAAUAAABHAP3/BAADAAUAAABQAPz/BAABAAEAAABRAP3/BAADAAUAAABSAPz/BAAFAAEAAAA=")
+tile_set = ExtResource("5_b2bxl")
+
+[node name="Camera" parent="Tiles" unique_id=1397644041 instance=ExtResource("6_2y6hj")]
+position = Vector2(95, 120)
+
+[node name="Player" parent="Tiles" unique_id=382685611 instance=ExtResource("7_ofdqk")]
+position = Vector2(11, 158)
+
+[node name="limit" type="StaticBody2D" parent="." unique_id=1813808562]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="limit" unique_id=1264321611]
+position = Vector2(-4.5, 96)
+shape = SubResource("RectangleShape2D_0iaem")

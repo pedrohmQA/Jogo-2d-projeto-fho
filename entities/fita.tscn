@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bx4c3nv8qwmf1"]
+
+[ext_resource type="Script" uid="uid://04g0maj2kki0" path="res://pickup.gd" id="1_fitap"]
+[ext_resource type="Texture2D" uid="uid://dldstryxe7scg" path="res://sprites/fita.png" id="2_fitap"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fita1"]
+radius = 16.0
+
+[node name="Fita" type="Area2D" unique_id=987654321]
+script = ExtResource("1_fitap")
+pickup_type = 6
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=987654322]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_fitap")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=987654323]
+shape = SubResource("CircleShape2D_fita1")
