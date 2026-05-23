@@ -67,7 +67,7 @@ tile_set = ExtResource("4_jrt5w")
 
 [node name="Decoration" type="TileMapLayer" parent="Tiles" unique_id=1356960090]
 position = Vector2(0, 4)
-tile_map_data = PackedByteArray("AAA3AAYABAAFAAEAAAAlAAoABAABAAEAAAAYAAoABAAFAAEAAAAJAAgABAABAAEAAAAYAAsABAADAAUAAAAJAAkABAADAAUAAAAmAAsABAADAAUAAAA2AAcABAADAAUAAABSAAoAAAADAAUAAABVAAsAAwAMAAIAAABWAAsAAwAMAAIAAABXAAsAAwAMAAIAAABYAAsAAwAMAAIAAABZAAsAAwAMAAIAAABaAAsAAwAMAAIAAABbAAsAAwAMAAIAAABcAAsAAwAMAAIAAAA=")
+tile_map_data = PackedByteArray("AAA3AAYABAAFAAEAAAAlAAoABAABAAEAAAAYAAoABAAFAAEAAAAJAAgABAABAAEAAAAYAAsABAADAAUAAAAJAAkABAADAAUAAAAmAAsABAADAAUAAAA2AAcABAADAAUAAABSAAoAAAADAAUAAAA=")
 tile_set = ExtResource("5_b2bxl")
 
 [node name="Camera" parent="Tiles" unique_id=1397644041 instance=ExtResource("6_2y6hj")]
@@ -101,34 +101,24 @@ texture = ExtResource("9_school")
 position = Vector2(1273, 181)
 collision_mask = 2
 script = ExtResource("12_bridge_sign_script")
-dialogue_text_request = "os habitantes da cidade precisam de uma ponte para passar por este buraco, encontre madeira e venha construir a ponte"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BridgeSign" unique_id=1319197679]
 position = Vector2(50, -14)
 shape = SubResource("CircleShape2D_bridge_sign")
-
-[node name="Label" type="Label" parent="BridgeSign" unique_id=1831190155]
-offset_left = -70.0
-offset_top = -50.0
-offset_right = 70.0
-offset_bottom = -37.0
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.5647059)
-theme_override_font_sizes/font_size = 8
-text = "Aperte \"E\" para interagir"
 
 [node name="BridgeBuilt" type="Node2D" parent="." unique_id=708412270]
 position = Vector2(1328, 173)
 script = ExtResource("13_bridge_script")
 
 [node name="BridgeVisual" type="Sprite2D" parent="BridgeBuilt" unique_id=2005458444]
-visible = false
-position = Vector2(0, -6)
+position = Vector2(81, 8)
 scale = Vector2(0.37, 0.12)
 texture = ExtResource("15_bridge_tex")
 
 [node name="BridgeCollision" type="StaticBody2D" parent="BridgeBuilt" unique_id=1610908446]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BridgeBuilt/BridgeCollision" unique_id=618036162]
+position = Vector2(105, 10)
 shape = SubResource("RectangleShape2D_bridge_collision")
 disabled = true
 
@@ -136,14 +126,13 @@ disabled = true
 visible = false
 position = Vector2(1518, 167)
 scale = Vector2(0.4, 0.4)
-collision_mask = 1
 end_type = 3
-start_hidden = true
 next_scene_path = "res://scene/victory.tscn"
+start_hidden = true
 
 [node name="CollisionShape2D" parent="LevelEndVictory" index="0" unique_id=1009072659]
-disabled = true
 position = Vector2(2, 1)
+disabled = true
 
 [node name="AnimatedSprite2D" parent="LevelEndVictory" index="1" unique_id=921225856]
 visible = false
@@ -156,6 +145,7 @@ scale = Vector2(0.4, 0.4)
 [node name="Wood" parent="." unique_id=2021906405 instance=ExtResource("14_wood")]
 position = Vector2(2285, -183)
 scale = Vector2(0.5, 0.5)
+collision_mask = 2
 
 [node name="DialogUI" type="CanvasLayer" parent="." unique_id=734422194]
 layer = 100
@@ -194,3 +184,5 @@ theme_override_constants/shadow_offset_y = 0
 theme_override_constants/shadow_outline_size = 3
 theme_override_font_sizes/font_size = 4
 text = "Aperte \"E\" para interagir"
+
+[editable path="LevelEndVictory"]
