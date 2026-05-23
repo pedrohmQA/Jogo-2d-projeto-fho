@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bl7klgiuilqx7"
-path="res://.godot/imported/ponte_madeira-removebg-preview.png-fb25bf61318d082e502b7f4eb2f0315f.ctex"
+uid="uid://bbwa0rdh5np0k"
+path="res://.godot/imported/ponte_final-removebg-preview.png-c7a6ae1ff7045434df811bd235e35b2e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/ponte_madeira-removebg-preview.png"
-dest_files=["res://.godot/imported/ponte_madeira-removebg-preview.png-fb25bf61318d082e502b7f4eb2f0315f.ctex"]
+source_file="res://sprites/ponte_final-removebg-preview.png"
+dest_files=["res://.godot/imported/ponte_final-removebg-preview.png-c7a6ae1ff7045434df811bd235e35b2e.ctex"]
 
 [params]
 
