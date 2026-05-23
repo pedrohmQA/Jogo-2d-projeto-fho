@@ -62,7 +62,7 @@ tile_set = ExtResource("5_b2bxl")
 [node name="Camera" parent="Tiles" unique_id=1397644041 instance=ExtResource("6_2y6hj")]
 position = Vector2(95, 120)
 
-[node name="Player" parent="Tiles" unique_id=382685611 instance=ExtResource("7_ofdqk")]
+[node name="Player" parent="Tiles" unique_id=382685611 groups=["player"] instance=ExtResource("7_ofdqk")]
 z_index = 100
 position = Vector2(11, 158)
 
