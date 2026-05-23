@@ -1,6 +1,6 @@
 extends Area2D
 
-enum EndType { QUEST, GARBAGE }
+enum EndType { QUEST, GARBAGE, GRASSLAND }
 @export var end_type: EndType = EndType.QUEST
 @export var next_scene_path: String = "res://scene/grassland.tscn"
 @export var required_garbage_type: String = "tropic" # só faz sentido se end_type for GARBAGE
@@ -37,6 +37,13 @@ func _on_body_entered(body: Node2D) -> void:
 		print("[DEBUG] GARBAGE done?", result, "(required_garbage_type:", required_garbage_type, ")")
 		if not result:
 			print("Colete todo o lixo desta fase para passar!")
+			return
+
+	if end_type == EndType.GRASSLAND:
+		var grassland_ready := QuestState.grassland_solar_completed and QuestState.pipe_fixed
+		print("[DEBUG] GRASSLAND done?", grassland_ready, "solar:", QuestState.grassland_solar_completed, "pipe_fixed:", QuestState.pipe_fixed)
+		if not grassland_ready:
+			print("Complete as missões do painel solar e do cano para passar.")
 			return
 
 	print("[DEBUG] Trocando de cena para:", next_scene_path)

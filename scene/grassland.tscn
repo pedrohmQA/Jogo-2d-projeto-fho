@@ -22,6 +22,7 @@
 [ext_resource type="Script" uid="uid://1dmjl55pkjn7" path="res://scene/placa_casa_vazamento_area.gd" id="20_xxt1f"]
 [ext_resource type="PackedScene" uid="uid://bx4c3nv8qwmf1" path="res://entities/fita.tscn" id="21_fita1"]
 [ext_resource type="PackedScene" uid="uid://u22sw657jlv2" path="res://scene/EspinhoSurpresa.tscn" id="22_70owf"]
+[ext_resource type="PackedScene" uid="uid://bvvslhu3eydw4" path="res://entities/level_end.tscn" id="23_levelend"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xky86"]
 size = Vector2(11, 212)
@@ -223,8 +224,24 @@ position = Vector2(1159, 1)
 [node name="EspinhoSurpresa" parent="EspinhoSurpresa/EspinhoSurpresa" unique_id=1937262556 instance=ExtResource("22_70owf")]
 position = Vector2(86, -285)
 
+[node name="LevelEnd" parent="." unique_id=79969626 instance=ExtResource("23_levelend")]
+position = Vector2(3052, -452)
+scale = Vector2(0.5, 0.5)
+collision_mask = 1
+end_type = 2
+next_scene_path = "res://scene/winterworld.tscn"
+
+[node name="CollisionShape2D" parent="LevelEnd" index="0" unique_id=1009072659]
+position = Vector2(2, 1)
+
+[node name="AnimatedSprite2D" parent="LevelEnd" index="1" unique_id=921225856]
+visible = true
+z_index = 10
+position = Vector2(0, 0)
+
 [connection signal="body_entered" from="NpcGrassland" to="NpcGrassland" method="_on_body_entered"]
 [connection signal="body_exited" from="NpcGrassland" to="NpcGrassland" method="_on_body_exited"]
 
 [editable path="NpcGrassland"]
 [editable path="Fita"]
+[editable path="LevelEnd"]
