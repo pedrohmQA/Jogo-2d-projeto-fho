@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c4k8nan2p7q3"]
 
-[ext_resource type="Script" uid="uid://i3guweqyb2bp" path="res://scene/npc_grassland.gd" id="1_paper"]
+[ext_resource type="Script" uid="uid://04g0maj2kki0" path="res://pickup.gd" id="1_paper"]
 [ext_resource type="Texture2D" uid="uid://ccrr13wl1wqtk" path="res://sprites/paper.png" id="2_gdeve"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_paper"]
@@ -9,6 +9,7 @@ radius = 17.262676
 [node name="Paper" type="Area2D" unique_id=1092083879]
 collision_mask = 2
 script = ExtResource("1_paper")
+pickup_type = 7
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=986720136]
 scale = Vector2(0.03, 0.03)
