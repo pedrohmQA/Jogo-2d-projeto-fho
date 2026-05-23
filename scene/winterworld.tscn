@@ -12,21 +12,21 @@
 [ext_resource type="Texture2D" uid="uid://fstj4l2fwprq" path="res://sprites/escola.png" id="9_school"]
 [ext_resource type="PackedScene" uid="uid://c4k8nan2p7q3" path="res://entities/paper.tscn" id="10_paper"]
 [ext_resource type="Script" uid="uid://dqafc7o4rowxt" path="res://scene/hud_npc_grassland.gd" id="11_dialog"]
-[ext_resource type="Script" path="res://scene/bridge_sign_area.gd" id="12_bridge_sign_script"]
-[ext_resource type="Script" path="res://scene/winter_bridge.gd" id="13_bridge_script"]
-[ext_resource type="PackedScene" path="res://entities/wood.tscn" id="14_wood"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dialog"]
-bg_color = Color(0, 0, 0, 0.7529412)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0iaem"]
-size = Vector2(11, 212)
+[ext_resource type="Script" uid="uid://fm61lw51dtbt" path="res://scene/bridge_sign_area.gd" id="12_bridge_sign_script"]
+[ext_resource type="Script" uid="uid://bxvfwca4624ir" path="res://scene/winter_bridge.gd" id="13_bridge_script"]
+[ext_resource type="PackedScene" uid="uid://cradlmh4klkj2" path="res://entities/wood.tscn" id="14_wood"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bridge_sign"]
 radius = 20.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bridge_collision"]
 size = Vector2(230, 12)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dialog"]
+bg_color = Color(0, 0, 0, 0.7529412)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0iaem"]
+size = Vector2(11, 212)
 
 [node name="winterworld" type="Node2D" unique_id=1544964825]
 script = ExtResource("1_winter_script")
@@ -96,13 +96,13 @@ scale = Vector2(0.23, 0.23)
 texture = ExtResource("9_school")
 
 [node name="BridgeSign" type="Area2D" parent="." unique_id=1463100122]
-position = Vector2(1088, 165)
+position = Vector2(1273, 181)
 collision_mask = 2
 script = ExtResource("12_bridge_sign_script")
 dialogue_text_request = "os habitantes da cidade precisam de uma ponte para passar por este buraco, encontre madeira e venha construir a ponte"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BridgeSign" unique_id=1319197679]
-position = Vector2(0, -8)
+position = Vector2(50, -14)
 shape = SubResource("CircleShape2D_bridge_sign")
 
 [node name="Label" type="Label" parent="BridgeSign" unique_id=1831190155]
@@ -120,24 +120,21 @@ script = ExtResource("13_bridge_script")
 
 [node name="BridgeVisual" type="Line2D" parent="BridgeBuilt" unique_id=2005458444]
 visible = false
-width = 10.0
-default_color = Color(0.5529412, 0.3529412, 0.1882353, 1)
 points = PackedVector2Array(-112, 0, 112, 0)
+default_color = Color(0.5529412, 0.3529412, 0.1882353, 1)
 
 [node name="BridgeCollision" type="StaticBody2D" parent="BridgeBuilt" unique_id=1610908446]
-collision_layer = 1
-collision_mask = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BridgeBuilt/BridgeCollision" unique_id=618036162]
-disabled = true
 shape = SubResource("RectangleShape2D_bridge_collision")
+disabled = true
 
 [node name="Paper" parent="." unique_id=1502398589 instance=ExtResource("10_paper")]
 position = Vector2(857, 120.99999)
 scale = Vector2(0.4, 0.4)
 
 [node name="Wood" parent="." unique_id=2021906405 instance=ExtResource("14_wood")]
-position = Vector2(1624, 150)
+position = Vector2(2285, -183)
 scale = Vector2(0.5, 0.5)
 
 [node name="DialogUI" type="CanvasLayer" parent="." unique_id=734422194]
