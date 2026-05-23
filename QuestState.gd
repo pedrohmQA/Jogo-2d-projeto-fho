@@ -87,6 +87,8 @@ func _check_solar_items_collected():
 var papers: int = 0
 var professor_quest_started := false
 var professor_quest_completed := false
+var woods: int = 0
+var bridge_built := false
 
 func collect_one_paper():
 	papers += 1
@@ -97,6 +99,18 @@ func can_finish_professor() -> bool:
 func deliver_professor_paper() -> void:
 	papers = max(0, papers - 1)
 	professor_quest_completed = true
+
+func collect_one_wood() -> void:
+	woods += 1
+
+func can_build_bridge() -> bool:
+	return (not bridge_built) and woods >= 1
+
+func build_bridge() -> void:
+	if not can_build_bridge():
+		return
+	woods = max(0, woods - 1)
+	bridge_built = true
 
 # =====================
 # RESET
@@ -117,6 +131,8 @@ func reset_all() -> void:
 	papers = 0
 	professor_quest_started = false
 	professor_quest_completed = false
+	woods = 0
+	bridge_built = false
 
 func reset_forest_quest() -> void:
 	phase = QuestPhase.NOT_MET
