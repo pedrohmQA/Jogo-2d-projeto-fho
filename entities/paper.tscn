@@ -1,21 +1,20 @@
-[gd_scene format=4 uid="uid://c4k8m9n2p7q3"]
+[gd_scene format=3 uid="uid://c4k8nan2p7q3"]
 
-[ext_resource type="Script" uid="uid://i3guweqyb2bp" path="res://pickup.gd" id="1_paper"]
-[ext_resource type="Texture2D" uid="uid://dqdx3x83teqlj" path="res://sprites/paper.png" id="2_paper"]
+[ext_resource type="Script" uid="uid://i3guweqyb2bp" path="res://scene/npc_grassland.gd" id="1_paper"]
+[ext_resource type="Texture2D" uid="uid://ccrr13wl1wqtk" path="res://sprites/paper.png" id="2_gdeve"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_paper"]
-radius = 20.0
+radius = 17.262676
 
-[node name="Paper" type="Area2D"]
+[node name="Paper" type="Area2D" unique_id=1092083879]
 collision_mask = 2
 script = ExtResource("1_paper")
-pickup_type = 7
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_paper")
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=986720136]
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("2_gdeve")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1080787353]
 shape = SubResource("CircleShape2D_paper")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
