@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://fm61lw51dtbt" path="res://scene/bridge_sign_area.gd" id="12_bridge_sign_script"]
 [ext_resource type="Script" uid="uid://bxvfwca4624ir" path="res://scene/winter_bridge.gd" id="13_bridge_script"]
 [ext_resource type="PackedScene" uid="uid://cradlmh4klkj2" path="res://entities/wood.tscn" id="14_wood"]
+[ext_resource type="Texture2D" uid="uid://bbwa0rdh5np0k" path="res://sprites/ponte_final-removebg-preview.png" id="15_bridge_tex"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bridge_sign"]
 radius = 20.0
@@ -118,10 +119,11 @@ text = "Aperte \"E\" para interagir"
 position = Vector2(1328, 173)
 script = ExtResource("13_bridge_script")
 
-[node name="BridgeVisual" type="Line2D" parent="BridgeBuilt" unique_id=2005458444]
+[node name="BridgeVisual" type="Sprite2D" parent="BridgeBuilt" unique_id=2005458444]
 visible = false
-points = PackedVector2Array(-112, 0, 112, 0)
-default_color = Color(0.5529412, 0.3529412, 0.1882353, 1)
+position = Vector2(0, -6)
+scale = Vector2(0.37, 0.12)
+texture = ExtResource("15_bridge_tex")
 
 [node name="BridgeCollision" type="StaticBody2D" parent="BridgeBuilt" unique_id=1610908446]
 
