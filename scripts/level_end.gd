@@ -1,52 +1,40 @@
 extends Area2D
 
-enum EndType { QUEST, GARBAGE, GRASSLAND }
+enum EndType { QUEST, GARBAGE, GRASSLAND, ALWAYS }
 @export var end_type: EndType = EndType.QUEST
 @export var next_scene_path: String = "res://scene/grassland.tscn"
-@export var required_garbage_type: String = "tropic" # só faz sentido se end_type for GARBAGE
+@export var required_garbage_type: String = "tropic" # so faz sentido se end_type for GARBAGE
+@export var start_hidden: bool = false
 
 func _ready() -> void:
-	print("LevelEnd pronto!", self)
-	$AnimatedSprite2D.visible = true
-	self.visible = true
+	_set_active(not start_hidden)
 	$AnimatedSprite2D.play("idle")
 	body_entered.connect(_on_body_entered)
-	$AnimatedSprite2D.play("idle")
-	$AnimatedSprite2D.visible = true
-	self.visible = true
-	print("LevelEnd pronto!", self)
-	body_entered.connect(_on_body_entered)
-	print("LevelEnd posição:", global_position, "AnimSprite visível?", $AnimatedSprite2D.visible, "Z:", $AnimatedSprite2D.z_index)
+	print("LevelEnd pronto!", self, "posicao:", global_position, "visivel:", visible)
 
 func _on_body_entered(body: Node2D) -> void:
-	print("Bandeira: colisão detectada com", body)
-	print("DEBUG bandeira: entrou!", body, "grupos:", body.get_groups())
+	print("Bandeira: colisao detectada com", body)
 	if not body.is_in_group("player"):
-		print("Não é player, ignorando")
+		print("Nao e player, ignorando")
 		return
 
-	print("[DEBUG] end_type:", end_type)
 	if end_type == EndType.QUEST:
-		print("[DEBUG] phase atual:", QuestState.phase, "esperado COMPLETED:", QuestState.QuestPhase.COMPLETED)
 		if QuestState.phase != QuestState.QuestPhase.COMPLETED:
-			print("Bloqueado: entregue a maçã e a moeda ao NPC para passar.")
+			print("Bloqueado: entregue a maca e a moeda ao NPC para passar.")
 			return
 
 	if end_type == EndType.GARBAGE:
-		var result = _is_garbage_done()
-		print("[DEBUG] GARBAGE done?", result, "(required_garbage_type:", required_garbage_type, ")")
-		if not result:
+		if not _is_garbage_done():
 			print("Colete todo o lixo desta fase para passar!")
 			return
 
 	if end_type == EndType.GRASSLAND:
 		var grassland_ready := QuestState.grassland_solar_completed and QuestState.pipe_fixed
-		print("[DEBUG] GRASSLAND done?", grassland_ready, "solar:", QuestState.grassland_solar_completed, "pipe_fixed:", QuestState.pipe_fixed)
 		if not grassland_ready:
-			print("Complete as missões do painel solar e do cano para passar.")
+			print("Complete as missoes do painel solar e do cano para passar.")
 			return
 
-	print("[DEBUG] Trocando de cena para:", next_scene_path)
+	print("Trocando de cena para:", next_scene_path)
 	get_tree().change_scene_to_file(next_scene_path)
 
 func _is_garbage_done() -> bool:
@@ -55,3 +43,10 @@ func _is_garbage_done() -> bool:
 	elif required_garbage_type == "forest":
 		return QuestState.is_forest_garbage_done()
 	return false
+
+func _set_active(active: bool) -> void:
+	visible = active
+	$AnimatedSprite2D.visible = active
+	var collision := $CollisionShape2D as CollisionShape2D
+	if collision:
+		collision.disabled = not active

@@ -15,6 +15,8 @@
 [ext_resource type="Script" uid="uid://fm61lw51dtbt" path="res://scene/bridge_sign_area.gd" id="12_bridge_sign_script"]
 [ext_resource type="Script" uid="uid://bxvfwca4624ir" path="res://scene/winter_bridge.gd" id="13_bridge_script"]
 [ext_resource type="PackedScene" uid="uid://cradlmh4klkj2" path="res://entities/wood.tscn" id="14_wood"]
+[ext_resource type="Texture2D" uid="uid://bbwa0rdh5np0k" path="res://sprites/ponte_final-removebg-preview.png" id="15_bridge_tex"]
+[ext_resource type="PackedScene" uid="uid://bvvslhu3eydw4" path="res://entities/level_end.tscn" id="16_level_end"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bridge_sign"]
 radius = 20.0
@@ -65,7 +67,7 @@ tile_set = ExtResource("4_jrt5w")
 
 [node name="Decoration" type="TileMapLayer" parent="Tiles" unique_id=1356960090]
 position = Vector2(0, 4)
-tile_map_data = PackedByteArray("AAA3AAYABAAFAAEAAAAlAAoABAABAAEAAAAYAAoABAAFAAEAAAAJAAgABAABAAEAAAAYAAsABAADAAUAAAAJAAkABAADAAUAAAAmAAsABAADAAUAAAA2AAcABAADAAUAAABSAAoAAAADAAUAAAA=")
+tile_map_data = PackedByteArray("AAA3AAYABAAFAAEAAAAlAAoABAABAAEAAAAYAAoABAAFAAEAAAAJAAgABAABAAEAAAAYAAsABAADAAUAAAAJAAkABAADAAUAAAAmAAsABAADAAUAAAA2AAcABAADAAUAAABSAAoAAAADAAUAAABVAAsAAwAMAAIAAABWAAsAAwAMAAIAAABXAAsAAwAMAAIAAABYAAsAAwAMAAIAAABZAAsAAwAMAAIAAABaAAsAAwAMAAIAAABbAAsAAwAMAAIAAABcAAsAAwAMAAIAAAA=")
 tile_set = ExtResource("5_b2bxl")
 
 [node name="Camera" parent="Tiles" unique_id=1397644041 instance=ExtResource("6_2y6hj")]
@@ -105,21 +107,47 @@ dialogue_text_request = "os habitantes da cidade precisam de uma ponte para pass
 position = Vector2(50, -14)
 shape = SubResource("CircleShape2D_bridge_sign")
 
+[node name="Label" type="Label" parent="BridgeSign" unique_id=1831190155]
+offset_left = -70.0
+offset_top = -50.0
+offset_right = 70.0
+offset_bottom = -37.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.5647059)
+theme_override_font_sizes/font_size = 8
+text = "Aperte \"E\" para interagir"
+
 [node name="BridgeBuilt" type="Node2D" parent="." unique_id=708412270]
 position = Vector2(1328, 173)
 script = ExtResource("13_bridge_script")
 
-[node name="BridgeVisual" type="Line2D" parent="BridgeBuilt" unique_id=2005458444]
-position = Vector2(113, 8)
-points = PackedVector2Array(-112, 0, 90.420494, 0, 112, 0)
-default_color = Color(0.5529412, 0.3529412, 0.1882353, 1)
+[node name="BridgeVisual" type="Sprite2D" parent="BridgeBuilt" unique_id=2005458444]
+visible = false
+position = Vector2(0, -6)
+scale = Vector2(0.37, 0.12)
+texture = ExtResource("15_bridge_tex")
 
 [node name="BridgeCollision" type="StaticBody2D" parent="BridgeBuilt" unique_id=1610908446]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BridgeBuilt/BridgeCollision" unique_id=618036162]
-position = Vector2(112, 9)
 shape = SubResource("RectangleShape2D_bridge_collision")
 disabled = true
+
+[node name="LevelEndVictory" parent="." unique_id=1664480077 instance=ExtResource("16_level_end")]
+visible = false
+position = Vector2(1518, 167)
+scale = Vector2(0.4, 0.4)
+collision_mask = 1
+end_type = 3
+start_hidden = true
+next_scene_path = "res://scene/victory.tscn"
+
+[node name="CollisionShape2D" parent="LevelEndVictory" index="0" unique_id=1009072659]
+disabled = true
+position = Vector2(2, 1)
+
+[node name="AnimatedSprite2D" parent="LevelEndVictory" index="1" unique_id=921225856]
+visible = false
+position = Vector2(0, 0)
 
 [node name="Paper" parent="." unique_id=1502398589 instance=ExtResource("10_paper")]
 position = Vector2(857, 120.99999)
@@ -128,7 +156,6 @@ scale = Vector2(0.4, 0.4)
 [node name="Wood" parent="." unique_id=2021906405 instance=ExtResource("14_wood")]
 position = Vector2(2285, -183)
 scale = Vector2(0.5, 0.5)
-collision_mask = 2
 
 [node name="DialogUI" type="CanvasLayer" parent="." unique_id=734422194]
 layer = 100
