@@ -29,25 +29,34 @@ func try_interact():
 	print("DEBUG: player_in_range =", player_in_range)
 	print("DEBUG: quest_completed =", quest_completed)
 	print("DEBUG: mission_started =", mission_started)
+	print("DEBUG: papers =", QuestState.papers)
+	print("DEBUG: professor_quest_completed =", QuestState.professor_quest_completed)
 
-	if not player_in_range or quest_completed:
-		print("DEBUG: Não está no range ou quest já completa, abortando interação")
+	if not player_in_range:
+		print("DEBUG: Nao esta no range, abortando interacao")
 		return
 
-	# Primeira interação: missão ainda não começou
+	# Se a quest ja foi concluida (local ou global), apenas agradece.
+	if quest_completed or QuestState.professor_quest_completed:
+		quest_completed = true
+		emit_signal("dialogue_requested", dialogue_text_ready)
+		return
+
+	# Primeira interacao: missao ainda nao comecou.
 	if not mission_started:
 		mission_started = true
 		QuestState.professor_quest_started = true
-		print("DEBUG: Primeira interação, missão começou agora")
+		print("DEBUG: Primeira interacao, missao comecou agora")
 		emit_signal("dialogue_requested", dialogue_text_intro)
 		return
 
-	# Missão pode ser finalizada
-	if QuestState.can_finish_professor():
+	# Prioriza entrega se o papel ja foi coletado.
+	if QuestState.papers >= 1 or QuestState.can_finish_professor():
 		print("DEBUG: Quest pode ser finalizada, entregando papel")
 		QuestState.deliver_professor_paper()
 		emit_signal("dialogue_requested", dialogue_text_ready)
 		quest_completed = true
-	else:
-		print("DEBUG: Missão incompleta, faltam papéis")
-		emit_signal("dialogue_requested", dialogue_text_incomplete)
+		return
+
+	print("DEBUG: Missao incompleta, faltam papeis")
+	emit_signal("dialogue_requested", dialogue_text_incomplete)
