@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dm5n7k3q8xar2"]
 
-[ext_resource type="Script" uid="uid://i3guweqyb2bp" path="res://scene/npc_grassland.gd" id="1_prof"]
+[ext_resource type="Script" uid="uid://cvhyvckkl2ybo" path="res://scene/npc_professor.gd" id="1_prof"]
 [ext_resource type="Texture2D" uid="uid://3evordrphjkl" path="res://sprites/professor.png" id="2_xpukx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nlmdf"]
