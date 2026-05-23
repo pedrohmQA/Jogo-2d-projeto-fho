@@ -225,19 +225,17 @@ position = Vector2(1159, 1)
 position = Vector2(86, -285)
 
 [node name="LevelEnd" parent="." unique_id=79969626 instance=ExtResource("23_levelend")]
-position = Vector2(3052, -452)
+position = Vector2(3083, -390)
 scale = Vector2(0.5, 0.5)
-collision_mask = 1
 end_type = 2
 next_scene_path = "res://scene/winterworld.tscn"
 
 [node name="CollisionShape2D" parent="LevelEnd" index="0" unique_id=1009072659]
-position = Vector2(2, 1)
+position = Vector2(166, 1092)
 
 [node name="AnimatedSprite2D" parent="LevelEnd" index="1" unique_id=921225856]
-visible = true
 z_index = 10
-position = Vector2(0, 0)
+position = Vector2(160, 1096)
 
 [connection signal="body_entered" from="NpcGrassland" to="NpcGrassland" method="_on_body_entered"]
 [connection signal="body_exited" from="NpcGrassland" to="NpcGrassland" method="_on_body_exited"]
