@@ -7,7 +7,8 @@ func _ready():
 	connect("body_entered", Callable(self, "_on_body_entered"))
 
 func _on_body_entered(body):
-	if not body.is_in_group("player"):
+	# Compatibilidade entre cenas que usam "player" e outras que usam "Player".
+	if not _is_player_body(body):
 		return
 
 	match pickup_type:
@@ -30,3 +31,6 @@ func _on_body_entered(body):
 
 	SoundManager.play_pickup_sound()
 	queue_free()
+
+func _is_player_body(body: Node) -> bool:
+	return body.is_in_group("player") or body.is_in_group("Player")
