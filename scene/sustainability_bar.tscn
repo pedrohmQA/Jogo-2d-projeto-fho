@@ -1,20 +1,20 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://ngsifelwt70e"]
 
-[ext_resource type="Script" path="res://scene/sustainability_bar.gd" id="1_v0ywn"]
+[ext_resource type="Script" uid="uid://dadv25b8i3owh" path="res://scene/sustainability_bar.gd" id="1_v0ywn"]
 
-[node name="SustainabilityBar" type="Control"]
+[node name="SustainabilityBar" type="Control" unique_id=316964185]
 layout_mode = 3
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -362.0
-offset_top = 2.0
-offset_right = -2.0
-offset_bottom = 54.0
+offset_left = -208.0
+offset_top = -30.0
+offset_right = 157.0
+offset_bottom = 70.0
 grow_horizontal = 0
 script = ExtResource("1_v0ywn")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1172861230]
 custom_minimum_size = Vector2(360, 52)
 layout_mode = 1
 anchors_preset = 15
