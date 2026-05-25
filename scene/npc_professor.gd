@@ -2,8 +2,8 @@ extends Area2D
 
 signal dialogue_requested(dialogue_text: String)
 
-@export var dialogue_text_intro := "Olá que bom que você está aqui! Preciso que você me traga uma bateria, cabos e uma placa solar para construirmos um painel."
-@export var dialogue_text_ready := "Ótimo, vamos construir o painel!"
+@export var dialogue_text_intro := "Olá aventureiro! Preciso começar a aula, mas perdi minhas folhas, você pode encontrar e me entregar?"
+@export var dialogue_text_ready := "Obrigado pela ajuda!"
 @export var dialogue_text_incomplete := "Ainda não encontrei minhas folhas..."
 
 var player_in_range := false
