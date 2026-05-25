@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c4pd8ktquwfsn" path="res://sprites/espinhos.png" id="2_twh5t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4sc1i"]
-size = Vector2(21, 21)
+size = Vector2(20, 25)
 
 [node name="EspinhoSurpresa" type="Area2D" unique_id=547628748]
 collision_layer = 0
@@ -20,7 +20,7 @@ texture = ExtResource("2_twh5t")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=354535432]
 light_mask = 1023
 visibility_layer = 1023
-position = Vector2(-0.5, -0.5)
+position = Vector2(-1, -2.5)
 shape = SubResource("RectangleShape2D_4sc1i")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

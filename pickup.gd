@@ -4,7 +4,8 @@ enum PickupType { APPLE, COIN, GARBAGE, BATERY, CABLE, PANEL, TAPE, PAPER }
 @export var pickup_type: PickupType = PickupType.APPLE
 
 func _ready():
-	connect("body_entered", Callable(self, "_on_body_entered"))
+	if not body_entered.is_connected(_on_body_entered):
+		body_entered.connect(_on_body_entered)
 
 func _on_body_entered(body):
 	# Compatibilidade entre cenas que usam "player" e outras que usam "Player".

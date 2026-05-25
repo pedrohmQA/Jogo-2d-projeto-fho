@@ -6,7 +6,8 @@ extends Area2D
 @onready var sprite := $Sprite2D as Sprite2D
 
 func _ready() -> void:
-	connect("body_entered", Callable(self, "_on_body_entered"))
+	if not body_entered.is_connected(_on_body_entered):
+		body_entered.connect(_on_body_entered)
 	_load_texture()
 
 func _on_body_entered(body: Node) -> void:

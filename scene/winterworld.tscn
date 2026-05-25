@@ -17,6 +17,8 @@
 [ext_resource type="PackedScene" uid="uid://cradlmh4klkj2" path="res://entities/wood.tscn" id="14_wood"]
 [ext_resource type="Texture2D" uid="uid://bbwa0rdh5np0k" path="res://sprites/ponte_final-removebg-preview.png" id="15_bridge_tex"]
 [ext_resource type="PackedScene" uid="uid://bvvslhu3eydw4" path="res://entities/level_end.tscn" id="16_level_end"]
+[ext_resource type="PackedScene" uid="uid://u22sw657jlv2" path="res://scene/EspinhoSurpresa.tscn" id="18_fg4vi"]
+[ext_resource type="PackedScene" path="res://scene/push_trigger.tscn" id="19_nlwi2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bridge_sign"]
 radius = 20.0
@@ -184,5 +186,17 @@ theme_override_constants/shadow_offset_y = 0
 theme_override_constants/shadow_outline_size = 3
 theme_override_font_sizes/font_size = 4
 text = "Aperte \"E\" para interagir"
+
+[node name="EspinhoSurpresa" parent="." unique_id=547628748 instance=ExtResource("18_fg4vi")]
+position = Vector2(383, 182)
+
+[node name="EspinhoSurpresa" parent="EspinhoSurpresa" unique_id=1741504646 instance=ExtResource("18_fg4vi")]
+position = Vector2(1205, -14)
+
+[node name="PushTrigger" parent="EspinhoSurpresa" unique_id=1239112896 instance=ExtResource("19_nlwi2")]
+position = Vector2(1873, -383)
+
+[node name="PushTrigger" parent="EspinhoSurpresa/PushTrigger" unique_id=1046181479 instance=ExtResource("19_nlwi2")]
+position = Vector2(-2100, 337)
 
 [editable path="LevelEndVictory"]

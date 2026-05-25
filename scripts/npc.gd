@@ -11,8 +11,10 @@ var dialog_open := false
 func _ready() -> void:
 	dialog_ui.visible = false
 
-	interact_area.body_entered.connect(_on_body_entered)
-	interact_area.body_exited.connect(_on_body_exited)
+	if not interact_area.body_entered.is_connected(_on_body_entered):
+		interact_area.body_entered.connect(_on_body_entered)
+	if not interact_area.body_exited.is_connected(_on_body_exited):
+		interact_area.body_exited.connect(_on_body_exited)
 
 func _process(_delta: float) -> void:
 	if player_in_range and Input.is_action_just_pressed("interact"):

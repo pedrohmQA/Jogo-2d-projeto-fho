@@ -9,7 +9,8 @@ enum EndType { QUEST, GARBAGE, GRASSLAND, ALWAYS }
 func _ready() -> void:
 	_set_active(not start_hidden)
 	$AnimatedSprite2D.play("idle")
-	body_entered.connect(_on_body_entered)
+	if not body_entered.is_connected(_on_body_entered):
+		body_entered.connect(_on_body_entered)
 	print("LevelEnd pronto!", self, "posicao:", global_position, "visivel:", visible)
 
 func _on_body_entered(body: Node2D) -> void:

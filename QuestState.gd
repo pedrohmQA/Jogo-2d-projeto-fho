@@ -90,6 +90,29 @@ var professor_quest_completed := false
 var woods: int = 0
 var bridge_built := false
 
+# =====================
+# CHECKPOINT
+# =====================
+var checkpoint_active: bool = false
+var checkpoint_scene_path: String = ""
+var checkpoint_position: Vector2 = Vector2.ZERO
+
+func set_checkpoint(scene_path: String, position: Vector2) -> void:
+	checkpoint_active = true
+	checkpoint_scene_path = scene_path
+	checkpoint_position = position
+
+func has_checkpoint_for_scene(scene_path: String) -> bool:
+	return checkpoint_active and checkpoint_scene_path == scene_path
+
+func get_checkpoint_position() -> Vector2:
+	return checkpoint_position
+
+func clear_checkpoint() -> void:
+	checkpoint_active = false
+	checkpoint_scene_path = ""
+	checkpoint_position = Vector2.ZERO
+
 func collect_one_paper():
 	papers += 1
 
@@ -133,6 +156,7 @@ func reset_all() -> void:
 	professor_quest_completed = false
 	woods = 0
 	bridge_built = false
+	clear_checkpoint()
 
 func reset_forest_quest() -> void:
 	phase = QuestPhase.NOT_MET

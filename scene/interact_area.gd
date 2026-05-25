@@ -12,8 +12,10 @@ var dialog_open := false
 
 func _ready() -> void:
 	dialog_ui.visible = false
-	body_entered.connect(_on_enter)
-	body_exited.connect(_on_exit)
+	if not body_entered.is_connected(_on_enter):
+		body_entered.connect(_on_enter)
+	if not body_exited.is_connected(_on_exit):
+		body_exited.connect(_on_exit)
 
 
 func _process(_delta: float) -> void:

@@ -11,7 +11,7 @@ func _ready() -> void:
 func _on_music_finished():
 	$AudioStreamPlayer.play()
 	
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 
@@ -28,5 +28,6 @@ func _on_quit_btn_pressed() -> void:
 
 
 func _on_button_pressed() -> void:
+	QuestState.clear_checkpoint()
 	get_tree().change_scene_to_file("res://scene/forest.tscn")
 	

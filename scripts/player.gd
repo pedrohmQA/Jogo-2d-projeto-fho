@@ -12,6 +12,8 @@ enum PlayerState {
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var som_pulo: AudioStreamPlayer2D = $SomPulo
 
+const DEATH_SCREEN_SCENE: PackedScene = preload("res://scene/telademorte.tscn")
+
 @export var max_speed: float = 100.0
 @export var acceleration: float = 180
 @export var deceleration: float = 400.0
@@ -32,15 +34,22 @@ var jump_count: int = 0
 var direction: float = 0
 var status: PlayerState
 var in_water: bool = false
+var is_dead: bool = false
 
 func _ready() -> void:
 	if respawn_position == Vector2.ZERO:
 		respawn_position = global_position
+
+	var scene_path := get_tree().current_scene.scene_file_path
+	if QuestState.has_checkpoint_for_scene(scene_path):
+		respawn_position = QuestState.get_checkpoint_position()
+		global_position = respawn_position
+
 	go_to_idle_state()
 
 func _physics_process(delta: float) -> void:
 	if global_position.y > fall_limit:
-		respawn()
+		die()
 		return
 
 	if in_water:
@@ -74,6 +83,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func respawn() -> void:
+	is_dead = false
 	global_position = respawn_position
 	velocity = Vector2.ZERO
 	jump_count = 0
@@ -83,6 +93,23 @@ func respawn() -> void:
 
 func voltar_ao_inicio():
 	respawn()
+
+func die() -> void:
+	if is_dead:
+		return
+
+	is_dead = true
+	velocity = Vector2.ZERO
+	set_physics_process(false)
+
+	var death_layer := CanvasLayer.new()
+	death_layer.layer = 1000
+	death_layer.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
+	get_tree().current_scene.add_child(death_layer)
+
+	var death_screen = DEATH_SCREEN_SCENE.instantiate()
+	death_layer.add_child(death_screen)
+	death_screen.show_screen()
 
 func go_to_duck_state() -> void:
 	status = PlayerState.duck
@@ -126,7 +153,7 @@ func exit_water() -> void:
 	anim.play("jump")
 	jump_count = 1
 
-func duck_state(delta: float) -> void:
+func duck_state(_delta: float) -> void:
 	velocity.x = 0
 	if not is_on_floor():
 		go_to_fall_state()

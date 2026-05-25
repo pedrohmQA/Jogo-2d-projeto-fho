@@ -55,13 +55,16 @@ func _ready() -> void:
 	_tick_timer.one_shot = false
 	_tick_timer.wait_time = 1.0
 	add_child(_tick_timer)
-	_tick_timer.timeout.connect(_on_tick)
+	if not _tick_timer.timeout.is_connected(_on_tick):
+		_tick_timer.timeout.connect(_on_tick)
 
 	_seconds_left = countdown_minutes * 60
 	_update_timer_label()
 
-	body_entered.connect(_on_body_entered)
-	body_exited.connect(_on_body_exited)
+	if not body_entered.is_connected(_on_body_entered):
+		body_entered.connect(_on_body_entered)
+	if not body_exited.is_connected(_on_body_exited):
+		body_exited.connect(_on_body_exited)
 
 func _process(_delta: float) -> void:
 	if _countdown_started and QuestState.is_tropic_garbage_done():
