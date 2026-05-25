@@ -2,6 +2,7 @@ extends Control
 
 @export var textures_dir := "res://sprites/barra_sustentabilidade"
 @export var max_points := 9
+@export var frames_are_descending := true
 
 @onready var bar_texture := $TextureRect as TextureRect
 
@@ -71,4 +72,7 @@ func _points_to_frame(points: int) -> int:
 
 	var ratio := float(points) / float(max_points)
 	var index := int(round(ratio * float(max_index)))
-	return clampi(index, 0, max_index)
+	index = clampi(index, 0, max_index)
+	if frames_are_descending:
+		return max_index - index
+	return index
