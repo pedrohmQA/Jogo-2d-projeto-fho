@@ -236,3 +236,20 @@ func fix_pipe() -> void:
 func reset_grassland_tape() -> void:
 	has_tape = false
 	pipe_fixed = false
+
+func reset_progress_for_scene(scene_path: String) -> void:
+	if scene_path.ends_with("forest.tscn"):
+		reset_forest_quest()
+	elif scene_path.ends_with("tropic.tscn"):
+		reset_tropic_garbage()
+	elif scene_path.ends_with("grassland.tscn"):
+		reset_grassland_solar()
+		reset_grassland_tape()
+	elif scene_path.ends_with("winterworld.tscn"):
+		papers = 0
+		professor_quest_started = false
+		professor_quest_completed = false
+		woods = 0
+		bridge_built = false
+
+	clear_checkpoint()

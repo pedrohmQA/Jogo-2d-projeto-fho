@@ -15,6 +15,9 @@ func show_screen() -> void:
 	retry_button.grab_focus()
 
 func _on_retry_pressed() -> void:
+	var current_scene := get_tree().current_scene
+	if current_scene != null:
+		QuestState.reset_progress_for_scene(current_scene.scene_file_path)
 	get_tree().paused = false
 	get_tree().reload_current_scene()
 
