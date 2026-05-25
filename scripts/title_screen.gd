@@ -28,6 +28,6 @@ func _on_quit_btn_pressed() -> void:
 
 
 func _on_button_pressed() -> void:
-	QuestState.clear_checkpoint()
+	QuestState.reset_all()
 	get_tree().change_scene_to_file("res://scene/forest.tscn")
 	

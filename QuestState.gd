@@ -41,18 +41,28 @@ func deliver_items() -> void:
 # TROPIC (LIXO regressivo)
 # =====================
 var garbage_left: int = 0
+var tropic_started := false
+var tropic_completed := false
 
 func start_tropic_garbage(total: int) -> void:
+	if tropic_completed:
+		garbage_left = 0
+		tropic_started = true
+		return
+
 	garbage_left = max(0, total)
+	tropic_started = true
+	tropic_completed = garbage_left <= 0
 
 func collect_one_garbage():
 	garbage_left -= 1
 	if garbage_left <= 0:
 		garbage_left = 0
+		tropic_completed = true
 		emit_signal("all_garbage_collected")
 
 func is_tropic_garbage_done() -> bool:
-	return garbage_left <= 0
+	return tropic_started and tropic_completed
 
 # =====================
 # GRASSLAND (Itens do painel solar)
@@ -136,6 +146,30 @@ func build_bridge() -> void:
 	bridge_built = true
 
 # =====================
+# SUSTENTABILIDADE (BARRA GLOBAL)
+# =====================
+func is_forest_objective_done() -> bool:
+	return quest_completed or phase == QuestPhase.COMPLETED
+
+func is_grassland_objective_done() -> bool:
+	return grassland_solar_completed and pipe_fixed
+
+func is_winterworld_objective_done() -> bool:
+	return professor_quest_completed and bridge_built
+
+func get_sustainability_points() -> int:
+	var points := 0
+	if is_forest_objective_done():
+		points += 2
+	if is_tropic_garbage_done():
+		points += 2
+	if is_grassland_objective_done():
+		points += 2
+	if is_winterworld_objective_done():
+		points += 3
+	return points
+
+# =====================
 # RESET
 # =====================
 func reset_all() -> void:
@@ -145,6 +179,8 @@ func reset_all() -> void:
 	apples = 0
 	coins = 0
 	garbage_left = 0
+	tropic_started = false
+	tropic_completed = false
 	panels = 0
 	batteries = 0
 	cables = 0
@@ -167,6 +203,8 @@ func reset_forest_quest() -> void:
 
 func reset_tropic_garbage() -> void:
 	garbage_left = 0
+	tropic_started = false
+	tropic_completed = false
 
 func reset_grassland_solar() -> void:
 	panels = 0

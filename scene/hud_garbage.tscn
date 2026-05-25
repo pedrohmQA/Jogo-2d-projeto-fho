@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cr24svsdq4uag" path="res://scene/hud.gd" id="1_ydofu"]
 [ext_resource type="Texture2D" uid="uid://xp2p4b2ix80o" path="res://sprites/trash assets/garbage bag 2.png" id="2_pnmx8"]
+[ext_resource type="PackedScene" path="res://scene/sustainability_bar.tscn" id="3_sustain_bar"]
 
 [node name="Hud_tscn" type="CanvasLayer" unique_id=678297486]
 script = ExtResource("1_ydofu")
@@ -39,3 +40,5 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.7529412)
 theme_override_font_sizes/font_size = 10
 text = "x5"
+
+[node name="SustainabilityBar" parent="." instance=ExtResource("3_sustain_bar")]

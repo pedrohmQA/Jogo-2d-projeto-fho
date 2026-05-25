@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://cradlmh4klkj2" path="res://entities/wood.tscn" id="14_wood"]
 [ext_resource type="Texture2D" uid="uid://bbwa0rdh5np0k" path="res://sprites/ponte_final-removebg-preview.png" id="15_bridge_tex"]
 [ext_resource type="PackedScene" uid="uid://bvvslhu3eydw4" path="res://entities/level_end.tscn" id="16_level_end"]
+[ext_resource type="PackedScene" path="res://scene/sustainability_bar.tscn" id="17_sustain_bar"]
 [ext_resource type="PackedScene" uid="uid://u22sw657jlv2" path="res://scene/EspinhoSurpresa.tscn" id="18_fg4vi"]
 [ext_resource type="PackedScene" path="res://scene/push_trigger.tscn" id="19_nlwi2"]
 [ext_resource type="AudioStream" uid="uid://ixxjjvvy5haf" path="res://audios/670772__ustym_petrovych__8-bit-tune-short-sketch-adventure.wav" id="20_nlwi2"]
@@ -167,6 +168,8 @@ autowrap_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="DialogUI/Panel" unique_id=872751721]
 layout_mode = 2
+
+[node name="SustainabilityBar" parent="." instance=ExtResource("17_sustain_bar")]
 
 [node name="limit" type="StaticBody2D" parent="." unique_id=1813808562]
 collision_mask = 4

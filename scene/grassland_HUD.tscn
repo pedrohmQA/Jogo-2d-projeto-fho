@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bmh75achusqg2" path="res://sprites/painel_desmontado.png" id="2_cjpgf"]
 [ext_resource type="Texture2D" uid="uid://vajs6ahwh2be" path="res://sprites/bateria.png" id="3_t5l4d"]
 [ext_resource type="Texture2D" uid="uid://d3dohhvq7cd27" path="res://sprites/cabos.png" id="4_y2k5q"]
+[ext_resource type="PackedScene" path="res://scene/sustainability_bar.tscn" id="5_sustain_bar"]
 
 [node name="GrasslandHud" type="CanvasLayer" unique_id=181662966]
 script = ExtResource("1_2r80k")
@@ -56,3 +57,5 @@ stretch_mode = 5
 layout_mode = 2
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.7529412)
 theme_override_font_sizes/font_size = 12
+
+[node name="SustainabilityBar" parent="." instance=ExtResource("5_sustain_bar")]
