@@ -2,13 +2,19 @@ extends Area2D
 
 signal dialogue_requested(dialogue_text: String)
 
-@export var dialogue_text_intro := "Olá aventureiro! Preciso começar a aula, mas perdi minhas anotações. Você pode encontrar e me entergar?."
+@export var dialogue_text_intro := "Olá, que bom que você está aqui! Preciso que você me traga uma bateria, cabos e uma placa solar para construirmos um painel."
 @export var dialogue_text_ready := "Ótimo! Obrigado pela ajuda!"
 @export var dialogue_text_incomplete := "Ainda faltam itens."
 
 var player_in_range := false
 var quest_completed := false
 var mission_started := false
+
+func _ready() -> void:
+	if not body_entered.is_connected(_on_body_entered):
+		body_entered.connect(_on_body_entered)
+	if not body_exited.is_connected(_on_body_exited):
+		body_exited.connect(_on_body_exited)
 
 func _on_body_entered(body):
 	if body is CharacterBody2D:
@@ -27,27 +33,24 @@ func try_interact():
 	print("DEBUG: mission_started =", mission_started)
 
 	if not player_in_range or quest_completed:
-		print("DEBUG: Não está no range ou quest já completa, abortando interação")
+		print("DEBUG: Nao esta no range ou quest ja completa, abortando interacao")
 		return
 
-	# Primeira interação: missão ainda não começou
 	if not mission_started:
 		mission_started = true
-		print("DEBUG: Primeira interação, missão começou agora")
+		print("DEBUG: Primeira interacao, missao comecou agora")
 		emit_signal("dialogue_requested", dialogue_text_intro)
 		return
 
-	# Missão pode ser finalizada
 	if QuestState.can_finish_grassland():
 		print("DEBUG: Quest pode ser finalizada, entregando itens e exibindo painel")
 		QuestState.deliver_grassland_items()
 		emit_signal("dialogue_requested", dialogue_text_ready)
 		quest_completed = true
 
-		# Exibe painel instalado
 		var panel = get_tree().root.find_child("SolarPanelBuilt", true, false)
 		if panel:
 			panel.visible = true
 	else:
-		print("DEBUG: Missão incompleta, faltam itens")
+		print("DEBUG: Missao incompleta, faltam itens")
 		emit_signal("dialogue_requested", dialogue_text_incomplete)
