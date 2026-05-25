@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://bvvslhu3eydw4" path="res://entities/level_end.tscn" id="16_level_end"]
 [ext_resource type="PackedScene" uid="uid://u22sw657jlv2" path="res://scene/EspinhoSurpresa.tscn" id="18_fg4vi"]
 [ext_resource type="PackedScene" path="res://scene/push_trigger.tscn" id="19_nlwi2"]
+[ext_resource type="AudioStream" uid="uid://ixxjjvvy5haf" path="res://audios/670772__ustym_petrovych__8-bit-tune-short-sketch-adventure.wav" id="20_nlwi2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bridge_sign"]
 radius = 20.0
@@ -198,5 +199,8 @@ position = Vector2(1873, -383)
 
 [node name="PushTrigger" parent="EspinhoSurpresa/PushTrigger" unique_id=1046181479 instance=ExtResource("19_nlwi2")]
 position = Vector2(-2100, 337)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1426823301]
+stream = ExtResource("20_nlwi2")
 
 [editable path="LevelEndVictory"]

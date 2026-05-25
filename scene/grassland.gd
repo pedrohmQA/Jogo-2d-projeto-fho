@@ -15,6 +15,11 @@ func _ready():
 	placa_area.connect("pipe_repaired", Callable(self, "_on_pipe_repaired"))
 	dialog_ui.connect("dialogue_closed", Callable(self, "_on_dialogue_closed"))
 	_set_dialogue_active(false)
+	
+	# Loop manual para música
+	if $AudioStreamPlayer:
+		$AudioStreamPlayer.finished.connect(_on_music_finished)
+		$AudioStreamPlayer.play() 
 
 func _process(_delta):
 	if Input.is_action_just_pressed("interact"):
@@ -37,6 +42,9 @@ func _on_dialogue_requested(text):
 
 func _on_dialogue_closed():
 	_set_dialogue_active(false)
+
+func _on_music_finished():
+	$AudioStreamPlayer.play()
 
 func _on_pipe_repaired():
 	if is_instance_valid(water_animated):

@@ -12,6 +12,11 @@ func _ready():
 	bridge_sign.connect("dialogue_requested", Callable(self, "_on_dialogue_requested"))
 	dialog_ui.connect("dialogue_closed", Callable(self, "_on_dialogue_closed"))
 	_set_dialogue_active(false)
+	
+	# Loop manual para música
+	if $AudioStreamPlayer:
+		$AudioStreamPlayer.finished.connect(_on_music_finished)
+		$AudioStreamPlayer.play()
 
 func _process(_delta):
 	if Input.is_action_just_pressed("interact"):
@@ -34,6 +39,9 @@ func _on_dialogue_requested(text):
 
 	_set_dialogue_active(true)
 	dialog_ui.show_dialog(text)
+
+func _on_music_finished():
+	$AudioStreamPlayer.play()
 
 func _on_dialogue_closed():
 	_set_dialogue_active(false)

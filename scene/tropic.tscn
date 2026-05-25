@@ -466,4 +466,7 @@ stream = ExtResource("23_hohr6")
 [node name="EspinhoSurpresa" parent="." unique_id=547628748 instance=ExtResource("24_7jepg")]
 position = Vector2(728, 165)
 
+[node name="EspinhoSurpresa2" parent="." unique_id=1886081190 instance=ExtResource("24_7jepg")]
+position = Vector2(785, -42)
+
 [editable path="LevelEnd"]

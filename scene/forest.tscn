@@ -261,6 +261,14 @@ shape = SubResource("RectangleShape2D_dki5c")
 position = Vector2(123, 182)
 collision_mask = 3
 
+[node name="EspinhoSurpresa3" parent="." unique_id=563064742 instance=ExtResource("23_xw4on")]
+position = Vector2(232, 103)
+collision_mask = 3
+
+[node name="EspinhoSurpresa4" parent="." unique_id=1932370543 instance=ExtResource("23_xw4on")]
+position = Vector2(231, 182)
+collision_mask = 3
+
 [node name="EspinhoSurpresa2" parent="." unique_id=31644440 instance=ExtResource("23_xw4on")]
 position = Vector2(317, 150)
 collision_mask = 3
@@ -270,7 +278,7 @@ position = Vector2(494, 73)
 collision_mask = 1
 
 [node name="PushTrigger" parent="PushTrigger" unique_id=744154912 instance=ExtResource("24_bqdkd")]
-position = Vector2(-265, 17)
+position = Vector2(-262, 15)
 collision_mask = 1
 
 [connection signal="body_entered" from="Lava" to="Lava" method="_on_body_entered"]
