@@ -259,7 +259,6 @@ position = Vector2(160, 1096)
 
 [node name="PushTrigger" parent="." unique_id=644131400 instance=ExtResource("24_606pf")]
 position = Vector2(1582, 119)
-trigger_mode = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1873091454]
 stream = ExtResource("25_1ffd5")

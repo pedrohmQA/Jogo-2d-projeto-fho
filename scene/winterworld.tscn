@@ -169,10 +169,7 @@ autowrap_mode = 2
 [node name="MarginContainer" type="MarginContainer" parent="DialogUI/Panel" unique_id=872751721]
 layout_mode = 2
 
-[node name="HudSustainability" type="CanvasLayer" parent="."]
-layer = 50
-
-[node name="SustainabilityBar" parent="HudSustainability" instance=ExtResource("17_sustain_bar")]
+[node name="SustainabilityBar" parent="." instance=ExtResource("17_sustain_bar")]
 
 [node name="limit" type="StaticBody2D" parent="." unique_id=1813808562]
 collision_mask = 4
